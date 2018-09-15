@@ -1,5 +1,11 @@
 package Model;
 
-public class Algoritmo {
+import Controller.DTOAlgoritmos;
+
+
+public abstract class Algoritmo {
+    
+    public abstract void codificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto);
+    public abstract void decodificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto);
     
 }
