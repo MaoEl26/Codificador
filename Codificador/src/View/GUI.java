@@ -58,7 +58,7 @@ public final class GUI extends javax.swing.JFrame {
         int alfabeto;
         boolean modoCodificacion = true;
         String frase = entText.getText();
-        String tipoSalida = "";
+        String tipoSalida = "",salida="";
         ArrayList<String> listaAlgoritmos = new ArrayList<>();
         ArrayList<String> listaSalidas = new ArrayList<>();
         
@@ -95,8 +95,10 @@ public final class GUI extends javax.swing.JFrame {
         controlador.procesarPeticion(dtoAlgoritmos);
         
         for (int i = 0; i < dtoAlgoritmos.getListaSalidas().size(); i++) {
-            salidaText.setText(dtoAlgoritmos.getListaSalidas().get(i));
+            salida += dtoAlgoritmos.getListaSalidas().get(i)+"\n";
+            System.out.println(dtoAlgoritmos.getListaSalidas().size());
        }
+        salidaText.setText(salida);
     }
     
     public void listaAlfabetos(){
