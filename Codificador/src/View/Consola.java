@@ -79,7 +79,7 @@ public class Consola {
        }
        
        while (bandera){//While para que indique el modo que quiera en cado de que indique algo invalido
-            System.out.print("Introduzca el modo que desea procesar (C,D): ");
+            System.out.print("Introduzca el tipo que desea(t,p,x): ");
             salida = teclado.nextLine();
             
             switch (salida){     
