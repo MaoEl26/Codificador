@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class DaoAlfabetos {
 
-   private static ArrayList<Alfabeto> listaAlfabetos; //Variable con todos los alfabetos creados
+   private static ArrayList<Alfabeto> listaAlfabetos = new ArrayList<Alfabeto>(); //Variable con todos los alfabetos creados
 
     public DaoAlfabetos() {
     }
@@ -22,8 +22,10 @@ public class DaoAlfabetos {
         
     }
     
-    public void crearAlfabeto(Alfabeto alfabeto){
-        
+    /*Funcion que crea un alfabeto y lo mantiene guardado en la lista de alfabetos*/
+    public void crearAlfabeto(int identificador, String nombre, ArrayList<String> listaSimbolos){
+        Alfabeto alfabeto = new Alfabeto(identificador, nombre, listaSimbolos);
+        listaAlfabetos.add(alfabeto);
     }
     
     public void modificarAlfabeto(Alfabeto alfabeto){

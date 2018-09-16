@@ -5,6 +5,9 @@ import Model.Algoritmo;
 import Model.Vigenere;
 import Model.Trasposicion;
 import Model.CodigoTelefonico;
+import Model.EscritorPDF;
+import Model.EscritorTxt;
+import Model.EscritorXML;
 import java.util.ArrayList;
 
 
@@ -35,7 +38,25 @@ public class Controlador {
     /*Funcion que escribe en el formato determinado*/
     private void escribir(DTOAlgoritmos dtoAlgoritmos){
         
-        /*Funcion que manda a escribir en el formato que indique el dto*/
+        String formato = dtoAlgoritmos.getTipoSalida();
+        
+        /*Switch que maneja cada tipo de salida segun se especifique*/
+        switch (formato){
+            
+            case ("txt"):
+                EscritorTxt salidaTxt = new EscritorTxt();
+                salidaTxt.escribirSalida(dtoAlgoritmos);
+                break;
+            case ("pdf"):
+                EscritorPDF salidaPDF = new EscritorPDF();
+                salidaPDF.escribirSalida(dtoAlgoritmos);
+                break;
+            case ("xml"):
+                EscritorXML salidaXML = new EscritorXML();
+                salidaXML.escribirSalida(dtoAlgoritmos);
+                break;
+            
+        }
         
     }
     
@@ -48,7 +69,6 @@ public class Controlador {
         if (!validacionAlfabeto){
             /*Frase invalida*/
         }
-        
         
         /*Proceso de Codificacion/Decodificacion*/
         ArrayList<String> listaAlgoritmosSolicitados = dtoAlgoritmos.getListaAlgoritmosSolicitados();
@@ -92,9 +112,5 @@ public class Controlador {
         
         escribir(dtoAlgoritmos);
     }
-    
-   
-    
-    
-    
+
 }

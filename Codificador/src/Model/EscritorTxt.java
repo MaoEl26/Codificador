@@ -1,5 +1,12 @@
 package Model;
 
-public class EscritorTxt {
+import Controller.DTOAlgoritmos;
+
+public class EscritorTxt implements IEscritor{
+
+    @Override
+    public void escribirSalida(DTOAlgoritmos dtoAlgoritmos) {
+        
+    }
     
 }
