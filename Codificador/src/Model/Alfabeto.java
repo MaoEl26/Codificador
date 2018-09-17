@@ -16,9 +16,15 @@ public class Alfabeto {
     
     public boolean validarAlfabeto(Alfabeto alfabeto, String frase){
         
-        /*Crear funcion que valide la frase*/
+        /*Valida si la frase contiene solo caracteres del alfabeto en uso*/
+        boolean bandera = true;
+        for( char c : frase.toCharArray()){
+            if ( !listaSimbolosAlfabeto.contains(Character.toString(c)) ){
+                bandera = false;
+            }
+        }
         
-        return true;
+        return bandera;
     }
 
     public int getIdentificadorAlfabeto() {

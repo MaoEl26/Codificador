@@ -68,6 +68,7 @@ public class Controlador {
         boolean validacionAlfabeto = alfabetoActual.validarAlfabeto(alfabetoActual, dtoAlgoritmos.getFraseActual());
         if (!validacionAlfabeto){
             /*Frase invalida*/
+            System.out.println("La frase contiene caracteres no incluidos en el alfabeto");
         }
         
         /*Proceso de Codificacion/Decodificacion*/

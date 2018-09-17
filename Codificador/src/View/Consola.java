@@ -43,12 +43,15 @@ public class Consola {
             switch (algoritmoSolicitado){//Dependiendo de lo que se ingrese se ira almacenando en la lista     
                 case "V":
                     listaAlgoritmos.add("Vigenere");
+                    bandera=false;
                     break;
                 case "T":
                     listaAlgoritmos.add("Trasposicion");
+                    bandera=false;
                     break;
                 case "C":
                     listaAlgoritmos.add("CodigoTelefonico");
+                    bandera=false;
                     break;
                 case "salir":
                     bandera=false;
