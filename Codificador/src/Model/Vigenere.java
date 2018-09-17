@@ -10,7 +10,7 @@ public class Vigenere extends Algoritmo{
     public void codificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         /*Metodo de Codificar Vigenere*/
         salidas = dtoAlgortimo.getListaSalidas();
-        salidas.add("Codificador Vigenere");
+        salidas.add("Aquí Codifica Vigenere");
         dtoAlgortimo.setListaSalidas(salidas);
     }
 
@@ -18,7 +18,7 @@ public class Vigenere extends Algoritmo{
     public void decodificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         /*Metodo de Decodificar Vigenere*/
         salidas = dtoAlgortimo.getListaSalidas();
-        salidas.add("Decodificador Vigenere");
+        salidas.add("Aquí Decodifica Vigenere");
         dtoAlgortimo.setListaSalidas(salidas);
     }
     

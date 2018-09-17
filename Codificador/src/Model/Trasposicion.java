@@ -10,7 +10,7 @@ public class Trasposicion extends Algoritmo{
     public void codificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         /*Metodo de Codificar Traspocision*/
         salidas = dtoAlgortimo.getListaSalidas();
-        salidas.add("Codificador Trasposición");
+        salidas.add("Aquí Codifica Trasposición");
         dtoAlgortimo.setListaSalidas(salidas);
     }
 
@@ -18,7 +18,7 @@ public class Trasposicion extends Algoritmo{
     public void decodificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         /*Metodo de Decodificar Trasposicion*/
         salidas = dtoAlgortimo.getListaSalidas();
-        salidas.add("Decodificador Trasposición");
+        salidas.add("Aqui Decodifica Trasposición");
         dtoAlgortimo.setListaSalidas(salidas);
     }
     
