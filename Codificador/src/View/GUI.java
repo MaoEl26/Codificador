@@ -96,7 +96,6 @@ public final class GUI extends javax.swing.JFrame {
         
         for (int i = 0; i < dtoAlgoritmos.getListaSalidas().size(); i++) {
             salida += dtoAlgoritmos.getListaSalidas().get(i)+"\n";
-            System.out.println(dtoAlgoritmos.getListaSalidas().size());
        }
         salidaText.setText(salida);
     }

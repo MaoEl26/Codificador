@@ -19,7 +19,7 @@ public class EscritorTxt implements IEscritor{
             }else{
                 modo = "Decodificacón";
             }
-        String ruta = "ArchivosSalida/"+modo+".txt";
+        String ruta = "/Escritorio/"+modo+".txt";
         try{
             File file = new File(ruta);
             if(!file.exists()){
