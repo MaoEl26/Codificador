@@ -10,7 +10,7 @@ public class CodigoTelefonico extends Algoritmo{
     public void codificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         /*Metodo de Codificar CodigoTelefonico*/
         salidas = dtoAlgortimo.getListaSalidas();
-        salidas.add("Aquí Codifica Códiogo Telefónico");
+        salidas.add("Aquí Codifica Código Telefónico");
         dtoAlgortimo.setListaSalidas(salidas);
     }
 
