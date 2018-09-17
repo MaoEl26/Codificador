@@ -63,7 +63,6 @@ public final class GUI extends javax.swing.JFrame {
         ArrayList<String> listaSalidas = new ArrayList<>();
         
         if(telfCheckBox.isSelected()){
-            System.out.println("View.GUI.ejecutar()");
             listaAlgoritmos.add("CodigoTelefonico");
         }
         if(vigeCheckBox.isSelected()){
