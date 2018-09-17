@@ -1,6 +1,0 @@
-Fecha: 16/8/2018
-Hora: 7:11
-Frase: hola
-Algoritmo: Vigenere
-Modo: Codificación
-Codificador Vigenere
