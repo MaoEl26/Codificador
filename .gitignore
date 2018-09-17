@@ -1,3 +1,5 @@
 /Codificador/nbproject/private/
+/Codificador/dist/
 /Codificador/build/
 *.class
+*.properties
