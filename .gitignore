@@ -2,3 +2,4 @@
 /Codificador/dist/
 /Codificador/build/
 *.class
+*.properties
