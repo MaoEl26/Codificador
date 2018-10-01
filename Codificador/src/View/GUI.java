@@ -51,7 +51,7 @@ public final class GUI extends javax.swing.JFrame {
 
         /*Se crea un objeto de tipo DaoAlfabetos para que cree y agregue el alfabeto*/
         daoAlfabetos = new DaoAlfabetos();
-        daoAlfabetos.crearAlfabeto(1, "predefinido", lista); 
+        daoAlfabetos.crearAlfabeto(1, "predefinido", true,lista);  
     }
     
     private void ejecutar(){
