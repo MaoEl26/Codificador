@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class main {
     static DaoAlfabetos daoAlfabetos;
+    static GUI gui;
+    static Administrador admin;
     public static void main(String[] args) {
         
         /*Variables que se obtienen del archivo*/
@@ -83,7 +85,7 @@ public class main {
         }
         //newConsola();
         newGui();
-      
+        newAdmin();
     }
 private static void newConsola(){
     Consola consola1 = new Consola();
@@ -91,7 +93,7 @@ private static void newConsola(){
 }    
 
 private static void newGui(){
-            GUI gui = new GUI();
+            gui = new GUI();
             gui.inicioDao(daoAlfabetos);
             gui.start();
             java.awt.EventQueue.invokeLater(new Runnable() {
@@ -102,7 +104,7 @@ private static void newGui(){
 }
     
 private static void newAdmin(){
-    Administrador admin = new Administrador();
+    admin = new Administrador();
     java.awt.EventQueue.invokeLater(new Runnable() {
     public void run() {
         admin.setVisible(true);

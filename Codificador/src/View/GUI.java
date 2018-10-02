@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-
+import Model.*;
 import Controller.Controlador;
 import Controller.DTOAlgoritmos;
 import Controller.DaoAlfabetos;
@@ -21,6 +21,11 @@ public final class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     DaoAlfabetos daoAlfabetos;
+    CodificaciónBinaria bin = new CodificaciónBinaria();
+    CodigoTelefonico tel = new CodigoTelefonico();
+    PalabraClave clave = new PalabraClave();
+    Trasposicion tras = new Trasposicion();
+    Vigenere vige = new Vigenere();
     
     private void ejecutar(){
         int alfabeto;
@@ -85,10 +90,15 @@ public final class GUI extends javax.swing.JFrame {
     }
    
     public void validaAlgoritmos(){
-        
+        binCheckBox.setVisible(bin.getEstado());
+        vigeCheckBox.setVisible(vige.getEstado());
+        trasCheckBox.setVisible(tras.getEstado());
+        telfCheckBox.setVisible(tel.getEstado());
+        claveCheckBox.setVisible(clave.getEstado());
     }
     
     private void inicioPrograma(){
+        validaAlgoritmos();
         codiRadioB.setSelected(true);
         txtRadioB.setSelected(true);
         entText.setText("");
@@ -96,12 +106,15 @@ public final class GUI extends javax.swing.JFrame {
         telfCheckBox.setSelected(false);
         trasCheckBox.setSelected(false);
         vigeCheckBox.setSelected(false);
+        claveCheckBox.setSelected(false);
+        binCheckBox.setSelected(false);
    }
     
     public void start(){
        initComponents();
        listaAlfabetos();
        inicioPrograma();
+       //validaAlgoritmos();
     }
     
     public GUI() {
