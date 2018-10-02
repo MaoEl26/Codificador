@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Consola {
         
     public void empezarPrograma(){
+        
          
        /*Variables que almacenaran los datos que se ingresen*/ 
        

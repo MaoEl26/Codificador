@@ -6,22 +6,47 @@ import java.util.ArrayList;
 public class Vigenere extends Algoritmo{
 
     ArrayList<String> salidas;
+    String textoSalida="";
+    String textoEntrada = "";
+    String ArraytextoCambio[];
+    
+    private static boolean estado = true;
+    
     @Override
     public void codificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         /*Metodo de Codificar Vigenere*/
         salidas = dtoAlgortimo.getListaSalidas();
-        salidas.add("Aquí Codifica Vigenere");
-        dtoAlgortimo.setListaSalidas(salidas);
+        textoEntrada = dtoAlgortimo.getFraseActual();
+        ArraytextoCambio = textoEntrada.split(" ");
+        
+        for (int i = 0; i < ArraytextoCambio.length; i++) {
+            //textoSalida+= new StringBuilder(ArraytextoCambio[i]).reverse().toString()+" ";
+        }
+        salidas.add(textoSalida);
     }
 
     @Override
     public void decodificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         /*Metodo de Decodificar Vigenere*/
         salidas = dtoAlgortimo.getListaSalidas();
-        salidas.add("Aquí Decodifica Vigenere");
+        textoEntrada = dtoAlgortimo.getFraseActual();
+        ArraytextoCambio = textoEntrada.split(" ");
+        
+        for (int i = 0; i < ArraytextoCambio.length; i++) {
+           // textoSalida+= new StringBuilder(ArraytextoCambio[i]).reverse().toString()+" ";
+        }
+        salidas.add(textoSalida);        
         dtoAlgortimo.setListaSalidas(salidas);
     }
     
-
+    @Override
+    public void setEstado(boolean estado){
+        this.estado = estado;
+    }
+    
+    @Override
+    public boolean getEstado(){
+        return estado;
+    }
     
 }

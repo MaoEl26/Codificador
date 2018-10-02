@@ -2,12 +2,14 @@ package Controller;
 
 import Model.Alfabeto;
 import Model.Algoritmo;
+import Model.CodificaciónBinaria;
 import Model.Vigenere;
 import Model.Trasposicion;
 import Model.CodigoTelefonico;
 import Model.EscritorPDF;
 import Model.EscritorTxt;
 import Model.EscritorXML;
+import Model.PalabraClave;
 import java.util.ArrayList;
 
 
@@ -105,9 +107,23 @@ public class Controlador {
                         peticionC.decodificar(dtoAlgoritmos, alfabetoActual);
                     }
                     break; 
-                
+                case "PalabraClave":
+                    Algoritmo peticionP = new PalabraClave();
+                    if (modoCodificacion){
+                        peticionP.codificar(dtoAlgoritmos, alfabetoActual);
+                    }else{
+                        peticionP.decodificar(dtoAlgoritmos, alfabetoActual);
+                    }
+                    break;
+                case "CodificacionBin":
+                    Algoritmo peticionB = new CodificaciónBinaria();
+                    if(modoCodificacion){
+                        peticionB.codificar(dtoAlgoritmos, alfabetoActual);
+                    }else{
+                        peticionB.decodificar(dtoAlgoritmos, alfabetoActual);
+                    }
+                    break;
             }
-            
         }
         
         escribir(dtoAlgoritmos);

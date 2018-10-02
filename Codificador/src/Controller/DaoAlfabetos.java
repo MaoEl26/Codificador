@@ -23,8 +23,8 @@ public class DaoAlfabetos {
     }
     
     /*Funcion que crea un alfabeto y lo mantiene guardado en la lista de alfabetos*/
-    public void crearAlfabeto(int identificador, String nombre, ArrayList<String> listaSimbolos){
-        Alfabeto alfabeto = new Alfabeto(identificador, nombre, listaSimbolos);
+    public void crearAlfabeto(int identificador, String nombre, boolean estado, ArrayList<String> listaSimbolos){
+        Alfabeto alfabeto = new Alfabeto(identificador, nombre, estado, listaSimbolos);
         listaAlfabetos.add(alfabeto);
     }
     
