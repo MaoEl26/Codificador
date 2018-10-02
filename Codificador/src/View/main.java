@@ -101,4 +101,12 @@ private static void newGui(){
         });
 }
     
+private static void newAdmin(){
+    Administrador admin = new Administrador();
+    java.awt.EventQueue.invokeLater(new Runnable() {
+    public void run() {
+        admin.setVisible(true);
+    }
+    });
+}
 }

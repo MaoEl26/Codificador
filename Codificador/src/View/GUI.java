@@ -21,38 +21,6 @@ public final class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     DaoAlfabetos daoAlfabetos;
-    /*private void alfabetoPredefinido(){
-       ArrayList<String> lista = new ArrayList();
-        lista.add("a");
-        lista.add("b");
-        lista.add("c");
-        lista.add("d");
-        lista.add("e");
-        lista.add("f");
-        lista.add("g");
-        lista.add("h");
-        lista.add("i");
-        lista.add("j");
-        lista.add("k");
-        lista.add("l");
-        lista.add("m");
-        lista.add("o");
-        lista.add("p");
-        lista.add("q");
-        lista.add("r");
-        lista.add("s");
-        lista.add("t");
-        lista.add("u");
-        lista.add("v");
-        lista.add("w");
-        lista.add("x");
-        lista.add("y");
-        lista.add("z");
-
-        /*Se crea un objeto de tipo DaoAlfabetos para que cree y agregue el alfabeto*/
-    /*    daoAlfabetos = new DaoAlfabetos();
-        daoAlfabetos.crearAlfabeto(1, "predefinido", true,lista);  
-    }*/
     
     private void ejecutar(){
         int alfabeto;
@@ -114,6 +82,10 @@ public final class GUI extends javax.swing.JFrame {
     
     public void inicioDao(DaoAlfabetos daoAlfabetos){
         this.daoAlfabetos = daoAlfabetos;
+    }
+   
+    public void validaAlgoritmos(){
+        
     }
     
     private void inicioPrograma(){
