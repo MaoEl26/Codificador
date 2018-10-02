@@ -73,10 +73,10 @@ public final class GUI extends javax.swing.JFrame {
             //claveCheckBox.setVisible(false);
         }
         if(binCheckBox.isSelected()){
-            //listaAlgorimos.add("");
+            listaAlgoritmos.add("CodificacionBin");
         }
         if(claveCheckBox.isSelected()){
-            //listaAlgoritmos.add("");
+            listaAlgoritmos.add("PalabraClave");
         }
         if(codiRadioB.isSelected()){
             modoCodificacion = true;

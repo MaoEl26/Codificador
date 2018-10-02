@@ -10,6 +10,8 @@ public class Vigenere extends Algoritmo{
     String textoEntrada = "";
     String ArraytextoCambio[];
     
+    private static boolean estado = true;
+    
     @Override
     public void codificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         /*Metodo de Codificar Vigenere*/
@@ -37,6 +39,14 @@ public class Vigenere extends Algoritmo{
         dtoAlgortimo.setListaSalidas(salidas);
     }
     
-
+    @Override
+    public void setEstado(boolean estado){
+        this.estado = estado;
+    }
+    
+    @Override
+    public boolean getEstado(){
+        return estado;
+    }
     
 }
