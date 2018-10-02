@@ -1,4 +1,4 @@
-ppackage View;
+package View;
 
 import Controller.Controlador;
 import Controller.DTOAlgoritmos;

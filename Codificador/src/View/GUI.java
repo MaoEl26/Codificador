@@ -21,7 +21,7 @@ public final class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     DaoAlfabetos daoAlfabetos;
-    private void alfabetoPredefinido(){
+    /*private void alfabetoPredefinido(){
        ArrayList<String> lista = new ArrayList();
         lista.add("a");
         lista.add("b");
@@ -50,9 +50,9 @@ public final class GUI extends javax.swing.JFrame {
         lista.add("z");
 
         /*Se crea un objeto de tipo DaoAlfabetos para que cree y agregue el alfabeto*/
-        daoAlfabetos = new DaoAlfabetos();
+    /*    daoAlfabetos = new DaoAlfabetos();
         daoAlfabetos.crearAlfabeto(1, "predefinido", true,lista);  
-    }
+    }*/
     
     private void ejecutar(){
         int alfabeto;
@@ -70,6 +70,13 @@ public final class GUI extends javax.swing.JFrame {
         }
         if(trasCheckBox.isSelected()){
             listaAlgoritmos.add("Trasposicion");
+            //claveCheckBox.setVisible(false);
+        }
+        if(binCheckBox.isSelected()){
+            //listaAlgorimos.add("");
+        }
+        if(claveCheckBox.isSelected()){
+            //listaAlgoritmos.add("");
         }
         if(codiRadioB.isSelected()){
             modoCodificacion = true;
@@ -105,6 +112,10 @@ public final class GUI extends javax.swing.JFrame {
         }
     }
     
+    public void inicioDao(DaoAlfabetos daoAlfabetos){
+        this.daoAlfabetos = daoAlfabetos;
+    }
+    
     private void inicioPrograma(){
         codiRadioB.setSelected(true);
         txtRadioB.setSelected(true);
@@ -115,13 +126,14 @@ public final class GUI extends javax.swing.JFrame {
         vigeCheckBox.setSelected(false);
    }
     
+    public void start(){
+       initComponents();
+       listaAlfabetos();
+       inicioPrograma();
+    }
+    
     public GUI() {
-        alfabetoPredefinido();
-        initComponents();
-        listaAlfabetos();
-        inicioPrograma();
-        
-        //alfabetoCombo.addItem("predefinido");
+
     }
  
     /**
@@ -157,6 +169,8 @@ public final class GUI extends javax.swing.JFrame {
         telfCheckBox = new javax.swing.JCheckBox();
         alfabetoLabel = new javax.swing.JLabel();
         alfabetoCombo = new javax.swing.JComboBox<>();
+        binCheckBox = new javax.swing.JCheckBox();
+        claveCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(175, 127, 164));
@@ -271,50 +285,67 @@ public final class GUI extends javax.swing.JFrame {
             }
         });
 
+        binCheckBox.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
+        binCheckBox.setText("Codificación Binaria");
+        binCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                binCheckBoxActionPerformed(evt);
+            }
+        });
+
+        claveCheckBox.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
+        claveCheckBox.setText("Palabra Clave");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(cancelButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(acceptButton)
-                .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(formatoLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtRadioB)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pdfRadioB)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(xmlRadioB))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(32, 32, 32)
                                     .addComponent(vigeCheckBox)
                                     .addGap(26, 26, 26)
                                     .addComponent(trasCheckBox)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(26, 26, 26)
                                     .addComponent(telfCheckBox))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(algoritmoLabel)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(modoLabel)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(codiRadioB))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(alfabetoLabel)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(alfabetoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(14, 14, 14)
-                                    .addComponent(decoRadioB)))
+                                .addComponent(algoritmoLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(28, 28, 28)
+                                        .addComponent(cancelButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(acceptButton)
+                                        .addGap(25, 25, 25))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(formatoLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtRadioB)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(pdfRadioB)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(xmlRadioB))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(modoLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(codiRadioB)
+                                                .addGap(14, 14, 14)
+                                                .addComponent(decoRadioB))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(alfabetoLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(binCheckBox)
+                                                    .addComponent(alfabetoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addComponent(claveCheckBox)))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -349,11 +380,15 @@ public final class GUI extends javax.swing.JFrame {
                     .addComponent(vigeCheckBox)
                     .addComponent(trasCheckBox)
                     .addComponent(telfCheckBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(binCheckBox)
+                    .addComponent(claveCheckBox))
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alfabetoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(alfabetoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(modoLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -369,7 +404,7 @@ public final class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(acceptButton)
                     .addComponent(cancelButton))
-                .addContainerGap())
+                .addGap(9, 9, 9))
         );
 
         pack();
@@ -404,40 +439,9 @@ public final class GUI extends javax.swing.JFrame {
      
     }//GEN-LAST:event_alfabetoComboActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI().setVisible(true);
-            }
-        });
-    }
+    private void binCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_binCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_binCheckBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TituloLabel;
@@ -445,7 +449,9 @@ public final class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> alfabetoCombo;
     private javax.swing.JLabel alfabetoLabel;
     private javax.swing.JLabel algoritmoLabel;
+    private javax.swing.JCheckBox binCheckBox;
     private javax.swing.JButton cancelButton;
+    private javax.swing.JCheckBox claveCheckBox;
     private javax.swing.JRadioButton codiRadioB;
     public javax.swing.JRadioButton decoRadioB;
     private javax.swing.JLabel entLabel;

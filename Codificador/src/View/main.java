@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class main {
-    
+    static DaoAlfabetos daoAlfabetos;
     public static void main(String[] args) {
         
         /*Variables que se obtienen del archivo*/
@@ -59,7 +59,7 @@ public class main {
                 boolean habilitado = !"0".equals(estado);                        
                 
                 /*Dao que agrega uno a uno los alfabetos*/
-                DaoAlfabetos daoAlfabetos = new DaoAlfabetos();
+                daoAlfabetos = new DaoAlfabetos();
                 daoAlfabetos.crearAlfabeto(Integer.parseInt(identificador), nombre, habilitado, lista);
 
                 contadorPtComa=0;
@@ -81,9 +81,24 @@ public class main {
            }catch (IOException e2){ 
            }
         }
-        //Consola consola1 = new Consola();
-        //consola1.empezarPrograma();
+        //newConsola();
+        newGui();
       
     }
+private static void newConsola(){
+    Consola consola1 = new Consola();
+    consola1.empezarPrograma();
+}    
+
+private static void newGui(){
+            GUI gui = new GUI();
+            gui.inicioDao(daoAlfabetos);
+            gui.start();
+            java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                gui.setVisible(true);   
+            }
+        });
+}
     
 }
