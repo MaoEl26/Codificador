@@ -76,11 +76,16 @@ public class Administrador extends javax.swing.JFrame {
         addBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
         addBtn.setForeground(new java.awt.Color(153, 153, 0));
         addBtn.setText("Agregar");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
         disableBtn.setBackground(new java.awt.Color(51, 204, 255));
         disableBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
         disableBtn.setForeground(new java.awt.Color(153, 153, 0));
-        disableBtn.setText("Desactivar");
+        disableBtn.setText("Editar/Eliminar");
         disableBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 disableBtnActionPerformed(evt);
@@ -193,29 +198,19 @@ public class Administrador extends javax.swing.JFrame {
                                     .addComponent(trasCheck)
                                     .addComponent(claveCheck)
                                     .addComponent(binCheck)
-                                    .addComponent(telCheck)))
+                                    .addComponent(telCheck))
+                                .addGap(0, 101, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(addBtn)
-                                .addGap(78, 78, 78)
-                                .addComponent(disableBtn)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(serverEnableBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(disableServerBtn)))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(serverEnableBtn)
+                        .addGap(1, 1, 1)
+                        .addComponent(addBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(disableServerBtn)
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(alfaLabel)
-                            .addComponent(algServer)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(tituloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(disableBtn)
+                        .addGap(41, 41, 41))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,6 +220,17 @@ public class Administrador extends javax.swing.JFrame {
                     .addComponent(logLabel)
                     .addComponent(serverLog))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(alfaLabel)
+                            .addComponent(algServer)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(tituloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +284,8 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void disableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disableBtnActionPerformed
-        // TODO add your handling code here:
+        modificacionAlfabetos nuevo = new modificacionAlfabetos();
+        nuevo.setVisible(true);
     }//GEN-LAST:event_disableBtnActionPerformed
 
     private void disableServerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disableServerBtnActionPerformed
@@ -304,6 +311,11 @@ public class Administrador extends javax.swing.JFrame {
 			System.out.println("Error al ejecutar");
 		}
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        manejoAlfabetos nuevo = new manejoAlfabetos();
+        nuevo.setVisible(true);
+    }//GEN-LAST:event_addBtnActionPerformed
 
     /**
      * @param args the command line arguments
