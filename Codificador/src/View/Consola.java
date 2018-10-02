@@ -1,4 +1,4 @@
-package View;
+ppackage View;
 
 import Controller.Controlador;
 import Controller.DTOAlgoritmos;
@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Consola {
         
     public void empezarPrograma(){
+        
          
        /*Variables que almacenaran los datos que se ingresen*/ 
        

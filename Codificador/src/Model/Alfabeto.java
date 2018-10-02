@@ -6,11 +6,13 @@ public class Alfabeto {
     
     private int identificadorAlfabeto;
     private String nombreAlfabeto;
+    private boolean estado;
     private ArrayList<String> listaSimbolosAlfabeto;
 
-    public Alfabeto(int identificadorAlfabeto, String nombreAlfabeto, ArrayList<String> listaSimbolosAlfabeto) {
+    public Alfabeto(int identificadorAlfabeto, String nombreAlfabeto, boolean estado, ArrayList<String> listaSimbolosAlfabeto) {
         this.identificadorAlfabeto = identificadorAlfabeto;
         this.nombreAlfabeto = nombreAlfabeto;
+        this.estado = estado;
         this.listaSimbolosAlfabeto = listaSimbolosAlfabeto;
     }
     
@@ -26,6 +28,16 @@ public class Alfabeto {
         
         return bandera;
     }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+    
+    
 
     public int getIdentificadorAlfabeto() {
         return identificadorAlfabeto;
