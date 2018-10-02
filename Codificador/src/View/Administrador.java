@@ -162,6 +162,11 @@ public class Administrador extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(153, 153, 0));
         jButton1.setText("Abrir Carpeta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -288,6 +293,17 @@ public class Administrador extends javax.swing.JFrame {
         vige.setEstado(vigeCheck.isSelected());
         main.gui.validaAlgoritmos();
     }//GEN-LAST:event_changeButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Runtime r = Runtime.getRuntime();
+		Process p = null;
+
+		try {
+			p = r.exec("explorer.exe ..\\Codificador\\Logs");
+		} catch (Exception e) {
+			System.out.println("Error al ejecutar");
+		}
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

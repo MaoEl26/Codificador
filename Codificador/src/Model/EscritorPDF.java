@@ -25,7 +25,7 @@ public class EscritorPDF implements IEscritor{
             }else{
                 modo = "Decodificacón";
             }
-        String ruta = "/Escritorio/"+modo+".pdf";
+        String ruta = "../Codificador/Logs/"+modo+".pdf";
         File file = new File(ruta);
         try{
             Document document = new Document();
