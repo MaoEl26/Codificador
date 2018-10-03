@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-
+import Model.*;
 import Controller.Controlador;
 import Controller.DTOAlgoritmos;
 import Controller.DaoAlfabetos;
@@ -21,38 +21,11 @@ public final class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     DaoAlfabetos daoAlfabetos;
-    /*private void alfabetoPredefinido(){
-       ArrayList<String> lista = new ArrayList();
-        lista.add("a");
-        lista.add("b");
-        lista.add("c");
-        lista.add("d");
-        lista.add("e");
-        lista.add("f");
-        lista.add("g");
-        lista.add("h");
-        lista.add("i");
-        lista.add("j");
-        lista.add("k");
-        lista.add("l");
-        lista.add("m");
-        lista.add("o");
-        lista.add("p");
-        lista.add("q");
-        lista.add("r");
-        lista.add("s");
-        lista.add("t");
-        lista.add("u");
-        lista.add("v");
-        lista.add("w");
-        lista.add("x");
-        lista.add("y");
-        lista.add("z");
-
-        /*Se crea un objeto de tipo DaoAlfabetos para que cree y agregue el alfabeto*/
-    /*    daoAlfabetos = new DaoAlfabetos();
-        daoAlfabetos.crearAlfabeto(1, "predefinido", true,lista);  
-    }*/
+    CodificaciónBinaria bin = new CodificaciónBinaria();
+    CodigoTelefonico tel = new CodigoTelefonico();
+    PalabraClave clave = new PalabraClave();
+    Trasposicion tras = new Trasposicion();
+    Vigenere vige = new Vigenere();
     
     private void ejecutar(){
         int alfabeto;
@@ -73,10 +46,10 @@ public final class GUI extends javax.swing.JFrame {
             //claveCheckBox.setVisible(false);
         }
         if(binCheckBox.isSelected()){
-            //listaAlgorimos.add("");
+            listaAlgoritmos.add("CodificacionBin");
         }
         if(claveCheckBox.isSelected()){
-            //listaAlgoritmos.add("");
+            listaAlgoritmos.add("PalabraClave");
         }
         if(codiRadioB.isSelected()){
             modoCodificacion = true;
@@ -115,8 +88,17 @@ public final class GUI extends javax.swing.JFrame {
     public void inicioDao(DaoAlfabetos daoAlfabetos){
         this.daoAlfabetos = daoAlfabetos;
     }
+   
+    public void validaAlgoritmos(){
+        binCheckBox.setVisible(bin.getEstado());
+        vigeCheckBox.setVisible(vige.getEstado());
+        trasCheckBox.setVisible(tras.getEstado());
+        telfCheckBox.setVisible(tel.getEstado());
+        claveCheckBox.setVisible(clave.getEstado());
+    }
     
     private void inicioPrograma(){
+        validaAlgoritmos();
         codiRadioB.setSelected(true);
         txtRadioB.setSelected(true);
         entText.setText("");
@@ -124,12 +106,15 @@ public final class GUI extends javax.swing.JFrame {
         telfCheckBox.setSelected(false);
         trasCheckBox.setSelected(false);
         vigeCheckBox.setSelected(false);
+        claveCheckBox.setSelected(false);
+        binCheckBox.setSelected(false);
    }
     
     public void start(){
        initComponents();
        listaAlfabetos();
        inicioPrograma();
+       //validaAlgoritmos();
     }
     
     public GUI() {

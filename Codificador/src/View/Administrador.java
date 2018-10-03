@@ -9,15 +9,32 @@ package View;
  *
  * @author mcv26
  */
-public class Administrador extends javax.swing.JPanel {
+import Model.*;
+import View.main;
+public class Administrador extends javax.swing.JFrame {
 
     /**
      * Creates new form Administrador
      */
+    CodificaciónBinaria bin = new CodificaciónBinaria();
+    CodigoTelefonico tel = new CodigoTelefonico();
+    PalabraClave clave = new PalabraClave();
+    Trasposicion tras = new Trasposicion();
+    Vigenere vige = new Vigenere();
+
+    private void setCheckBox(){
+        binCheck.setSelected(bin.getEstado());
+        telCheck.setSelected(tel.getEstado());
+        claveCheck.setSelected(clave.getEstado());
+        trasCheck.setSelected(tras.getEstado());
+        vigeCheck.setSelected(vige.getEstado());
+    }
+    
     public Administrador() {
         initComponents();
+        setCheckBox();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +44,305 @@ public class Administrador extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        tituloLabel = new javax.swing.JLabel();
+        addBtn = new javax.swing.JButton();
+        disableBtn = new javax.swing.JButton();
+        serverEnableBtn = new javax.swing.JButton();
+        disableServerBtn = new javax.swing.JButton();
+        binLabel = new javax.swing.JLabel();
+        telLabel = new javax.swing.JLabel();
+        claveLabel = new javax.swing.JLabel();
+        trasLabel = new javax.swing.JLabel();
+        vigeLabel = new javax.swing.JLabel();
+        binCheck = new javax.swing.JCheckBox();
+        telCheck = new javax.swing.JCheckBox();
+        claveCheck = new javax.swing.JCheckBox();
+        trasCheck = new javax.swing.JCheckBox();
+        vigeCheck = new javax.swing.JCheckBox();
+        changeButton = new javax.swing.JButton();
+        alfaLabel = new javax.swing.JLabel();
+        algServer = new javax.swing.JLabel();
+        serverLog = new javax.swing.JLabel();
+        logLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tituloLabel.setFont(new java.awt.Font("Tempus Sans ITC", 3, 24)); // NOI18N
+        tituloLabel.setForeground(new java.awt.Color(243, 126, 11));
+        tituloLabel.setText("Administrador de Sistema");
+
+        addBtn.setBackground(new java.awt.Color(51, 204, 255));
+        addBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
+        addBtn.setForeground(new java.awt.Color(153, 153, 0));
+        addBtn.setText("Agregar");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+
+        disableBtn.setBackground(new java.awt.Color(51, 204, 255));
+        disableBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
+        disableBtn.setForeground(new java.awt.Color(153, 153, 0));
+        disableBtn.setText("Editar/Eliminar");
+        disableBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disableBtnActionPerformed(evt);
+            }
+        });
+
+        serverEnableBtn.setBackground(new java.awt.Color(51, 204, 255));
+        serverEnableBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
+        serverEnableBtn.setForeground(new java.awt.Color(153, 153, 0));
+        serverEnableBtn.setText("Iniciar Server");
+
+        disableServerBtn.setBackground(new java.awt.Color(51, 204, 255));
+        disableServerBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
+        disableServerBtn.setForeground(new java.awt.Color(153, 153, 0));
+        disableServerBtn.setText("Detener Server");
+        disableServerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disableServerBtnActionPerformed(evt);
+            }
+        });
+
+        binLabel.setFont(new java.awt.Font("Trajan Pro", 3, 14)); // NOI18N
+        binLabel.setText("Codificación Binaria");
+
+        telLabel.setFont(new java.awt.Font("Trajan Pro", 3, 14)); // NOI18N
+        telLabel.setText("Codigo Telefonico");
+
+        claveLabel.setFont(new java.awt.Font("Trajan Pro", 3, 14)); // NOI18N
+        claveLabel.setText("Palabra Clave");
+
+        trasLabel.setFont(new java.awt.Font("Trajan Pro", 3, 14)); // NOI18N
+        trasLabel.setText("Trasposicion");
+
+        vigeLabel.setFont(new java.awt.Font("Trajan Pro", 3, 14)); // NOI18N
+        vigeLabel.setText("Vigenere");
+
+        binCheck.setFont(new java.awt.Font("Trajan Pro", 2, 12)); // NOI18N
+        binCheck.setText("Enable");
+
+        telCheck.setFont(new java.awt.Font("Trajan Pro", 2, 12)); // NOI18N
+        telCheck.setText("Enable");
+
+        claveCheck.setFont(new java.awt.Font("Trajan Pro", 2, 12)); // NOI18N
+        claveCheck.setText("Enable");
+
+        trasCheck.setFont(new java.awt.Font("Trajan Pro", 2, 12)); // NOI18N
+        trasCheck.setText("Enable");
+
+        vigeCheck.setFont(new java.awt.Font("Trajan Pro", 2, 12)); // NOI18N
+        vigeCheck.setText("Enable");
+
+        changeButton.setBackground(new java.awt.Color(51, 204, 255));
+        changeButton.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
+        changeButton.setForeground(new java.awt.Color(153, 153, 0));
+        changeButton.setText("Cambio Estado");
+        changeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeButtonActionPerformed(evt);
+            }
+        });
+
+        alfaLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        alfaLabel.setForeground(new java.awt.Color(153, 153, 0));
+        alfaLabel.setText("Alfabetos");
+
+        algServer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        algServer.setForeground(new java.awt.Color(153, 153, 0));
+        algServer.setText("Algoritmos");
+
+        serverLog.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        serverLog.setForeground(new java.awt.Color(153, 153, 0));
+        serverLog.setText("Servidor");
+
+        logLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        logLabel.setForeground(new java.awt.Color(153, 153, 0));
+        logLabel.setText("Logs");
+
+        jButton1.setBackground(new java.awt.Color(51, 204, 255));
+        jButton1.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(153, 153, 0));
+        jButton1.setText("Abrir Carpeta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(changeButton)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(binLabel)
+                                    .addComponent(telLabel)
+                                    .addComponent(claveLabel)
+                                    .addComponent(trasLabel)
+                                    .addComponent(vigeLabel))
+                                .addGap(37, 37, 37)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(vigeCheck)
+                                    .addComponent(trasCheck)
+                                    .addComponent(claveCheck)
+                                    .addComponent(binCheck)
+                                    .addComponent(telCheck))
+                                .addGap(0, 101, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(serverEnableBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(disableServerBtn)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(addBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(disableBtn)
+                        .addGap(41, 41, 41))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jButton1))
+                    .addComponent(logLabel)
+                    .addComponent(serverLog))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(alfaLabel)
+                            .addComponent(algServer)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(tituloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloLabel)
+                .addGap(12, 12, 12)
+                .addComponent(alfaLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addBtn)
+                    .addComponent(disableBtn))
+                .addGap(16, 16, 16)
+                .addComponent(algServer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(binLabel)
+                    .addComponent(binCheck))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(telLabel)
+                    .addComponent(telCheck))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(claveLabel)
+                    .addComponent(claveCheck))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(trasLabel)
+                    .addComponent(trasCheck))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vigeLabel)
+                    .addComponent(vigeCheck))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(changeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(serverLog)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(serverEnableBtn)
+                    .addComponent(disableServerBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(logLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void disableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disableBtnActionPerformed
+        modificacionAlfabetos nuevo = new modificacionAlfabetos();
+        nuevo.setVisible(true);
+    }//GEN-LAST:event_disableBtnActionPerformed
+
+    private void disableServerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disableServerBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_disableServerBtnActionPerformed
+
+    private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
+        bin.setEstado(binCheck.isSelected());
+        tel.setEstado(telCheck.isSelected());
+        clave.setEstado(claveCheck.isSelected());
+        tras.setEstado(trasCheck.isSelected());
+        vige.setEstado(vigeCheck.isSelected());
+        main.gui.validaAlgoritmos();
+    }//GEN-LAST:event_changeButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Runtime r = Runtime.getRuntime();
+		Process p = null;
+
+		try {
+			p = r.exec("explorer.exe ..\\Codificador\\Logs");
+		} catch (Exception e) {
+			System.out.println("Error al ejecutar");
+		}
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        manejoAlfabetos nuevo = new manejoAlfabetos();
+        nuevo.setVisible(true);
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
+    private javax.swing.JLabel alfaLabel;
+    private javax.swing.JLabel algServer;
+    private javax.swing.JCheckBox binCheck;
+    private javax.swing.JLabel binLabel;
+    private javax.swing.JButton changeButton;
+    private javax.swing.JCheckBox claveCheck;
+    private javax.swing.JLabel claveLabel;
+    private javax.swing.JButton disableBtn;
+    private javax.swing.JButton disableServerBtn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel logLabel;
+    private javax.swing.JButton serverEnableBtn;
+    private javax.swing.JLabel serverLog;
+    private javax.swing.JCheckBox telCheck;
+    private javax.swing.JLabel telLabel;
+    private javax.swing.JLabel tituloLabel;
+    private javax.swing.JCheckBox trasCheck;
+    private javax.swing.JLabel trasLabel;
+    private javax.swing.JCheckBox vigeCheck;
+    private javax.swing.JLabel vigeLabel;
     // End of variables declaration//GEN-END:variables
 }

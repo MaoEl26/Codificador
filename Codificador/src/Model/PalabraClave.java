@@ -22,6 +22,8 @@ public class PalabraClave extends Algoritmo{
     
     
     
+    private static boolean estado = true;
+    
     @Override
     public void codificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         salidas = dtoAlgortimo.getListaSalidas();
@@ -225,4 +227,13 @@ public class PalabraClave extends Algoritmo{
         dtoAlgortimo.setListaSalidas(salidas);
     }
     
+    @Override
+    public void setEstado(boolean estado){
+        this.estado = estado;
+    }
+    
+    @Override
+    public boolean getEstado(){
+        return estado;
+    }
 }

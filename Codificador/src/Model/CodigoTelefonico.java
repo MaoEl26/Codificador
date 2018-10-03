@@ -10,6 +10,8 @@ public class CodigoTelefonico extends Algoritmo{
     String textoEntrada = "";
     String ArraytextoCambio[];
     
+    private static boolean estado = true;
+    
     @Override
     public void codificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         /*Metodo de Codificar CodigoTelefonico*/
@@ -38,6 +40,16 @@ public class CodigoTelefonico extends Algoritmo{
         }
         salidas.add(textoSalida);        
         dtoAlgortimo.setListaSalidas(salidas);
+    }
+    
+    @Override
+    public void setEstado(boolean estado){
+        this.estado = estado;
+    }
+    
+    @Override
+    public boolean getEstado(){
+        return estado;
     }
     
 }
