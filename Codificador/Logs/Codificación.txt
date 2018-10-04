@@ -1,6 +1,6 @@
-Fecha: 2/9/2018
-Hora: 3:18
-Frase: hola
+Fecha: 3/9/2018
+Hora: 7:31
+Frase: hola 
 Algoritmo: Trasposicion
 Modo: Codificación
 aloh 

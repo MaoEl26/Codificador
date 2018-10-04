@@ -13,7 +13,7 @@ import View.*;
  */
 public class mainPruebas {
     public static void main(String[] args) {
-        Servidor s = new Servidor();
-        s.iniciar();
+        //Servidor s = new Servidor();
+        //s.iniciar();
     }
 }

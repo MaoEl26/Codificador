@@ -1,10 +1,11 @@
 package Controller;
 
 import Model.Alfabeto;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class DTOAlgoritmos {
+public class DTOAlgoritmos implements Serializable{
     
     private int alfabetoActual;
     private String fraseActual;
