@@ -48,7 +48,7 @@ public class Administrador extends javax.swing.JFrame {
 
         tituloLabel = new javax.swing.JLabel();
         addBtn = new javax.swing.JButton();
-        disableBtn = new javax.swing.JButton();
+        editAlfaBtn = new javax.swing.JButton();
         serverEnableBtn = new javax.swing.JButton();
         disableServerBtn = new javax.swing.JButton();
         binLabel = new javax.swing.JLabel();
@@ -66,7 +66,7 @@ public class Administrador extends javax.swing.JFrame {
         algServer = new javax.swing.JLabel();
         serverLog = new javax.swing.JLabel();
         logLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        abrirLogsBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,13 +84,13 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        disableBtn.setBackground(new java.awt.Color(51, 204, 255));
-        disableBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
-        disableBtn.setForeground(new java.awt.Color(153, 153, 0));
-        disableBtn.setText("Editar/Eliminar");
-        disableBtn.addActionListener(new java.awt.event.ActionListener() {
+        editAlfaBtn.setBackground(new java.awt.Color(51, 204, 255));
+        editAlfaBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
+        editAlfaBtn.setForeground(new java.awt.Color(153, 153, 0));
+        editAlfaBtn.setText("Editar/Eliminar");
+        editAlfaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                disableBtnActionPerformed(evt);
+                editAlfaBtnActionPerformed(evt);
             }
         });
 
@@ -175,13 +175,13 @@ public class Administrador extends javax.swing.JFrame {
         logLabel.setForeground(new java.awt.Color(153, 153, 0));
         logLabel.setText("Logs");
 
-        jButton1.setBackground(new java.awt.Color(51, 204, 255));
-        jButton1.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(153, 153, 0));
-        jButton1.setText("Abrir Carpeta");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        abrirLogsBtn.setBackground(new java.awt.Color(51, 204, 255));
+        abrirLogsBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
+        abrirLogsBtn.setForeground(new java.awt.Color(153, 153, 0));
+        abrirLogsBtn.setText("Abrir Carpeta");
+        abrirLogsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                abrirLogsBtnActionPerformed(evt);
             }
         });
 
@@ -221,14 +221,14 @@ public class Administrador extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addComponent(addBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(disableBtn)
+                        .addComponent(editAlfaBtn)
                         .addGap(41, 41, 41))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jButton1))
+                        .addComponent(abrirLogsBtn))
                     .addComponent(logLabel)
                     .addComponent(serverLog))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -254,7 +254,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addBtn)
-                    .addComponent(disableBtn))
+                    .addComponent(editAlfaBtn))
                 .addGap(16, 16, 16)
                 .addComponent(algServer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -288,20 +288,23 @@ public class Administrador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(logLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(abrirLogsBtn)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void disableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disableBtnActionPerformed
-        modificacionAlfabetos nuevo = new modificacionAlfabetos();
+    private void editAlfaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAlfaBtnActionPerformed
+        modificacionAlfabetos nuevo = new modificacionAlfabetos(this);
         nuevo.setVisible(true);
-    }//GEN-LAST:event_disableBtnActionPerformed
+        this.setEnabled(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_editAlfaBtnActionPerformed
 
     private void disableServerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disableServerBtnActionPerformed
         // TODO add your handling code here:
+        Servidor.getInstance().cambiarEstadoServer();
     }//GEN-LAST:event_disableServerBtnActionPerformed
 
     private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
@@ -313,7 +316,7 @@ public class Administrador extends javax.swing.JFrame {
         main.gui.validaAlgoritmos();
     }//GEN-LAST:event_changeButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void abrirLogsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirLogsBtnActionPerformed
         Runtime r = Runtime.getRuntime();
 		Process p = null;
 
@@ -322,11 +325,13 @@ public class Administrador extends javax.swing.JFrame {
 		} catch (Exception e) {
 			System.out.println("Error al ejecutar");
 		}
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_abrirLogsBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        manejoAlfabetos nuevo = new manejoAlfabetos();
+        manejoAlfabetos nuevo = new manejoAlfabetos(this);
         nuevo.setVisible(true);
+        this.setEnabled(false);
+        this.setVisible(false);
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void serverEnableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serverEnableBtnActionPerformed
@@ -338,7 +343,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void disableServerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableServerBtnMouseClicked
         // TODO add your handling code here:
-        Servidor.getInstance().cambiarEstadoServer();
+        //Servidor.getInstance().cambiarEstadoServer();
     }//GEN-LAST:event_disableServerBtnMouseClicked
 
     /**
@@ -347,6 +352,7 @@ public class Administrador extends javax.swing.JFrame {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton abrirLogsBtn;
     private javax.swing.JButton addBtn;
     private javax.swing.JLabel alfaLabel;
     private javax.swing.JLabel algServer;
@@ -355,9 +361,8 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JButton changeButton;
     private javax.swing.JCheckBox claveCheck;
     private javax.swing.JLabel claveLabel;
-    private javax.swing.JButton disableBtn;
     private javax.swing.JButton disableServerBtn;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton editAlfaBtn;
     private javax.swing.JLabel logLabel;
     private javax.swing.JButton serverEnableBtn;
     private javax.swing.JLabel serverLog;

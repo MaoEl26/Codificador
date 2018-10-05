@@ -5,6 +5,9 @@
  */
 package View;
 
+import static View.main.daoAlfabetos;
+import java.util.ArrayList;
+
 /**
  *
  * @author mcv26
@@ -14,10 +17,20 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
     /**
      * Creates new form modificacionAlfabetos
      */
-    public modificacionAlfabetos() {
+    Administrador ventana;
+
+    public modificacionAlfabetos(Administrador ventana) {
+        this.ventana = ventana;
         initComponents();
+        llenarComboEstado();
     }
 
+    private void llenarComboEstado(){
+        for (int i = 0; i < daoAlfabetos.getListaAlfabetos().size(); i++) {
+            indexCombo.addItem(Integer.toString(daoAlfabetos.getListaAlfabetos().get(i).getIdentificadorAlfabeto()));
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,7 +42,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
 
         tituloLabel = new javax.swing.JLabel();
         idLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        indexCombo = new javax.swing.JComboBox<>();
         alfabetoLabel = new javax.swing.JLabel();
         alfabetoText = new javax.swing.JTextField();
         atrasBtn = new javax.swing.JButton();
@@ -40,6 +53,8 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
         comboEstado = new javax.swing.JComboBox<>();
         modificarBtn = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         tituloLabel.setFont(new java.awt.Font("Tempus Sans ITC", 3, 24)); // NOI18N
         tituloLabel.setForeground(new java.awt.Color(243, 126, 11));
         tituloLabel.setText("Modificar/Eliminar un Nuevo Alfabeto");
@@ -48,30 +63,39 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
         idLabel.setForeground(new java.awt.Color(153, 153, 0));
         idLabel.setText("Identificador");
 
-        jComboBox1.setBackground(new java.awt.Color(51, 204, 255));
-        jComboBox1.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(153, 153, 0));
-        jComboBox1.setMaximumRowCount(100);
+        indexCombo.setBackground(new java.awt.Color(51, 204, 255));
+        indexCombo.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
+        indexCombo.setForeground(new java.awt.Color(153, 153, 0));
+        indexCombo.setMaximumRowCount(100);
+        indexCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indexComboActionPerformed(evt);
+            }
+        });
 
         alfabetoLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         alfabetoLabel.setForeground(new java.awt.Color(153, 153, 0));
         alfabetoLabel.setText("Alfabeto");
 
-        alfabetoText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alfabetoTextActionPerformed(evt);
-            }
-        });
-
         atrasBtn.setBackground(new java.awt.Color(51, 204, 255));
         atrasBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
         atrasBtn.setForeground(new java.awt.Color(153, 153, 0));
         atrasBtn.setText("Atrás");
+        atrasBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasBtnActionPerformed(evt);
+            }
+        });
 
         eliminarBtn1.setBackground(new java.awt.Color(51, 204, 255));
         eliminarBtn1.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
         eliminarBtn1.setForeground(new java.awt.Color(153, 153, 0));
         eliminarBtn1.setText("Eliminar");
+        eliminarBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarBtn1ActionPerformed(evt);
+            }
+        });
 
         nomLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         nomLabel.setForeground(new java.awt.Color(153, 153, 0));
@@ -85,16 +109,16 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
         comboEstado.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
         comboEstado.setForeground(new java.awt.Color(153, 153, 0));
         comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activado", "Desactivado" }));
-        comboEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboEstadoActionPerformed(evt);
-            }
-        });
 
         modificarBtn.setBackground(new java.awt.Color(51, 204, 255));
         modificarBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
         modificarBtn.setForeground(new java.awt.Color(153, 153, 0));
         modificarBtn.setText("Modificar");
+        modificarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,7 +139,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
                                         .addComponent(idLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(indexCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nomLabel)
@@ -154,7 +178,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
                     .addComponent(comboEstado, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(nombreText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(indexCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(8, 8, 8)
                 .addComponent(alfabetoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -170,13 +194,52 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void alfabetoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alfabetoTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_alfabetoTextActionPerformed
+    private void indexComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indexComboActionPerformed
+        
+        //((int)indexCombo.getSelectedIndex());
+           nombreText.setText(daoAlfabetos.getListaAlfabetos().get((int)indexCombo
+                   .getSelectedIndex()).getNombreAlfabeto());
+           String listaString ="";
+           ArrayList<String> lista= daoAlfabetos.getListaAlfabetos().get((int)indexCombo
+                   .getSelectedIndex()).getList();
+           for (int i = 0; i <lista.size(); i++) {
+            listaString += lista.get(i);
+        }
+           System.out.println(lista);
+           alfabetoText.setText(listaString);
+           
+           if(daoAlfabetos.getListaAlfabetos().get((int)indexCombo
+                   .getSelectedIndex()).isEstado()){
+               comboEstado.setSelectedIndex(0);
+           }else{
+               comboEstado.setSelectedIndex(1);
+           }
+    }//GEN-LAST:event_indexComboActionPerformed
 
-    private void comboEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboEstadoActionPerformed
+    private void modificarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBtnActionPerformed
+        int indentificador = (int)indexCombo.getSelectedIndex();
+        String nombre = nombreText.getText();
+        boolean estado;
+        ArrayList<String> listaSimbolos = null;
+        if("Activado".equals((String)comboEstado.getSelectedItem())){
+            estado = true;
+        }else{
+            estado = false;
+        }
+        daoAlfabetos.modificarAlfabeto(indentificador, nombre, estado, listaSimbolos);
+    }//GEN-LAST:event_modificarBtnActionPerformed
+
+    private void eliminarBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtn1ActionPerformed
+        int indentificador = (int)indexCombo.getSelectedIndex();
+        daoAlfabetos.eliminarAlfabeto(indentificador);
+    }//GEN-LAST:event_eliminarBtn1ActionPerformed
+
+    private void atrasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBtnActionPerformed
+        ventana.setEnabled(true);
+        ventana.setVisible(true);
+        this.setEnabled(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_atrasBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -187,7 +250,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
     private javax.swing.JButton eliminarBtn1;
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> indexCombo;
     private javax.swing.JButton modificarBtn;
     private javax.swing.JLabel nomLabel;
     private javax.swing.JTextField nombreText;

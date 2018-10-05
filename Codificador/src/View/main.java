@@ -64,7 +64,7 @@ public class main {
                 daoAlfabetos = new DaoAlfabetos();
                 boolean ret;
                 ret = daoAlfabetos.crearAlfabeto(Integer.parseInt(identificador), nombre, habilitado, lista);
-
+                //System.out.println(lista);
                 contadorPtComa=0;
                 identificador = "";
                 nombre = "";

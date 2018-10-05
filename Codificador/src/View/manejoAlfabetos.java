@@ -5,6 +5,8 @@
  */
 package View;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mcv26
@@ -14,7 +16,9 @@ public class manejoAlfabetos extends javax.swing.JFrame {
     /**
      * Creates new form manejoAlfabetos
      */
-    public manejoAlfabetos() {
+    Administrador ventana;
+    public manejoAlfabetos(Administrador ventana) {
+        this.ventana = ventana;
         initComponents();
     }
 
@@ -39,6 +43,8 @@ public class manejoAlfabetos extends javax.swing.JFrame {
         atrasBtn = new javax.swing.JButton();
         aceptarBtn = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         idLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         idLabel.setForeground(new java.awt.Color(153, 153, 0));
         idLabel.setText("Identificador");
@@ -59,17 +65,6 @@ public class manejoAlfabetos extends javax.swing.JFrame {
         comboEstado.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
         comboEstado.setForeground(new java.awt.Color(153, 153, 0));
         comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activado", "Desactivado" }));
-        comboEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboEstadoActionPerformed(evt);
-            }
-        });
-
-        alfabetoText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alfabetoTextActionPerformed(evt);
-            }
-        });
 
         alfabetoLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         alfabetoLabel.setForeground(new java.awt.Color(153, 153, 0));
@@ -79,11 +74,21 @@ public class manejoAlfabetos extends javax.swing.JFrame {
         atrasBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
         atrasBtn.setForeground(new java.awt.Color(153, 153, 0));
         atrasBtn.setText("Atrás");
+        atrasBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasBtnActionPerformed(evt);
+            }
+        });
 
         aceptarBtn.setBackground(new java.awt.Color(51, 204, 255));
         aceptarBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
         aceptarBtn.setForeground(new java.awt.Color(153, 153, 0));
         aceptarBtn.setText("Aceptar");
+        aceptarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,13 +157,29 @@ public class manejoAlfabetos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboEstadoActionPerformed
+    private void atrasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBtnActionPerformed
+        ventana.setEnabled(true);
+        ventana.setVisible(true);
+        this.setEnabled(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_atrasBtnActionPerformed
 
-    private void alfabetoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alfabetoTextActionPerformed
+    private void aceptarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_alfabetoTextActionPerformed
+        boolean estado;
+        String nombre;
+        int indentificador;
+        ArrayList<String> listaSimbolos = null;
+        if("Activado".equals((String)comboEstado.getSelectedItem())){
+            estado = true;
+        }else{
+            estado = false;
+        }
+        nombre = nombreText.getText();
+        indentificador = Integer.parseInt(IDText.getText());
+    
+        System.out.println(main.daoAlfabetos.getListaAlfabetos().get(0).getList());
+    }//GEN-LAST:event_aceptarBtnActionPerformed
 
     /**
      * @param args the command line arguments

@@ -108,8 +108,11 @@ public final class GUI extends javax.swing.JFrame {
     }
     
     public void listaAlfabetos(){
-        for (int i = 0; i < daoAlfabetos.getListaAlfabetos().size(); i++) {
-            alfabetoCombo.addItem(daoAlfabetos.getListaAlfabetos().get(i).getNombreAlfabeto());
+        ArrayList<Alfabeto> lista = daoAlfabetos.getListaAlfabetos();
+        for (int i = 0; i < lista.size(); i++) {
+            if(lista.get(i).isEstado()){
+                alfabetoCombo.addItem(lista.get(i).getNombreAlfabeto());
+            }           
         }
     }
     
