@@ -12,6 +12,9 @@ public class EscritorTxt implements IEscritor{
     String modo;
     String fecha;
     String hora;
+    Calendar calendario;
+    File file;
+    
     @Override
     public void escribirSalida(DTOAlgoritmos dtoAlgoritmos) {
         if (dtoAlgoritmos.isModoCodificacion()){
@@ -19,15 +22,19 @@ public class EscritorTxt implements IEscritor{
             }else{
                 modo = "Decodificacón";
             }
+        calendario = Calendar.getInstance();
+
         String ruta = "../Codificador/Logs/"+modo+".txt";
         try{
-            File file = new File(ruta);
+            file= new File(ruta);
+            //file.
             if(!file.exists()){
                 file.createNewFile();
             }
-            FileWriter fw = new FileWriter(file);
+            FileWriter fw = new FileWriter(file, true);
+           
             BufferedWriter bw = new BufferedWriter(fw);
-            Calendar calendario = Calendar.getInstance();
+            
         fecha = "Fecha: "+Integer.toString(calendario.get(Calendar.DATE))+"/"+
                         Integer.toString(calendario.get(Calendar.MONTH))+"/"+
                         Integer.toString(calendario.get(Calendar.YEAR));
@@ -50,7 +57,8 @@ public class EscritorTxt implements IEscritor{
        }
             bw.close();
         }catch(Exception e){
-            e.printStackTrace();
+            System.out.println("(No se encontró el fichero para generar el pdf)" 
+                        + e);
         }
     }
     

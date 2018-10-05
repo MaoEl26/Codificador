@@ -1,6 +1,18 @@
-Fecha: 2/9/2018
-Hora: 3:18
+Fecha: 4/9/2018
+Hora: 7:14
 Frase: hola
 Algoritmo: Trasposicion
 Modo: Codificación
 aloh 
+Fecha: 4/9/2018
+Hora: 7:16
+Frase: como esta
+Algoritmo: Trasposicion
+Modo: Codificación
+omoc atse 
+Fecha: 4/9/2018
+Hora: 7:16
+Frase: ya trabajo bien 
+Algoritmo: Trasposicion
+Modo: Codificación
+ay ojabart neib 

@@ -62,7 +62,8 @@ public class main {
                 
                 /*Dao que agrega uno a uno los alfabetos*/
                 daoAlfabetos = new DaoAlfabetos();
-                daoAlfabetos.crearAlfabeto(Integer.parseInt(identificador), nombre, habilitado, lista);
+                boolean ret;
+                ret = daoAlfabetos.crearAlfabeto(Integer.parseInt(identificador), nombre, habilitado, lista);
 
                 contadorPtComa=0;
                 identificador = "";
@@ -84,8 +85,8 @@ public class main {
            }
         }
         //newConsola();
-        newGui();
         newAdmin();
+        newGui();
     }
 private static void newConsola(){
     Consola consola1 = new Consola();
