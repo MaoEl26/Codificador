@@ -11,6 +11,8 @@ package View;
  */
 import Model.*;
 import View.main;
+import Servidor.Servidor;
+
 public class Administrador extends javax.swing.JFrame {
 
     /**
@@ -96,11 +98,21 @@ public class Administrador extends javax.swing.JFrame {
         serverEnableBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
         serverEnableBtn.setForeground(new java.awt.Color(153, 153, 0));
         serverEnableBtn.setText("Iniciar Server");
+        serverEnableBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                serverEnableBtnActionPerformed(evt);
+            }
+        });
 
         disableServerBtn.setBackground(new java.awt.Color(51, 204, 255));
         disableServerBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
         disableServerBtn.setForeground(new java.awt.Color(153, 153, 0));
         disableServerBtn.setText("Detener Server");
+        disableServerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                disableServerBtnMouseClicked(evt);
+            }
+        });
         disableServerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 disableServerBtnActionPerformed(evt);
@@ -316,6 +328,18 @@ public class Administrador extends javax.swing.JFrame {
         manejoAlfabetos nuevo = new manejoAlfabetos();
         nuevo.setVisible(true);
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void serverEnableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serverEnableBtnActionPerformed
+        // TODO add your handling code here:
+        //Servidor.getInstance().iniciarServidor(); //iniciar server sin usar hilos y no sirve, se congela
+        Servidor.getInstance().iniciar();           //iniciar server usando hilos
+        //System.out.println("paso de iniciar");
+    }//GEN-LAST:event_serverEnableBtnActionPerformed
+
+    private void disableServerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableServerBtnMouseClicked
+        // TODO add your handling code here:
+        Servidor.getInstance().cambiarEstadoServer();
+    }//GEN-LAST:event_disableServerBtnMouseClicked
 
     /**
      * @param args the command line arguments

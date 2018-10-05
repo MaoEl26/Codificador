@@ -8,6 +8,7 @@ import Model.*;
 import Controller.Controlador;
 import Controller.DTOAlgoritmos;
 import Controller.DaoAlfabetos;
+import Cliente.Cliente;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -70,13 +71,40 @@ public final class GUI extends javax.swing.JFrame {
         
         DTOAlgoritmos dtoAlgoritmos = new DTOAlgoritmos(alfabeto, frase, 
                 listaAlgoritmos, listaSalidas, modoCodificacion, tipoSalida);
-        Controlador controlador = new Controlador();
-        controlador.procesarPeticion(dtoAlgoritmos);
+        //Controlador controlador = new Controlador();
+        //controlador.procesarPeticion(dtoAlgoritmos);
+        
+        Cliente c = new Cliente();
+        
+        try {
+            dtoAlgoritmos = c.conecteServidor(dtoAlgoritmos);
+        } catch (Exception e) {
+            System.out.println("Error al recibir respuesta del servidor");
+        }
+
+        
+        
         
         for (int i = 0; i < dtoAlgoritmos.getListaSalidas().size(); i++) {
             salida += dtoAlgoritmos.getListaSalidas().get(i)+"\n";
-       }
+        }
+        
+        //System.out.println("ultima ---- " + salida);
         salidaText.setText(salida);
+        
+        /*//Controlador controlador = new Controlador();
+        //controlador.procesarPeticion(dtoAlgoritmos);
+        
+        Cliente c = new Cliente();
+        
+        try {
+            DTOAlgoritmos dtoAlgoritmosRespuesta = c.conecteServidor(dtoAlgoritmos);
+            for (int i = 0; i < dtoAlgoritmosRespuesta.getListaSalidas().size(); i++) {
+                salida += dtoAlgoritmosRespuesta.getListaSalidas().get(i)+"\n";
+            }
+        } catch (Exception e) {
+            System.out.println("Error al recibir respuesta del servidor");
+        }*/
     }
     
     public void listaAlfabetos(){

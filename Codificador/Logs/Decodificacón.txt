@@ -1,0 +1,6 @@
+Fecha: 3/9/2018
+Hora: 7:31
+Frase: aloh 
+Algoritmo: Trasposicion
+Modo: Decodificacón
+hola 
