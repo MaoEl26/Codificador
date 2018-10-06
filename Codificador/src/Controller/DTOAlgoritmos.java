@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.Alfabeto;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -13,7 +12,7 @@ public class DTOAlgoritmos implements Serializable{
     private ArrayList<String> listaSalidas;
     private boolean modoCodificacion;
     private String tipoSalida;
-
+ 
     /*Constructor del DTO con todos sus valores*/
     public DTOAlgoritmos(int alfabetoActual, String fraseActual, ArrayList<String> listaAlgoritmosSolicitados, ArrayList<String> listaSalidas, boolean modoCodificacion, String tipoSalida) {
         this.alfabetoActual = alfabetoActual;
@@ -74,4 +73,5 @@ public class DTOAlgoritmos implements Serializable{
         this.tipoSalida = tipoSalida;
     }
     
+
 }

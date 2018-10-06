@@ -5,7 +5,6 @@
  */
 package View;
 import Model.*;
-import Controller.Controlador;
 import Controller.DTOAlgoritmos;
 import Controller.DaoAlfabetos;
 import Cliente.Cliente;

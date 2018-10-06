@@ -13,9 +13,9 @@ import Model.*;
 import Servidor.Servidor;
 import java.util.ArrayList;
 import java.io.*;
-import java.lang.reflect.Constructor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.lang.reflect.Constructor;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 public class Administrador extends javax.swing.JFrame {
 

@@ -9,6 +9,9 @@ import Model.algCodigoTelefonico;
 import Model.EscritorPDF;
 import Model.EscritorTxt;
 import Model.EscritorXML;
+import Model.Frase;
+import Model.FraseFactory;
+import Model.FraseFactoryMethod;
 import Model.algPalabraClave;
 import java.util.ArrayList;
 
@@ -64,7 +67,7 @@ public class Controlador {
     
 
     /*Funcion para procesar la peticion*/
-    public void procesarPeticion(DTOAlgoritmos dtoAlgoritmos){
+    public void procesarPeticion(DTOAlgoritmos dtoAlgoritmos, DTOFrase dtoFrase){
         cargarAlfabetos();
         predefinirAlfabeto(dtoAlgoritmos);
         boolean validacionAlfabeto = alfabetoActual.validarAlfabeto(alfabetoActual, dtoAlgoritmos.getFraseActual());
@@ -72,6 +75,19 @@ public class Controlador {
             /*Frase invalida*/
         }
         
+        /*Proceso de obtencion de la frase*/
+        String frase;
+        switch (dtoFrase.getTipoFrase()){
+            
+            case 4:
+                dtoAlgoritmos.setFraseActual(dtoFrase.getFrase());
+                break;
+            default:
+                FraseFactoryMethod fabrica = (FraseFactoryMethod) new FraseFactory();
+                Frase fraseTemp = fabrica.createFrase(dtoFrase.getTipoFrase(), alfabetoActual, dtoFrase.getLongitudFrase());
+                frase = fraseTemp.generarFrase();        
+        }
+
         /*Proceso de Codificacion/Decodificacion*/
         ArrayList<String> listaAlgoritmosSolicitados = dtoAlgoritmos.getListaAlgoritmosSolicitados();
         boolean modoCodificacion = dtoAlgoritmos.isModoCodificacion();
