@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class main {
-    static DaoAlfabetos daoAlfabetos;
+    static DaoAlfabetos daoAlfabetos = new DaoAlfabetos();
     static GUI gui;
     static Administrador admin;
     public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class main {
         String identificador = "";
         String nombre = "";
         String estado = "";
-        ArrayList<String> lista = new ArrayList<>();//Lista para almacenar caracteres
+        ArrayList<String> lista;//Lista para almacenar caracteres
         
         /*Leer archivo para cargar los alfabetos*/
         File archivo = null;
@@ -32,6 +32,7 @@ public class main {
             // Lectura del fichero
             String linea;
             while((linea=br.readLine())!=null){
+                lista = new ArrayList<>();
                 int contadorPtComa = 0;
                 for(int n=0; n<linea.length(); n++){
                     String letra = linea.substring(n, n+1);
@@ -61,14 +62,12 @@ public class main {
                 boolean habilitado = !"0".equals(estado);                        
                 
                 /*Dao que agrega uno a uno los alfabetos*/
-                daoAlfabetos = new DaoAlfabetos();
-                daoAlfabetos.crearAlfabeto(Integer.parseInt(identificador), nombre, habilitado, lista);
-
+                boolean ret;
+                ret = daoAlfabetos.crearAlfabeto(Integer.parseInt(identificador), nombre, habilitado, lista);
                 contadorPtComa=0;
                 identificador = "";
                 nombre = "";
                 estado = "";
-                lista.clear();
             }          
         }
         catch(IOException e){
@@ -84,8 +83,8 @@ public class main {
            }
         }
         //newConsola();
-        newGui();
         newAdmin();
+        //newGui();
     }
 private static void newConsola(){
     Consola consola1 = new Consola();

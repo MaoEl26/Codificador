@@ -56,7 +56,7 @@ public class Alfabeto {
     }
 
     public ArrayList<String> getList() {
-        return listaSimbolosAlfabeto;
+        return this.listaSimbolosAlfabeto;
     }
 
     public void setList(ArrayList<String> listaSimbolosAlfabeto) {

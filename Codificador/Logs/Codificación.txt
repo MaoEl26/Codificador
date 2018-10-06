@@ -1,5 +1,4 @@
-Fecha: 3/9/2018
-Hora: 9:23
+﻿Hora: 9:23
 Frase: hola
 Algoritmo: CodigoTelefonico
 Modo: Codificación

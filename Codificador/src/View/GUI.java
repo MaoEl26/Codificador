@@ -5,7 +5,6 @@
  */
 package View;
 import Model.*;
-import Controller.Controlador;
 import Controller.DTOAlgoritmos;
 import Controller.DaoAlfabetos;
 import Cliente.Cliente;
@@ -22,11 +21,11 @@ public final class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     DaoAlfabetos daoAlfabetos;
-    CodificaciónBinaria bin = new CodificaciónBinaria();
-    CodigoTelefonico tel = new CodigoTelefonico();
-    PalabraClave clave = new PalabraClave();
-    Trasposicion tras = new Trasposicion();
-    Vigenere vige = new Vigenere();
+    algCodificaciónBinaria bin = new algCodificaciónBinaria();
+    algCodigoTelefonico tel = new algCodigoTelefonico();
+    algPalabraClave clave = new algPalabraClave();
+    algTrasposicion tras = new algTrasposicion();
+    algVigenere vige = new algVigenere();
     
     private void ejecutar(){
         int alfabeto;
@@ -108,8 +107,11 @@ public final class GUI extends javax.swing.JFrame {
     }
     
     public void listaAlfabetos(){
-        for (int i = 0; i < daoAlfabetos.getListaAlfabetos().size(); i++) {
-            alfabetoCombo.addItem(daoAlfabetos.getListaAlfabetos().get(i).getNombreAlfabeto());
+        ArrayList<Alfabeto> lista = daoAlfabetos.getListaAlfabetos();
+        for (int i = 0; i < lista.size(); i++) {
+            if(lista.get(i).isEstado()){
+                alfabetoCombo.addItem(lista.get(i).getNombreAlfabeto());
+            }           
         }
     }
     

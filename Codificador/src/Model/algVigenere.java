@@ -3,7 +3,7 @@ package Model;
 import Controller.DTOAlgoritmos;
 import java.util.ArrayList;
 
-public class Vigenere extends Algoritmo{
+public class algVigenere extends Algoritmo{
 
     ArrayList<String> salidas;
     String textoSalida="";
@@ -14,7 +14,7 @@ public class Vigenere extends Algoritmo{
     
     @Override
     public void codificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
-        /*Metodo de Codificar Vigenere*/
+        /*Metodo de Codificar algVigenere*/
         salidas = dtoAlgortimo.getListaSalidas();
         textoEntrada = dtoAlgortimo.getFraseActual();
         ArraytextoCambio = textoEntrada.split(" ");
@@ -27,7 +27,7 @@ public class Vigenere extends Algoritmo{
 
     @Override
     public void decodificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
-        /*Metodo de Decodificar Vigenere*/
+        /*Metodo de Decodificar algVigenere*/
         salidas = dtoAlgortimo.getListaSalidas();
         textoEntrada = dtoAlgortimo.getFraseActual();
         ArraytextoCambio = textoEntrada.split(" ");

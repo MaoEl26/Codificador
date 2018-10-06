@@ -2,6 +2,7 @@ package View;
 
 import Controller.Controlador;
 import Controller.DTOAlgoritmos;
+import Controller.DTOFrase;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -104,11 +105,14 @@ public class Consola {
        /*Creacion del objeto DTO que ira de parametro con la informacion necesaria para codificar*/
        DTOAlgoritmos dtoAlgoritmos = new DTOAlgoritmos(alfabeto, frase, listaAlgoritmos, listaSalidas, modoCodificacion, tipoSalida);
        
+       /*Se hara esto solo para probar*/
+       DTOFrase dtoFrase = new DTOFrase (frase, 10, 1);
+       
        /*Creacion del controlador*/
        Controlador controlador = new Controlador();
        
        /*Procesamiento del programa*/
-       controlador.procesarPeticion(dtoAlgoritmos);
+       controlador.procesarPeticion(dtoAlgoritmos, dtoFrase);
     }
     
 }

@@ -7,6 +7,7 @@ package Servidor;
 
 import Controller.Controlador;
 import Controller.DTOAlgoritmos;
+import Controller.DTOFrase;
 import java.net.*;
 import java.io.*;
 
@@ -94,10 +95,11 @@ public class Servidor implements Runnable{
         try {
             
             DTOAlgoritmos dtoAlgoritmos = (DTOAlgoritmos) flujoEntrada.readObject();
+            DTOFrase dtoFrase = new DTOFrase("",0,0);
             
             System.out.println("Procesando peticion..");
             Controlador controlador = new Controlador();
-            controlador.procesarPeticion(dtoAlgoritmos);
+            controlador.procesarPeticion(dtoAlgoritmos, dtoFrase);
             //System.out.println(dtoAlgoritmos.getListaSalidas());//----------------------------------------------
             /*for (int i = 0; i < dtoAlgoritmos.getListaSalidas().size(); i++) {//--------------------------------
 			System.out.println(dtoAlgoritmos.getListaSalidas().get(i));//-----------------------------
