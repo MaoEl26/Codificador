@@ -1,6 +1,18 @@
 Fecha: 3/9/2018
-Hora: 7:31
-Frase: hola 
+Hora: 9:23
+Frase: hola
+Algoritmo: CodigoTelefonico
+Modo: Codificación
+
+Algoritmo: Vigenere
+Modo: Codificación
+
 Algoritmo: Trasposicion
 Modo: Codificación
 aloh 
+Algoritmo: CodificacionBin
+Modo: Codificación
+00111 01110 01011 00000 
+Algoritmo: PalabraClave
+Modo: Codificación
+
