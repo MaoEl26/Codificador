@@ -22,11 +22,11 @@ public final class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     DaoAlfabetos daoAlfabetos;
-    CodificaciónBinaria bin = new CodificaciónBinaria();
-    CodigoTelefonico tel = new CodigoTelefonico();
-    PalabraClave clave = new PalabraClave();
-    Trasposicion tras = new Trasposicion();
-    Vigenere vige = new Vigenere();
+    algCodificaciónBinaria bin = new algCodificaciónBinaria();
+    algCodigoTelefonico tel = new algCodigoTelefonico();
+    algPalabraClave clave = new algPalabraClave();
+    algTrasposicion tras = new algTrasposicion();
+    algVigenere vige = new algVigenere();
     
     private void ejecutar(){
         int alfabeto;

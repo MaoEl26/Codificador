@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Gerardo Villalobos
  */
-public class CodificaciónBinaria extends Algoritmo{
+public class algCodificaciónBinaria extends Algoritmo{
     
     ArrayList<String> salidas;
     String textoSalida="";

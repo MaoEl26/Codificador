@@ -3,7 +3,7 @@ package Model;
 import Controller.DTOAlgoritmos;
 import java.util.ArrayList;
 
-public class Trasposicion extends Algoritmo{
+public class algCodigoTelefonico extends Algoritmo{
 
     ArrayList<String> salidas;
     String textoSalida="";
@@ -14,27 +14,29 @@ public class Trasposicion extends Algoritmo{
     
     @Override
     public void codificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
-        /*Metodo de Codificar Traspocision*/
+        /*Metodo de Codificar algCodigoTelefonico*/
         salidas = dtoAlgortimo.getListaSalidas();
         textoEntrada = dtoAlgortimo.getFraseActual();
         ArraytextoCambio = textoEntrada.split(" ");
-        for (int i = 0; i < ArraytextoCambio.length; i++) {
-            textoSalida+= new StringBuilder(ArraytextoCambio[i]).reverse().toString()
-                    +" ";
+        
+        for (int i = 0; i < textoEntrada.length(); i++) {
+            
+            System.out.println("Char " + i + " is " + textoEntrada.charAt(i));
+            //textoSalida+= new StringBuilder(ArraytextoCambio[i]).reverse().toString()+" ";
         }
         salidas.add(textoSalida);
-        
     }
 
+    
     @Override
     public void decodificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
-        /*Metodo de Decodificar Trasposicion*/
+        /*Metodo de Decodificar algCodigoTelefonico*/
         salidas = dtoAlgortimo.getListaSalidas();
         textoEntrada = dtoAlgortimo.getFraseActual();
         ArraytextoCambio = textoEntrada.split(" ");
+        
         for (int i = 0; i < ArraytextoCambio.length; i++) {
-            textoSalida+= new StringBuilder(ArraytextoCambio[i]).reverse().toString()
-                    +" ";
+           // textoSalida+= new StringBuilder(ArraytextoCambio[i]).reverse().toString()+" ";
         }
         salidas.add(textoSalida);        
         dtoAlgortimo.setListaSalidas(salidas);
@@ -49,4 +51,5 @@ public class Trasposicion extends Algoritmo{
     public boolean getEstado(){
         return estado;
     }
+    
 }

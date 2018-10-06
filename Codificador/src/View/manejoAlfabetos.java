@@ -177,8 +177,20 @@ public class manejoAlfabetos extends javax.swing.JFrame {
         }
         nombre = nombreText.getText();
         indentificador = Integer.parseInt(IDText.getText());
-    
-        System.out.println(main.daoAlfabetos.getListaAlfabetos().get(0).getList());
+        String[] lista = alfabetoText.getText().split(" ");
+        if("Activado".equals((String)comboEstado.getSelectedItem())){
+            estado = true;
+        }else{
+            estado = false;
+        }
+        for (int i = 0; i <lista.length; i++) {
+            if(lista[i]!=" "){
+                listaSimbolos.add(lista[i]);
+            }
+        }
+        System.out.println(listaSimbolos);
+        
+        main.daoAlfabetos.crearAlfabeto(indentificador, nombre, estado, listaSimbolos);
     }//GEN-LAST:event_aceptarBtnActionPerformed
 
     /**

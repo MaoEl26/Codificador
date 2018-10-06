@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Gerardo Villalobos
  */
-public class PalabraClave extends Algoritmo{
+public class algPalabraClave extends Algoritmo{
     
     ArrayList<String> salidas;
     public ArrayList<Character> valor_letras = new ArrayList<>();

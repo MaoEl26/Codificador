@@ -23,49 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="changeButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="binLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="telLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="claveLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="trasLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="vigeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="vigeCheck" min="-2" max="-2" attributes="0"/>
-                                  <Component id="trasCheck" min="-2" max="-2" attributes="0"/>
-                                  <Component id="claveCheck" min="-2" max="-2" attributes="0"/>
-                                  <Component id="binCheck" min="-2" max="-2" attributes="0"/>
-                                  <Component id="telCheck" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="101" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="serverEnableBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="disableServerBtn" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                      <Component id="addBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="editAlfaBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Component id="addBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="editAlfaBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
@@ -81,19 +44,44 @@
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="tituloLabel" min="-2" pref="291" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="alfaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="algServer" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                      <Component id="tituloLabel" min="-2" pref="291" max="-2" attributes="0"/>
-                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="changeButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="algoritmosCombo" min="-2" pref="284" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="estadoAlgoritmoCheck" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="serverEnableBtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="23" max="32767" attributes="0"/>
+                              <Component id="disableServerBtn" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,32 +101,12 @@
               <Component id="algServer" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="binLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="binCheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="algoritmosCombo" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="estadoAlgoritmoCheck" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="telLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="telCheck" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="claveLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="claveCheck" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="trasLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="trasCheck" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="vigeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="vigeCheck" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="changeButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
               <Component id="serverLog" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -149,7 +117,7 @@
               <Component id="logLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="abrirLogsBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -235,85 +203,16 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="disableServerBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="binLabel">
+    <Component class="javax.swing.JCheckBox" name="estadoAlgoritmoCheck">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Trajan Pro" size="14" style="3"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Codificaci&#xf3;n Binaria"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="telLabel">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Trajan Pro" size="14" style="3"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Codigo Telefonico"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="claveLabel">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Trajan Pro" size="14" style="3"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Palabra Clave"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="trasLabel">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Trajan Pro" size="14" style="3"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Trasposicion"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="vigeLabel">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Trajan Pro" size="14" style="3"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Vigenere"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="binCheck">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Trajan Pro" size="12" style="2"/>
+          <Font name="Trajan Pro" size="14" style="2"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Enable"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="telCheck">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Trajan Pro" size="12" style="2"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Enable"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="claveCheck">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Trajan Pro" size="12" style="2"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Enable"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="trasCheck">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Trajan Pro" size="12" style="2"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Enable"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="vigeCheck">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Trajan Pro" size="12" style="2"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Enable"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="estadoAlgoritmoCheckActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="changeButton">
       <Properties>
@@ -392,6 +291,22 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abrirLogsBtnActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="algoritmosCombo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Trajan Pro" size="18" style="2"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="algoritmosComboActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

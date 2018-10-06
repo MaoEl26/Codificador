@@ -203,9 +203,8 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
            ArrayList<String> lista= daoAlfabetos.getListaAlfabetos().get((int)indexCombo
                    .getSelectedIndex()).getList();
            for (int i = 0; i <lista.size(); i++) {
-            listaString += lista.get(i);
+            listaString += lista.get(i)+" ";
         }
-           System.out.println(lista);
            alfabetoText.setText(listaString);
            
            if(daoAlfabetos.getListaAlfabetos().get((int)indexCombo
@@ -220,12 +219,19 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
         int indentificador = (int)indexCombo.getSelectedIndex();
         String nombre = nombreText.getText();
         boolean estado;
-        ArrayList<String> listaSimbolos = null;
+        ArrayList<String> listaSimbolos = new ArrayList<>();
+        String[] lista = alfabetoText.getText().split(" ");
         if("Activado".equals((String)comboEstado.getSelectedItem())){
             estado = true;
         }else{
             estado = false;
         }
+        for (int i = 0; i <lista.length; i++) {
+            if(lista[i]!=" "){
+                listaSimbolos.add(lista[i]);
+            }
+        }
+        System.out.println(listaSimbolos);
         daoAlfabetos.modificarAlfabeto(indentificador, nombre, estado, listaSimbolos);
     }//GEN-LAST:event_modificarBtnActionPerformed
 
