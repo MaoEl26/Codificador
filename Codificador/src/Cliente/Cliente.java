@@ -6,6 +6,7 @@
 package Cliente;
 
 import Controller.DTOAlgoritmos;
+import Controller.OBJComunicacion;
 import java.net.*;
 import java.io.*;
 
@@ -24,7 +25,7 @@ public class Cliente {
     private OutputStream conexionSalida;
     private ObjectOutputStream flujoEscritura;
     
-    public DTOAlgoritmos conecteServidor(DTOAlgoritmos dtoAlgoritmos) throws UnknownHostException{
+    public OBJComunicacion conecteServidor(OBJComunicacion objeto) throws UnknownHostException{
         try {
             
             Socket cliente = new Socket(HOST, PUERTO);
@@ -37,13 +38,13 @@ public class Cliente {
             System.out.println("Estableciendo comunicacion de escritura con el server...");
             conexionSalida = cliente.getOutputStream();
             flujoEscritura = new ObjectOutputStream(conexionSalida);
-
+            
             // procesar la gestion a solicitar
-            flujoEscritura.writeObject(dtoAlgoritmos);
+            flujoEscritura.writeObject(objeto);
             flujoEscritura.flush();
             
             // recupera la respuesta del servidor...
-            dtoAlgoritmos = (DTOAlgoritmos) flujoLectura.readObject();
+            objeto = (OBJComunicacion) flujoLectura.readObject();
 
             flujoEscritura.close();
             flujoLectura.close();
@@ -60,7 +61,7 @@ public class Cliente {
 
 
 
-        return dtoAlgoritmos;
+        return objeto;
     }
     
 }

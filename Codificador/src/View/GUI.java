@@ -7,7 +7,10 @@ package View;
 import Model.*;
 import Controller.DTOAlgoritmos;
 import Controller.DaoAlfabetos;
+import Controller.DTOFrase;
+import Controller.OBJComunicacion;
 import Cliente.Cliente;
+import Controller.AccionesServidor;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -23,13 +26,31 @@ public final class GUI extends javax.swing.JFrame {
     DaoAlfabetos daoAlfabetos;
     ArrayList<String> listaAlgoritmos = new ArrayList<>();
     
-    private void ejecutar(){
-        int alfabeto;
-        boolean modoCodificacion = true;
-        String frase = entText.getText();
-        String tipoSalida = "",salida="";
-        ArrayList<String> listaSalidas = new ArrayList<>();
-        
+    int alfabeto;
+    boolean modoCodificacion = true;
+    String frase = "";
+    String tipoSalida = "",salida="";
+    ArrayList<String> listaAlgoritmos = new ArrayList<>();
+    ArrayList<String> listaSalidas = new ArrayList<>();
+    DTOAlgoritmos dtoAlgoritmos;
+    DTOFrase dtoFrase;
+    
+    
+    //limpia todas las variables a cero
+    private void limpiarVariables(){
+        alfabeto = 0;
+        modoCodificacion = true;
+        frase = entText.getText();
+        tipoSalida = "";
+        salida = "";
+        listaAlgoritmos = new ArrayList<>();
+        listaSalidas = new ArrayList<>();
+        dtoAlgoritmos = null;
+        dtoFrase = null;
+    }
+    
+    //setea todos los valores de la interfaz a las variables
+    private void setearVariables(){
         if(codiRadioB.isSelected()){
             modoCodificacion = true;
         }
@@ -47,42 +68,46 @@ public final class GUI extends javax.swing.JFrame {
         }
         alfabeto = alfabetoCombo.getSelectedIndex()+1;
         
-        DTOAlgoritmos dtoAlgoritmos = new DTOAlgoritmos(alfabeto, frase, 
+        dtoAlgoritmos = new DTOAlgoritmos(alfabeto, frase, 
                 listaAlgoritmos, listaSalidas, modoCodificacion, tipoSalida);
-        //Controlador controlador = new Controlador();
-        //controlador.procesarPeticion(dtoAlgoritmos);
+        
+        
+        /**
+         * Hay que crear la interfaz para recibir una frase y crear el objeto DTOFrase que Andre ocupa
+         * De momento yo mando un new DTOFrase solo para que funciona la comunicacion, luego se reemplaza.
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         */
+        
+        dtoFrase = new DTOFrase("",0,0);
+    }
+    
+    private void ejecutar(){
+        
+        //llamar estos 2 metodos para iniciar las variables
+        limpiarVariables();
+        setearVariables();
+        
+        OBJComunicacion objeto = new OBJComunicacion(dtoAlgoritmos, dtoFrase, AccionesServidor.PROCESAR_PETICION_CODIFICAR);
         
         Cliente c = new Cliente();
         
         try {
-            dtoAlgoritmos = c.conecteServidor(dtoAlgoritmos);
+            objeto = c.conecteServidor(objeto);
+            dtoAlgoritmos = objeto.getDtoAlgoritmo();
         } catch (Exception e) {
             System.out.println("Error al recibir respuesta del servidor");
         }
-
-        
-        
         
         for (int i = 0; i < dtoAlgoritmos.getListaSalidas().size(); i++) {
             salida += dtoAlgoritmos.getListaSalidas().get(i)+"\n";
         }
-        
-        //System.out.println("ultima ---- " + salida);
+
         salidaText.setText(salida);
         
-        /*//Controlador controlador = new Controlador();
-        //controlador.procesarPeticion(dtoAlgoritmos);
-        
-        Cliente c = new Cliente();
-        
-        try {
-            DTOAlgoritmos dtoAlgoritmosRespuesta = c.conecteServidor(dtoAlgoritmos);
-            for (int i = 0; i < dtoAlgoritmosRespuesta.getListaSalidas().size(); i++) {
-                salida += dtoAlgoritmosRespuesta.getListaSalidas().get(i)+"\n";
-            }
-        } catch (Exception e) {
-            System.out.println("Error al recibir respuesta del servidor");
-        }*/
     }
     
     public void listaAlfabetos(){
@@ -239,11 +264,6 @@ public final class GUI extends javax.swing.JFrame {
         alfabetoLabel.setText("Alfabeto:");
 
         alfabetoCombo.setBackground(new java.awt.Color(51, 204, 255));
-        alfabetoCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alfabetoComboActionPerformed(evt);
-            }
-        });
 
         fieldAlgoritmos.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
         jScrollPane2.setViewportView(fieldAlgoritmos);
@@ -395,10 +415,6 @@ public final class GUI extends javax.swing.JFrame {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         inicioPrograma();
     }//GEN-LAST:event_cancelButtonActionPerformed
-
-    private void alfabetoComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alfabetoComboActionPerformed
-     
-    }//GEN-LAST:event_alfabetoComboActionPerformed
 
     private void guardarAlgoritmosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAlgoritmosActionPerformed
         listaAlgoritmos = (ArrayList)fieldAlgoritmos.getSelectedValuesList();

@@ -1,6 +1,0 @@
-Fecha: 3/9/2018
-Hora: 1:9
-Frase: hola
-Algoritmo: Trasposicion
-Modo: Codificación
-aloh 
