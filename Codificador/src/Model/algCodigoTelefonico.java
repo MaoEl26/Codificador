@@ -251,7 +251,26 @@ public class algCodigoTelefonico extends Algoritmo{
          }
         return x;
     }
+    
+   
 
+    public String revisar(String codigo)
+    {
+        String procesado = "";
+        
+        if (codigo.contains("*"))
+           {
+                 textoSalida += " ";
+                 procesado = codigo.replaceAll("[^A-Za-z_0-9]", "");
+                 System.out.println("Corregido:" + procesado);
+                 return procesado;
+           }
+        
+        else
+            {
+                return codigo;
+            }
+    }
     
     @Override
     public void decodificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
@@ -263,16 +282,12 @@ public class algCodigoTelefonico extends Algoritmo{
         int numero = 0;
         int a = numero / 10;
         int b = numero % 10;
+
         
         for (int i = 0; i < ArraytextoCambio.length; i++) {
-            if (ArraytextoCambio[i].contains("*"))
-             {
-                 textoSalida += " ";
-                 ArraytextoCambio[i].replaceAll("[^A-Za-z_0-9]", "");
-                 numero = Integer.parseInt(ArraytextoCambio[i]);
-             }
+          
+            numero = Integer.parseInt(revisar(ArraytextoCambio[i]));
             
-            numero = Integer.parseInt(ArraytextoCambio[i]);
             System.out.println("Llegó el codigo: " + numero);
             a = numero / 10;
             b = numero % 10;
