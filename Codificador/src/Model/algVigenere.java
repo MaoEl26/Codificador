@@ -39,7 +39,7 @@ public class algVigenere extends Algoritmo{
             */  ind = 2;
                 bandera = false;
             }
-          
+
             if (ind % 2 == 0 && textoEntrada.charAt(i) != ' ' && bandera) //Posición par...
             {
              //   textoSalida += alfabeto.getList().get(getindice(textoEntrada.charAt(i), alfabeto) + a);
