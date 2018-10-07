@@ -17,7 +17,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
     /**
      * Creates new form modificacionAlfabetos
      */
-    Administrador ventana;
+    private Administrador ventana;
 
     public modificacionAlfabetos(Administrador ventana) {
         this.ventana = ventana;
@@ -26,7 +26,8 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
     }
 
     private void llenarComboEstado(){
-        for (int i = 0; i < daoAlfabetos.getListaAlfabetos().size(); i++) {
+        int largo = daoAlfabetos.getListaAlfabetos().size();
+        for (int i = 0; i < largo; i++) {
             indexCombo.addItem(Integer.toString(daoAlfabetos.getListaAlfabetos().get(i).getIdentificadorAlfabeto()));
         }
     }
@@ -216,7 +217,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
     }//GEN-LAST:event_indexComboActionPerformed
 
     private void modificarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBtnActionPerformed
-        int indentificador = (int)indexCombo.getSelectedIndex()+1;
+        int indentificador = Integer.parseInt((String)indexCombo.getSelectedItem());
         String nombre = nombreText.getText();
         boolean estado;
         ArrayList<String> listaSimbolos = new ArrayList<>();
@@ -231,14 +232,14 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
                 listaSimbolos.add(lista[i]);
             }
         }
-        System.out.println(listaSimbolos);
         daoAlfabetos.modificarAlfabeto(indentificador, nombre, estado, listaSimbolos);
-        System.out.println(daoAlfabetos.getListaAlfabetos().get(0).getList());
     }//GEN-LAST:event_modificarBtnActionPerformed
 
     private void eliminarBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtn1ActionPerformed
-        int indentificador = (int)indexCombo.getSelectedIndex()+1;
+        int indentificador = Integer.parseInt((String)indexCombo.getSelectedItem());
         daoAlfabetos.eliminarAlfabeto(indentificador);
+        //comboEstado.removeAll();
+        //llenarComboEstado();
     }//GEN-LAST:event_eliminarBtn1ActionPerformed
 
     private void atrasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBtnActionPerformed

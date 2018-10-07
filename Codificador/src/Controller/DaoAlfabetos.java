@@ -32,9 +32,7 @@ public class DaoAlfabetos {
     
     public boolean modificarAlfabeto(int identificador, String nombre, boolean estado, ArrayList<String> listaSimbolos){
         
-        System.out.println(Integer.toString(identificador));
         for (int i=0; i<listaAlfabetos.size(); i++){
-            System.out.println("Controller.DaoAlfabetos.modificarAlfabeto()");
             if(listaAlfabetos.get(i).getIdentificadorAlfabeto() == identificador){
                 for (int j=0; j<listaAlfabetos.size();j++){
                     
@@ -42,7 +40,6 @@ public class DaoAlfabetos {
                         return false;
                     }
                 }
-                System.out.println(listaSimbolos);
                 listaAlfabetos.get(i).setNombreAlfabeto(nombre);
                 listaAlfabetos.get(i).setEstado(estado);
                 listaAlfabetos.get(i).setList(listaSimbolos);

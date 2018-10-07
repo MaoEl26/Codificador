@@ -60,9 +60,7 @@ public class Alfabeto {
     }
 
     public void setList(ArrayList<String> listaSimbolosAlfabeto) {
-        System.out.println(listaSimbolosAlfabeto+" in");
         this.listaSimbolosAlfabeto = listaSimbolosAlfabeto;
-        System.out.println(this.listaSimbolosAlfabeto);
     }
     
     
