@@ -2,14 +2,17 @@ package Controller;
 
 import Model.Alfabeto;
 import Model.Algoritmo;
-import Model.CodificaciónBinaria;
-import Model.Vigenere;
-import Model.Trasposicion;
-import Model.CodigoTelefonico;
+import Model.algCodificaciónBinaria;
+import Model.algVigenere;
+import Model.algTrasposicion;
+import Model.algCodigoTelefonico;
 import Model.EscritorPDF;
 import Model.EscritorTxt;
 import Model.EscritorXML;
-import Model.PalabraClave;
+import Model.Frase;
+import Model.FraseFactory;
+import Model.FraseFactoryMethod;
+import Model.algPalabraClave;
 import java.util.ArrayList;
 
 
@@ -64,7 +67,7 @@ public class Controlador {
     
 
     /*Funcion para procesar la peticion*/
-    public void procesarPeticion(DTOAlgoritmos dtoAlgoritmos){
+    public void procesarPeticion(DTOAlgoritmos dtoAlgoritmos, DTOFrase dtoFrase){
         cargarAlfabetos();
         predefinirAlfabeto(dtoAlgoritmos);
         boolean validacionAlfabeto = alfabetoActual.validarAlfabeto(alfabetoActual, dtoAlgoritmos.getFraseActual());
@@ -72,6 +75,19 @@ public class Controlador {
             /*Frase invalida*/
         }
         
+        /*Proceso de obtencion de la frase*/
+        String frase;
+        switch (dtoFrase.getTipoFrase()){
+            
+            case 4:
+                dtoAlgoritmos.setFraseActual(dtoFrase.getFrase());
+                break;
+            default:
+                FraseFactoryMethod fabrica = (FraseFactoryMethod) new FraseFactory();
+                Frase fraseTemp = fabrica.createFrase(dtoFrase.getTipoFrase(), alfabetoActual, dtoFrase.getLongitudFrase());
+                frase = fraseTemp.generarFrase();        
+        }
+
         /*Proceso de Codificacion/Decodificacion*/
         ArrayList<String> listaAlgoritmosSolicitados = dtoAlgoritmos.getListaAlgoritmosSolicitados();
         boolean modoCodificacion = dtoAlgoritmos.isModoCodificacion();
@@ -81,7 +97,7 @@ public class Controlador {
             switch (listaAlgoritmosSolicitados.get(i)){
                 
                 case "Vigenere":
-                    Algoritmo peticionV = new Vigenere();
+                    Algoritmo peticionV = new algVigenere();
                     if (modoCodificacion){
                         peticionV.codificar(dtoAlgoritmos, alfabetoActual);
                     }
@@ -90,7 +106,7 @@ public class Controlador {
                     }
                     break;
                 case "Trasposicion":
-                    Algoritmo peticionT = new Trasposicion();
+                    Algoritmo peticionT = new algTrasposicion();
                     if (modoCodificacion){
                         peticionT.codificar(dtoAlgoritmos, alfabetoActual);
                     }
@@ -99,7 +115,7 @@ public class Controlador {
                     }
                     break;
                 case "CodigoTelefonico":
-                    Algoritmo peticionC = new CodigoTelefonico();
+                    Algoritmo peticionC = new algCodigoTelefonico();
                     if (modoCodificacion){
                         peticionC.codificar(dtoAlgoritmos, alfabetoActual);
                     }
@@ -108,7 +124,7 @@ public class Controlador {
                     }
                     break; 
                 case "PalabraClave":
-                    Algoritmo peticionP = new PalabraClave();
+                    Algoritmo peticionP = new algPalabraClave();
                     if (modoCodificacion){
                         peticionP.codificar(dtoAlgoritmos, alfabetoActual);
                     }else{
@@ -116,7 +132,7 @@ public class Controlador {
                     }
                     break;
                 case "CodificacionBin":
-                    Algoritmo peticionB = new CodificaciónBinaria();
+                    Algoritmo peticionB = new algCodificaciónBinaria();
                     if(modoCodificacion){
                         peticionB.codificar(dtoAlgoritmos, alfabetoActual);
                     }else{
@@ -125,6 +141,7 @@ public class Controlador {
                     break;
             }
         }
+        
         
         escribir(dtoAlgoritmos);
     }

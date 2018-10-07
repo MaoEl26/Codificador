@@ -15,6 +15,9 @@ public class EscritorPDF implements IEscritor{
     String modo;
     String fecha;
     String hora;
+    Calendar calendario;
+    
+    FileOutputStream fileOut;
     
     Paragraph horaParagraph,fechaParagraph,horaParagraph1,modoParagraph,fraseParagraph;
     
@@ -25,18 +28,22 @@ public class EscritorPDF implements IEscritor{
             }else{
                 modo = "Decodificacón";
             }
+        calendario = Calendar.getInstance();
+
         String ruta = "../Codificador/Logs/"+modo+".pdf";
         File file = new File(ruta);
         try{
+            fileOut = new FileOutputStream(file, true);
+        }catch(IOException e){
+            System.out.println("(No se encontró el fichero para generar el pdf)" 
+                        + e);
+        }
+        try{
             Document document = new Document();
-            try {
-                PdfWriter.getInstance(document, new FileOutputStream(file));
-            }catch(FileNotFoundException fileNotFoundException){
-                System.out.println("(No se encontró el fichero para generar el pdf)" 
-                        + fileNotFoundException);
-            }
+            
+            PdfWriter.getInstance(document,fileOut );
             document.open();
-            Calendar calendario = Calendar.getInstance();
+            
             fecha = "Fecha: "+Integer.toString(calendario.get(Calendar.DATE))+"/"+
                             Integer.toString(calendario.get(Calendar.MONTH))+"/"+
                             Integer.toString(calendario.get(Calendar.YEAR));
@@ -58,7 +65,8 @@ public class EscritorPDF implements IEscritor{
            }
             
             document.close();
-        }catch(DocumentException documentException) {
+            fileOut.close();
+        }catch(IOException | DocumentException documentException) {
             System.out.println("The file not exists (Se ha producido un error al generar un documento): " + documentException);
         }
     }

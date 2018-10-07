@@ -5,9 +5,9 @@
  */
 package View;
 import Model.*;
-import Controller.Controlador;
 import Controller.DTOAlgoritmos;
 import Controller.DaoAlfabetos;
+import Cliente.Cliente;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -21,11 +21,11 @@ public final class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     DaoAlfabetos daoAlfabetos;
-    CodificaciónBinaria bin = new CodificaciónBinaria();
-    CodigoTelefonico tel = new CodigoTelefonico();
-    PalabraClave clave = new PalabraClave();
-    Trasposicion tras = new Trasposicion();
-    Vigenere vige = new Vigenere();
+    algCodificaciónBinaria bin = new algCodificaciónBinaria();
+    algCodigoTelefonico tel = new algCodigoTelefonico();
+    algPalabraClave clave = new algPalabraClave();
+    algTrasposicion tras = new algTrasposicion();
+    algVigenere vige = new algVigenere();
     
     private void ejecutar(){
         int alfabeto;
@@ -70,18 +70,48 @@ public final class GUI extends javax.swing.JFrame {
         
         DTOAlgoritmos dtoAlgoritmos = new DTOAlgoritmos(alfabeto, frase, 
                 listaAlgoritmos, listaSalidas, modoCodificacion, tipoSalida);
-        Controlador controlador = new Controlador();
-        controlador.procesarPeticion(dtoAlgoritmos);
+        //Controlador controlador = new Controlador();
+        //controlador.procesarPeticion(dtoAlgoritmos);
+        
+        Cliente c = new Cliente();
+        
+        try {
+            dtoAlgoritmos = c.conecteServidor(dtoAlgoritmos);
+        } catch (Exception e) {
+            System.out.println("Error al recibir respuesta del servidor");
+        }
+
+        
+        
         
         for (int i = 0; i < dtoAlgoritmos.getListaSalidas().size(); i++) {
             salida += dtoAlgoritmos.getListaSalidas().get(i)+"\n";
-       }
+        }
+        
+        //System.out.println("ultima ---- " + salida);
         salidaText.setText(salida);
+        
+        /*//Controlador controlador = new Controlador();
+        //controlador.procesarPeticion(dtoAlgoritmos);
+        
+        Cliente c = new Cliente();
+        
+        try {
+            DTOAlgoritmos dtoAlgoritmosRespuesta = c.conecteServidor(dtoAlgoritmos);
+            for (int i = 0; i < dtoAlgoritmosRespuesta.getListaSalidas().size(); i++) {
+                salida += dtoAlgoritmosRespuesta.getListaSalidas().get(i)+"\n";
+            }
+        } catch (Exception e) {
+            System.out.println("Error al recibir respuesta del servidor");
+        }*/
     }
     
     public void listaAlfabetos(){
-        for (int i = 0; i < daoAlfabetos.getListaAlfabetos().size(); i++) {
-            alfabetoCombo.addItem(daoAlfabetos.getListaAlfabetos().get(i).getNombreAlfabeto());
+        ArrayList<Alfabeto> lista = daoAlfabetos.getListaAlfabetos();
+        for (int i = 0; i < lista.size(); i++) {
+            if(lista.get(i).isEstado()){
+                alfabetoCombo.addItem(lista.get(i).getNombreAlfabeto());
+            }           
         }
     }
     
@@ -366,9 +396,9 @@ public final class GUI extends javax.swing.JFrame {
                     .addComponent(trasCheckBox)
                     .addComponent(telfCheckBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(binCheckBox)
-                    .addComponent(claveCheckBox))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(claveCheckBox)
+                    .addComponent(binCheckBox))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alfabetoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

@@ -3,7 +3,7 @@ package Model;
 import Controller.DTOAlgoritmos;
 import java.util.ArrayList;
 
-public class Vigenere extends Algoritmo{
+public class algVigenere extends Algoritmo{
 
     ArrayList<String> salidas;
     String textoSalida="";

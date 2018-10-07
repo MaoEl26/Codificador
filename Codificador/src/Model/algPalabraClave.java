@@ -12,10 +12,10 @@ import java.util.ArrayList;
  *
  * @author Gerardo Villalobos
  */
-public class PalabraClave extends Algoritmo{
+public class algPalabraClave extends Algoritmo{
     
     ArrayList<String> salidas;
-    public ArrayList<Character> valor_letras = new ArrayList<>();
+    //public ArrayList<Character> valor_letras = new ArrayList<>();
     String textoSalida="";
     String textoEntrada = "";
     String ArraytextoCambio[];
@@ -53,18 +53,18 @@ public class PalabraClave extends Algoritmo{
                     j = 0;
                 }
                  
-                margen = getindice((textoEntrada.charAt(i))) + getindice((PalabraClave.charAt(j)));
+                margen = getindice(textoEntrada.charAt(i), alfabeto) + getindice(PalabraClave.charAt(j),alfabeto);
                 
                 if (margen > 26)
                 {
-                    textoSalida += getlet(margen - 26);
+                    textoSalida += getlet(margen - 26, alfabeto);
                     j = j + 1;
                     
                 }
                 
                 if (margen < 26)
                 {
-                    textoSalida += getlet(margen);
+                    textoSalida += getlet(margen, alfabeto);
                     j = j + 1;
                     
                 }
@@ -78,47 +78,17 @@ public class PalabraClave extends Algoritmo{
         
     }
     
-    public int getindice (Character letra)
+    public int getindice (Character letra, Alfabeto alfabeto)
     {
-        valor_letras.clear();
-        
-        valor_letras.add('-');
-        valor_letras.add('a');
-        valor_letras.add('b');
-        valor_letras.add('c');
-        valor_letras.add('d');
-        valor_letras.add('e');
-        valor_letras.add('f');
-        valor_letras.add('g');
-        valor_letras.add('h');
-        valor_letras.add('i');
-        valor_letras.add('j');
-        valor_letras.add('k');
-        valor_letras.add('l');
-        valor_letras.add('m');
-        valor_letras.add('n');
-        valor_letras.add('o');
-        valor_letras.add('p');
-        valor_letras.add('q');
-        valor_letras.add('r');
-        valor_letras.add('s');
-        valor_letras.add('t');
-        valor_letras.add('u');
-        valor_letras.add('v');
-        valor_letras.add('w');
-        valor_letras.add('x');
-        valor_letras.add('y');
-        valor_letras.add('z');
-        
         int valor = 0; 
         
-        for(int x = 0; x < valor_letras.size(); x++) {
+        for(int x = 0; x < alfabeto.getList().size(); x++) {
             
        // System.out.println(al.get(x));
-            if (letra == valor_letras.get(x))
+            if (String.valueOf(letra) == alfabeto.getList().get(x))
             {
                 valor = x;
-                System.out.println("Se obtuvo el indice: " + valor + " de la letra ->" + valor_letras.get(x));
+                System.out.println("Se obtuvo el indice: " + valor + " de la letra ->" + alfabeto.getList().get(x));
             }
         
         }
@@ -127,46 +97,18 @@ public class PalabraClave extends Algoritmo{
         return valor;
     }
     
-    public Character getlet (int num)
+    public Character getlet (int num, Alfabeto alfabeto)
     {
-        valor_letras.clear();
         
-        valor_letras.add('-');
-        valor_letras.add('a');
-        valor_letras.add('b');
-        valor_letras.add('c');
-        valor_letras.add('d');
-        valor_letras.add('e');
-        valor_letras.add('f');
-        valor_letras.add('g');
-        valor_letras.add('h');
-        valor_letras.add('i');
-        valor_letras.add('j');
-        valor_letras.add('k');
-        valor_letras.add('l');
-        valor_letras.add('m');
-        valor_letras.add('n');
-        valor_letras.add('o');
-        valor_letras.add('p');
-        valor_letras.add('q');
-        valor_letras.add('r');
-        valor_letras.add('s');
-        valor_letras.add('t');
-        valor_letras.add('u');
-        valor_letras.add('v');
-        valor_letras.add('w');
-        valor_letras.add('x');
-        valor_letras.add('y');
-        valor_letras.add('z');
         
         Character valor = null; 
         
-        for(int x=0; x < valor_letras.size(); x++) {
+        for(int x=0; x < alfabeto.getList().size(); x++) {
             
              
              if (x == num)
              {
-                 valor = valor_letras.get(x);
+                 valor = alfabeto.getList().get(x).charAt(0);
                  System.out.println("Se obtuvo la letra: " + valor + " con el indice ->" + num);
              }
         }
@@ -204,18 +146,18 @@ public class PalabraClave extends Algoritmo{
                     j = 0;
                 }
                  
-                margen = getindice((textoEntrada.charAt(i))) - getindice((PalabraClave.charAt(j)));
+                margen = getindice(textoEntrada.charAt(i), alfabeto) - getindice(PalabraClave.charAt(j), alfabeto);
                 
                 if (margen < 0)
                 {
-                    textoSalida += getlet(margen + 26);
+                    textoSalida += getlet(margen + 26, alfabeto);
                     j = j + 1;
                     
                 }
                 
                 if (margen > 0)
                 {
-                    textoSalida += getlet(margen);
+                    textoSalida += getlet(margen, alfabeto);
                     j = j + 1;
                     
                 }
