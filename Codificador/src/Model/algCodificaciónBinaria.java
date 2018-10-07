@@ -36,132 +36,132 @@ public class algCodificaciónBinaria extends Algoritmo{
                 textoSalida+= "*" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'a')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(1))
             {
                 textoSalida+= "00000" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'b')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(2))
             {
                 textoSalida+= "00001" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'c')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(3))
             {
                 textoSalida+= "00010" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'd')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(4))
             {
                 textoSalida+= "00011" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'e')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(5))
             {
                 textoSalida+= "00100" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'f')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(6))
             {
                 textoSalida+= "00101" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'g')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(7))
             {
                 textoSalida+= "00110" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'h')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(8))
             {
                 textoSalida+= "00111" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'i')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(9))
             {
                 textoSalida+= "01000" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'j')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(10))
             {
                 textoSalida+= "01001" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'k')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(11))
             {
                 textoSalida+= "01010" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'l')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(12))
             {
                 textoSalida+= "01011" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'm')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(13))
             {
                 textoSalida+= "01100" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'n')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(14))
             {
                 textoSalida+= "01101" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'o')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(15))
             {
                 textoSalida+= "01110" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'p')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(16))
             {
                 textoSalida+= "01111" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'q')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(17))
             {
                 textoSalida+= "10000" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'r')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(18))
             {
                 textoSalida+= "10001" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 's')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(19))
             {
                 textoSalida+= "10010" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 't')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(20))
             {
                 textoSalida+= "10011" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'u')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(21))
             {
                 textoSalida+= "10100" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'v')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(22))
             {
                 textoSalida+= "10101" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'w')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(23))
             {
                 textoSalida+= "10110" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'x')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(24))
             {
                 textoSalida+= "10111" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'y')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(25))
             {
                 textoSalida+= "11000" + " ";
             }
             
-            if (textoEntrada.charAt(i) == 'z')
+            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(26))
             {
                 textoSalida+= "11001" + " ";
             }
@@ -169,8 +169,7 @@ public class algCodificaciónBinaria extends Algoritmo{
         salidas.add(textoSalida);
         
     }
-    
-    
+
     @Override
     public void decodificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         salidas = dtoAlgortimo.getListaSalidas();
@@ -178,131 +177,135 @@ public class algCodificaciónBinaria extends Algoritmo{
         ArraytextoCambio = textoEntrada.split(" ");
         
         for (int i = 0; i < ArraytextoCambio.length; i++) {
-           // textoSalida+= new StringBuilder(ArraytextoCambio[i]).reverse().toString()+" ";
            
            if (ArraytextoCambio[i] == "00000")
            {
-               textoSalida += "a";
+               textoSalida += alfabeto.getList().get(1);
            }
            
            if (ArraytextoCambio[i] == "00001")
            {
-               textoSalida += "b";
+               textoSalida += alfabeto.getList().get(2);
            }
            
            if (ArraytextoCambio[i] == "00010")
            {
-               textoSalida += "c";
+               textoSalida += alfabeto.getList().get(3);
            }
            
            if (ArraytextoCambio[i] == "00011")
            {
-               textoSalida += "d";
+               textoSalida += alfabeto.getList().get(4);
            }
            
            if (ArraytextoCambio[i] == "00100")
            {
-               textoSalida += "e";
+               textoSalida += alfabeto.getList().get(5);
            }
            
            if (ArraytextoCambio[i] == "00101")
            {
-               textoSalida += "f";
+               textoSalida += alfabeto.getList().get(6);
            }
            
            if (ArraytextoCambio[i] == "00110")
            {
-               textoSalida += "g";
+               textoSalida += alfabeto.getList().get(7);
            }
            
            if (ArraytextoCambio[i] == "00111")
            {
-               textoSalida += "h";
+               textoSalida += alfabeto.getList().get(8);
            }
            
            if (ArraytextoCambio[i] == "01000")
            {
-               textoSalida += "i";
+               textoSalida += alfabeto.getList().get(9);
            }
            
            if (ArraytextoCambio[i] == "01001")
            {
-               textoSalida += "j";
+               textoSalida += alfabeto.getList().get(10);
            }
            
            if (ArraytextoCambio[i] == "01010")
            {
-               textoSalida += "k";
+               textoSalida += alfabeto.getList().get(11);
            }
            
            if (ArraytextoCambio[i] == "01011")
            {
-               textoSalida += "l";
+               textoSalida += alfabeto.getList().get(12);
            }
            
            if (ArraytextoCambio[i] == "01100")
            {
-               textoSalida += "m";
+               textoSalida += alfabeto.getList().get(13);
            }
            
            if (ArraytextoCambio[i] == "01101")
            {
-               textoSalida += "n";
+               textoSalida += alfabeto.getList().get(14);
            }
            
            if (ArraytextoCambio[i] == "01110")
            {
-               textoSalida += "o";
+               textoSalida += alfabeto.getList().get(15);
            }
            
            if (ArraytextoCambio[i] == "01111")
            {
-               textoSalida += "p";
+               textoSalida += alfabeto.getList().get(16);
+           }
+           
+           if (ArraytextoCambio[i] == "10000")
+           {
+               textoSalida += alfabeto.getList().get(17);
            }
            
            if (ArraytextoCambio[i] == "10001")
            {
-               textoSalida += "r";
+               textoSalida += alfabeto.getList().get(18);
            }
            
            if (ArraytextoCambio[i] == "10010")
            {
-               textoSalida += "s";
+               textoSalida += alfabeto.getList().get(19);
            }
            
            if (ArraytextoCambio[i] == "10011")
            {
-               textoSalida += "t";
+               textoSalida += alfabeto.getList().get(20);
            }
            
            if (ArraytextoCambio[i] == "10100")
            {
-               textoSalida += "u";
+               textoSalida += alfabeto.getList().get(21);
            }
            
            if (ArraytextoCambio[i] == "10101")
            {
-               textoSalida += "v";
+               textoSalida += alfabeto.getList().get(22);
            }
            
            if (ArraytextoCambio[i] == "10110")
            {
-               textoSalida += "w";
+               textoSalida += alfabeto.getList().get(23);
            }
            
            if (ArraytextoCambio[i] == "10111")
            {
-               textoSalida += "x";
+               textoSalida += alfabeto.getList().get(24);
            }
            
            if (ArraytextoCambio[i] == "11000")
            {
-               textoSalida += "y";
+               textoSalida += alfabeto.getList().get(25);
            }
            
            if (ArraytextoCambio[i] == "11001")
            {
-               textoSalida += "z";
+               textoSalida += alfabeto.getList().get(26);
            }
         }
         salidas.add(textoSalida);        

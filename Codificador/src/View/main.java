@@ -55,6 +55,7 @@ public class main {
                                     break;
                                 case 3:
                                     lista.add(letra);
+                                    break;
                             }
                     }
                 }

@@ -5,7 +5,9 @@
  */
 package View;
 
+import static View.main.daoAlfabetos;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +24,13 @@ public class manejoAlfabetos extends javax.swing.JFrame {
         initComponents();
     }
 
+     private void cierreVentana(){
+        this.setEnabled(false);
+        this.setVisible(false);
+        ventana.setEnabled(true);
+        ventana.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,7 +52,15 @@ public class manejoAlfabetos extends javax.swing.JFrame {
         atrasBtn = new javax.swing.JButton();
         aceptarBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         idLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         idLabel.setForeground(new java.awt.Color(153, 153, 0));
@@ -158,10 +175,7 @@ public class manejoAlfabetos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atrasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBtnActionPerformed
-        ventana.setEnabled(true);
-        ventana.setVisible(true);
-        this.setEnabled(false);
-        this.setVisible(false);
+        cierreVentana();
     }//GEN-LAST:event_atrasBtnActionPerformed
 
     private void aceptarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarBtnActionPerformed
@@ -169,7 +183,7 @@ public class manejoAlfabetos extends javax.swing.JFrame {
         boolean estado;
         String nombre;
         int indentificador;
-        ArrayList<String> listaSimbolos = null;
+        ArrayList<String> listaSimbolos = new ArrayList<>();
         if("Activado".equals((String)comboEstado.getSelectedItem())){
             estado = true;
         }else{
@@ -187,11 +201,25 @@ public class manejoAlfabetos extends javax.swing.JFrame {
             if(lista[i]!=" "){
                 listaSimbolos.add(lista[i]);
             }
+        } 
+        if(daoAlfabetos.crearAlfabeto(indentificador, nombre, estado, listaSimbolos)){
+            JOptionPane.showMessageDialog(null,"El alfabeto fue agregado",
+                    "AVISO",JOptionPane.INFORMATION_MESSAGE);
+            daoAlfabetos.guardarAlfabetos();
+        }else{
+            JOptionPane.showMessageDialog(null,"El nombre o identificador estan repetidos",
+                    "ERROR",JOptionPane.ERROR_MESSAGE);
         }
-        System.out.println(listaSimbolos);
-        
-        main.daoAlfabetos.crearAlfabeto(indentificador, nombre, estado, listaSimbolos);
+
     }//GEN-LAST:event_aceptarBtnActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        cierreVentana();
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        cierreVentana();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

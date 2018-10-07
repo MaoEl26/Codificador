@@ -1,6 +1,9 @@
 package Controller;
 
 import Model.Alfabeto;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 
@@ -11,13 +14,11 @@ public class DaoAlfabetos {
     public DaoAlfabetos() {
     }
   
-   
    /*Funcion para obtener todos los alfabetos creados*/
     public ArrayList<Alfabeto> getListaAlfabetos() {
         return listaAlfabetos;
     } 
-    
-    
+      
     /*Funcion que crea un alfabeto y lo mantiene guardado en la lista de alfabetos*/
     public boolean crearAlfabeto(int identificador, String nombre, boolean estado, ArrayList<String> listaSimbolos){
         for (int i=0; i<listaAlfabetos.size(); i++){
@@ -51,7 +52,6 @@ public class DaoAlfabetos {
     }
     
     public boolean eliminarAlfabeto(int identificador){
-        
         for (int i=0; i<listaAlfabetos.size(); i++){
             if(listaAlfabetos.get(i).getIdentificadorAlfabeto() == identificador){
                 listaAlfabetos.remove(i);
@@ -61,6 +61,32 @@ public class DaoAlfabetos {
         return false;
     }
     
+    public void guardarAlfabetos(){
+        try{
+            File file = new File("Alfabetos.txt");
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for (int i = 0; i < listaAlfabetos.size(); i++) {
+                bw.write(listaAlfabetos.get(i).getIdentificadorAlfabeto()+";");
+                bw.write(listaAlfabetos.get(i).getNombreAlfabeto()+";");
+                if (listaAlfabetos.get(i).isEstado()){
+                    bw.write("1;");
+                }else{
+                    bw.write("0;");
+                }
+                ArrayList<String> lista =listaAlfabetos.get(i).getList();
+                for (int j = 0; j <lista.size(); j++) {
+                    bw.write(lista.get(j)+" ");
+                }
+                bw.newLine();
+            }
+            bw.close();
+            
+        }catch(Exception e){
+            System.out.println("Controller.DaoAlfabetos.guardarAlfabetos()");
+        }
+    }
     
    
    
