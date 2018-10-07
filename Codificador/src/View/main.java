@@ -55,6 +55,7 @@ public class main {
                                     break;
                                 case 3:
                                     lista.add(letra);
+                                    break;
                             }
                     }
                 }
@@ -84,7 +85,7 @@ public class main {
         }
         //newConsola();
         newAdmin();
-        //newGui();
+        newGui();
     }
 private static void newConsola(){
     Consola consola1 = new Consola();

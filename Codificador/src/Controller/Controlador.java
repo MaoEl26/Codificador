@@ -65,6 +65,30 @@ public class Controlador {
         
     }
     
+    public ArrayList obtenerAlgoritmos(DTOAlgoritmos dtoAlgoritmos, DTOFrase dtoFrase){
+        /**
+         * AGREGAR CÓDIGO PARA OBTENER ALGORITMOS
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         */
+        return new ArrayList();
+    }
+    
+    public ArrayList obtenerAlfabetos(DTOAlgoritmos dtoAlgoritmos, DTOFrase dtoFrase){
+        /**
+         * AGREGAR CÓDIGO PARA OBTENER ALFABETOS
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         */
+        return new ArrayList();
+    }
+    
+            
+            
 
     /*Funcion para procesar la peticion*/
     public void procesarPeticion(DTOAlgoritmos dtoAlgoritmos, DTOFrase dtoFrase){
@@ -76,7 +100,7 @@ public class Controlador {
         }
         
         /*Proceso de obtencion de la frase*/
-        String frase;
+        /*String frase;
         switch (dtoFrase.getTipoFrase()){
             
             case 4:
@@ -86,7 +110,7 @@ public class Controlador {
                 FraseFactoryMethod fabrica = (FraseFactoryMethod) new FraseFactory();
                 Frase fraseTemp = fabrica.createFrase(dtoFrase.getTipoFrase(), alfabetoActual, dtoFrase.getLongitudFrase());
                 frase = fraseTemp.generarFrase();        
-        }
+        }*/
 
         /*Proceso de Codificacion/Decodificacion*/
         ArrayList<String> listaAlgoritmosSolicitados = dtoAlgoritmos.getListaAlgoritmosSolicitados();

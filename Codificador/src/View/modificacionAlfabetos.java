@@ -7,6 +7,8 @@ package View;
 
 import static View.main.daoAlfabetos;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -17,17 +19,29 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
     /**
      * Creates new form modificacionAlfabetos
      */
-    Administrador ventana;
+    private Administrador ventana;
 
     public modificacionAlfabetos(Administrador ventana) {
         this.ventana = ventana;
         initComponents();
-        llenarComboEstado();
+        llenarComboIndex();
     }
 
-    private void llenarComboEstado(){
-        for (int i = 0; i < daoAlfabetos.getListaAlfabetos().size(); i++) {
+     private void cierreVentana(){
+        this.setEnabled(false);
+        this.setVisible(false);
+        ventana.setEnabled(true);
+        ventana.setVisible(true);
+    }
+    
+    private void llenarComboIndex(){
+        indexCombo.removeAllItems();
+        int largo = daoAlfabetos.getListaAlfabetos().size();
+        for (int i = 0; i < largo; i++) {
             indexCombo.addItem(Integer.toString(daoAlfabetos.getListaAlfabetos().get(i).getIdentificadorAlfabeto()));
+        }
+        if(largo<=1){
+            eliminarBtn.setEnabled(false);
         }
     }
     
@@ -46,14 +60,22 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
         alfabetoLabel = new javax.swing.JLabel();
         alfabetoText = new javax.swing.JTextField();
         atrasBtn = new javax.swing.JButton();
-        eliminarBtn1 = new javax.swing.JButton();
+        eliminarBtn = new javax.swing.JButton();
         nombreText = new javax.swing.JTextField();
         nomLabel = new javax.swing.JLabel();
         estadoLabel = new javax.swing.JLabel();
         comboEstado = new javax.swing.JComboBox<>();
         modificarBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         tituloLabel.setFont(new java.awt.Font("Tempus Sans ITC", 3, 24)); // NOI18N
         tituloLabel.setForeground(new java.awt.Color(243, 126, 11));
@@ -67,6 +89,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
         indexCombo.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
         indexCombo.setForeground(new java.awt.Color(153, 153, 0));
         indexCombo.setMaximumRowCount(100);
+        indexCombo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         indexCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 indexComboActionPerformed(evt);
@@ -87,13 +110,13 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
             }
         });
 
-        eliminarBtn1.setBackground(new java.awt.Color(51, 204, 255));
-        eliminarBtn1.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
-        eliminarBtn1.setForeground(new java.awt.Color(153, 153, 0));
-        eliminarBtn1.setText("Eliminar");
-        eliminarBtn1.addActionListener(new java.awt.event.ActionListener() {
+        eliminarBtn.setBackground(new java.awt.Color(51, 204, 255));
+        eliminarBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
+        eliminarBtn.setForeground(new java.awt.Color(153, 153, 0));
+        eliminarBtn.setText("Eliminar");
+        eliminarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminarBtn1ActionPerformed(evt);
+                eliminarBtnActionPerformed(evt);
             }
         });
 
@@ -158,7 +181,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(atrasBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(eliminarBtn1)
+                .addComponent(eliminarBtn)
                 .addGap(36, 36, 36)
                 .addComponent(modificarBtn)
                 .addGap(32, 32, 32))
@@ -186,7 +209,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(atrasBtn)
-                    .addComponent(eliminarBtn1)
+                    .addComponent(eliminarBtn)
                     .addComponent(modificarBtn))
                 .addGap(22, 22, 22))
         );
@@ -195,8 +218,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void indexComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indexComboActionPerformed
-        
-        //((int)indexCombo.getSelectedIndex());
+        if(indexCombo.getItemCount()>0){
            nombreText.setText(daoAlfabetos.getListaAlfabetos().get((int)indexCombo
                    .getSelectedIndex()).getNombreAlfabeto());
            String listaString ="";
@@ -204,7 +226,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
                    .getSelectedIndex()).getList();
            for (int i = 0; i <lista.size(); i++) {
             listaString += lista.get(i)+" ";
-        }
+           }
            alfabetoText.setText(listaString);
            
            if(daoAlfabetos.getListaAlfabetos().get((int)indexCombo
@@ -213,10 +235,14 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
            }else{
                comboEstado.setSelectedIndex(1);
            }
+        }else{
+            nombreText.setText("");
+            alfabetoText.setText("");
+        }
     }//GEN-LAST:event_indexComboActionPerformed
 
     private void modificarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBtnActionPerformed
-        int indentificador = (int)indexCombo.getSelectedIndex();
+        int indentificador = Integer.parseInt((String)indexCombo.getSelectedItem());
         String nombre = nombreText.getText();
         boolean estado;
         ArrayList<String> listaSimbolos = new ArrayList<>();
@@ -231,21 +257,44 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
                 listaSimbolos.add(lista[i]);
             }
         }
-        System.out.println(listaSimbolos);
-        daoAlfabetos.modificarAlfabeto(indentificador, nombre, estado, listaSimbolos);
+        if(daoAlfabetos.modificarAlfabeto(indentificador, nombre, estado, listaSimbolos)){
+            JOptionPane.showMessageDialog(null,"El alfabeto fue agregado",
+                    "AVISO",JOptionPane.INFORMATION_MESSAGE);
+            daoAlfabetos.guardarAlfabetos();
+        }else{
+            JOptionPane.showMessageDialog(null,"No se logró actualizar",
+                    "ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_modificarBtnActionPerformed
 
-    private void eliminarBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtn1ActionPerformed
-        int indentificador = (int)indexCombo.getSelectedIndex();
-        daoAlfabetos.eliminarAlfabeto(indentificador);
-    }//GEN-LAST:event_eliminarBtn1ActionPerformed
-
+    private void eliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtnActionPerformed
+        int indentificador = Integer.parseInt((String)indexCombo.getSelectedItem());
+        
+        if(daoAlfabetos.eliminarAlfabeto(indentificador)){
+            JOptionPane.showMessageDialog(null,"El alfabeto fue agregado",
+                    "AVISO",JOptionPane.INFORMATION_MESSAGE);
+            daoAlfabetos.guardarAlfabetos();
+        }else{
+            JOptionPane.showMessageDialog(null,"El nombre o identificador estan repetidos",
+                    "ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        llenarComboIndex();
+    }//GEN-LAST:event_eliminarBtnActionPerformed
+    
     private void atrasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBtnActionPerformed
-        ventana.setEnabled(true);
-        ventana.setVisible(true);
-        this.setEnabled(false);
-        this.setVisible(false);
+        cierreVentana();
     }//GEN-LAST:event_atrasBtnActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cierreVentana();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        cierreVentana();
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -253,7 +302,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
     private javax.swing.JTextField alfabetoText;
     private javax.swing.JButton atrasBtn;
     private javax.swing.JComboBox<String> comboEstado;
-    private javax.swing.JButton eliminarBtn1;
+    private javax.swing.JButton eliminarBtn;
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JLabel idLabel;
     private javax.swing.JComboBox<String> indexCombo;

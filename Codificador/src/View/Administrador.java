@@ -13,17 +13,19 @@ import Model.*;
 import Servidor.Servidor;
 import java.util.ArrayList;
 import java.io.*;
-//import java.lang.reflect.Constructor;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
+import java.lang.reflect.Constructor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Administrador extends javax.swing.JFrame {
 
     /**
      * Creates new form Administrador
      */
-    private ArrayList<Class> clases;
+    private Algoritmo newAlgoritmo;
     private final File folder = new File("../Codificador/src/Model");
+    ArrayList<Algoritmo> algoritmos = new ArrayList<>();
+    ArrayList<String> salidas = new ArrayList<>();
     
     private void llenadoAlgoritmos(){
         for(File algoritmo : folder.listFiles()){
@@ -36,8 +38,8 @@ public class Administrador extends javax.swing.JFrame {
         }
     }
     
-    private void setCheckBox(Algoritmo algoritmo){
-        estadoAlgoritmoCheck.setSelected(algoritmo.getEstado());
+    public ArrayList<Algoritmo> getAlgoritmos(){
+        return algoritmos;
     }
     
     public Administrador() {
@@ -60,13 +62,17 @@ public class Administrador extends javax.swing.JFrame {
         serverEnableBtn = new javax.swing.JButton();
         disableServerBtn = new javax.swing.JButton();
         estadoAlgoritmoCheck = new javax.swing.JCheckBox();
-        changeButton = new javax.swing.JButton();
+        GuardarBtn = new javax.swing.JButton();
         alfaLabel = new javax.swing.JLabel();
         algServer = new javax.swing.JLabel();
         serverLog = new javax.swing.JLabel();
         logLabel = new javax.swing.JLabel();
         abrirLogsBtn = new javax.swing.JButton();
         algoritmosCombo = new javax.swing.JComboBox<>();
+        algServer1 = new javax.swing.JLabel();
+        txtRadioB = new javax.swing.JRadioButton();
+        pdfRadioB = new javax.swing.JRadioButton();
+        xmlRadioB = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,13 +133,13 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        changeButton.setBackground(new java.awt.Color(51, 204, 255));
-        changeButton.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
-        changeButton.setForeground(new java.awt.Color(153, 153, 0));
-        changeButton.setText("Cambio Estado");
-        changeButton.addActionListener(new java.awt.event.ActionListener() {
+        GuardarBtn.setBackground(new java.awt.Color(51, 204, 255));
+        GuardarBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
+        GuardarBtn.setForeground(new java.awt.Color(153, 153, 0));
+        GuardarBtn.setText("Guardar Habitilidatos");
+        GuardarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changeButtonActionPerformed(evt);
+                GuardarBtnActionPerformed(evt);
             }
         });
 
@@ -170,6 +176,34 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
+        algServer1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        algServer1.setForeground(new java.awt.Color(153, 153, 0));
+        algServer1.setText("Metodos de impresión");
+
+        txtRadioB.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
+        txtRadioB.setText("TXT");
+        txtRadioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRadioBActionPerformed(evt);
+            }
+        });
+
+        pdfRadioB.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
+        pdfRadioB.setText("PDF");
+        pdfRadioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pdfRadioBActionPerformed(evt);
+            }
+        });
+
+        xmlRadioB.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
+        xmlRadioB.setText("XML");
+        xmlRadioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xmlRadioBActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,6 +224,19 @@ public class Administrador extends javax.swing.JFrame {
                     .addComponent(serverLog))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(algoritmosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(estadoAlgoritmoCheck)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(serverEnableBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(disableServerBtn)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(67, 67, 67)
@@ -200,24 +247,22 @@ public class Administrador extends javax.swing.JFrame {
                             .addComponent(alfaLabel)
                             .addComponent(algServer))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(changeButton)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(GuardarBtn)
+                        .addGap(65, 65, 65))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(algoritmosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(estadoAlgoritmoCheck)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(serverEnableBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                                .addComponent(disableServerBtn)))
-                        .addContainerGap())))
+                        .addComponent(algServer1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtRadioB)
+                        .addGap(26, 26, 26)
+                        .addComponent(pdfRadioB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(xmlRadioB)
+                        .addGap(28, 28, 28))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,8 +282,14 @@ public class Administrador extends javax.swing.JFrame {
                     .addComponent(algoritmosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(estadoAlgoritmoCheck))
                 .addGap(18, 18, 18)
-                .addComponent(changeButton)
-                .addGap(95, 95, 95)
+                .addComponent(GuardarBtn)
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRadioB)
+                    .addComponent(pdfRadioB)
+                    .addComponent(xmlRadioB)
+                    .addComponent(algServer1))
+                .addGap(16, 16, 16)
                 .addComponent(serverLog)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -266,9 +317,9 @@ public class Administrador extends javax.swing.JFrame {
         Servidor.getInstance().cambiarEstadoServer();
     }//GEN-LAST:event_disableServerBtnActionPerformed
 
-    private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
-        //bin.setEstado(estadoAlgoritmoCheck.isSelected());
-    }//GEN-LAST:event_changeButtonActionPerformed
+    private void GuardarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarBtnActionPerformed
+        System.out.println(salidas);
+    }//GEN-LAST:event_GuardarBtnActionPerformed
 
     private void abrirLogsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirLogsBtnActionPerformed
         Runtime r = Runtime.getRuntime();
@@ -301,42 +352,76 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_disableServerBtnMouseClicked
 
     private void algoritmosComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_algoritmosComboActionPerformed
-        String nombre = "alg"+algoritmosCombo.getSelectedItem();
-        Algoritmo newAlgoritmo; 
+        String nombre = "Model.alg"+algoritmosCombo.getSelectedItem(); 
         Class newClass;
-        /*try {
+        try {
             newClass = Class.forName(nombre);
-            Constructor creador = newClass.getConstructor(new Class(newClass) {Algoritmo.class});
-            newAlgoritmo = creador;
-        estadoAlgoritmoCheck.setSelected(newAlgoritmo.getEstado());
+            Constructor creador = newClass.getConstructor(new Class[] {});
+            newAlgoritmo = (Algoritmo)creador.newInstance();
+            boolean estado = newAlgoritmo.getEstado();
+            estadoAlgoritmoCheck.setSelected(estado);
+            if(estado){
+                algoritmos.add(newAlgoritmo);
+            }
         } catch (Exception ex) {
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
         
     }//GEN-LAST:event_algoritmosComboActionPerformed
 
     private void estadoAlgoritmoCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoAlgoritmoCheckActionPerformed
-        // TODO add your handling code here:
+        newAlgoritmo.setEstado(estadoAlgoritmoCheck.isSelected());
+        if (newAlgoritmo.getEstado()){
+            algoritmos.add(newAlgoritmo);
+        }else{
+            if(algoritmos.size()>=1){
+                algoritmos.remove(algoritmos.indexOf(newAlgoritmo));
+            }
+        }
     }//GEN-LAST:event_estadoAlgoritmoCheckActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
- 
+    private void pdfRadioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfRadioBActionPerformed
+        if(pdfRadioB.isSelected()){
+            salidas.add("pdf");
+        }else{
+            salidas.remove("pdf");
+        }
+    }//GEN-LAST:event_pdfRadioBActionPerformed
 
+    private void txtRadioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRadioBActionPerformed
+        if(txtRadioB.isSelected()){
+            salidas.add("txt");
+        }else{
+            salidas.remove("txt");
+        }
+    }//GEN-LAST:event_txtRadioBActionPerformed
+
+    private void xmlRadioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xmlRadioBActionPerformed
+        if(xmlRadioB.isSelected()){
+            salidas.add("xml");
+        }else{
+            salidas.remove("xml");
+        }
+    }//GEN-LAST:event_xmlRadioBActionPerformed
+
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton GuardarBtn;
     private javax.swing.JButton abrirLogsBtn;
     private javax.swing.JButton addBtn;
     private javax.swing.JLabel alfaLabel;
     private javax.swing.JLabel algServer;
+    private javax.swing.JLabel algServer1;
     private javax.swing.JComboBox<String> algoritmosCombo;
-    private javax.swing.JButton changeButton;
     private javax.swing.JButton disableServerBtn;
     private javax.swing.JButton editAlfaBtn;
     private javax.swing.JCheckBox estadoAlgoritmoCheck;
     private javax.swing.JLabel logLabel;
+    private javax.swing.JRadioButton pdfRadioB;
     private javax.swing.JButton serverEnableBtn;
     private javax.swing.JLabel serverLog;
     private javax.swing.JLabel tituloLabel;
+    private javax.swing.JRadioButton txtRadioB;
+    private javax.swing.JRadioButton xmlRadioB;
     // End of variables declaration//GEN-END:variables
 }

@@ -106,13 +106,13 @@ public class Consola {
        DTOAlgoritmos dtoAlgoritmos = new DTOAlgoritmos(alfabeto, frase, listaAlgoritmos, listaSalidas, modoCodificacion, tipoSalida);
        
        /*Se hara esto solo para probar*/
-       DTOFrase dtoFrase = new DTOFrase (frase, 10, 1);
+       DTOFrase dtoFrase = new DTOFrase ("", 0, 0);
        
        /*Creacion del controlador*/
        Controlador controlador = new Controlador();
        
        /*Procesamiento del programa*/
-       controlador.procesarPeticion(dtoAlgoritmos, dtoFrase);
+       //controlador.procesarPeticion(dtoAlgoritmos, dtoFrase);
     }
     
 }

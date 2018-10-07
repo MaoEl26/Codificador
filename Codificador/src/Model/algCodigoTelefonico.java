@@ -251,6 +251,8 @@ public class algCodigoTelefonico extends Algoritmo{
          }
         return x;
     }
+    
+   
 
     public String revisar(String codigo)
     {
@@ -280,14 +282,12 @@ public class algCodigoTelefonico extends Algoritmo{
         int numero = 0;
         int a = numero / 10;
         int b = numero % 10;
-        String corregido = "";
+
         
         for (int i = 0; i < ArraytextoCambio.length; i++) {
-            
-            
-            
-            
+          
             numero = Integer.parseInt(revisar(ArraytextoCambio[i]));
+            
             System.out.println("Llegó el codigo: " + numero);
             a = numero / 10;
             b = numero % 10;

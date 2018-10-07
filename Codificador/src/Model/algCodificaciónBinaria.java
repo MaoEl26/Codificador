@@ -169,8 +169,7 @@ public class algCodificaciónBinaria extends Algoritmo{
         salidas.add(textoSalida);
         
     }
-    
-    
+
     @Override
     public void decodificar(DTOAlgoritmos dtoAlgortimo, Alfabeto alfabeto) {
         salidas = dtoAlgortimo.getListaSalidas();
@@ -178,7 +177,6 @@ public class algCodificaciónBinaria extends Algoritmo{
         ArraytextoCambio = textoEntrada.split(" ");
         
         for (int i = 0; i < ArraytextoCambio.length; i++) {
-           // textoSalida+= new StringBuilder(ArraytextoCambio[i]).reverse().toString()+" ";
            
            if (ArraytextoCambio[i] == "00000")
            {

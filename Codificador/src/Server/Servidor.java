@@ -5,9 +5,11 @@
  */
 package Servidor;
 
+import Controller.AccionesServidor;
 import Controller.Controlador;
 import Controller.DTOAlgoritmos;
 import Controller.DTOFrase;
+import Controller.OBJComunicacion;
 import java.net.*;
 import java.io.*;
 
@@ -94,17 +96,39 @@ public class Servidor implements Runnable{
     private void procesePeticion() {
         try {
             
-            DTOAlgoritmos dtoAlgoritmos = (DTOAlgoritmos) flujoEntrada.readObject();
-            DTOFrase dtoFrase = new DTOFrase("",0,0);
+            OBJComunicacion objeto = (OBJComunicacion) flujoEntrada.readObject();
             
-            System.out.println("Procesando peticion..");
+            DTOAlgoritmos dtoAlgoritmos = objeto.getDtoAlgoritmo();
+            DTOFrase dtoFrase = objeto.getDtoFrase();
             Controlador controlador = new Controlador();
-            controlador.procesarPeticion(dtoAlgoritmos, dtoFrase);
-            //System.out.println(dtoAlgoritmos.getListaSalidas());//----------------------------------------------
-            /*for (int i = 0; i < dtoAlgoritmos.getListaSalidas().size(); i++) {//--------------------------------
-			System.out.println(dtoAlgoritmos.getListaSalidas().get(i));//-----------------------------
-		}*/
-            flujoSalida.writeObject(dtoAlgoritmos);
+            
+            /**
+             * Llama al controlador dependiendo de la accion que quiera ejecutar
+             * En el caso de procesarPeticion no setea nada en DatoSalida en el objeto comunicacion
+             * En el caso de obtenerAlgoritmos y Alfabetos sí setea una lista de lo que se pide
+             * en DatoSalida en el objeto de comunicacion
+             */
+            if (objeto.getAccion() == AccionesServidor.PROCESAR_PETICION_CODIFICAR){
+                System.out.println("Procesando peticion PROCESAR PETICION CODIFICAR");
+                controlador.procesarPeticion(dtoAlgoritmos, dtoFrase);
+            }
+            
+            if (objeto.getAccion() == AccionesServidor.OBTENER_ALGORITMOS){
+                System.out.println("Procesando peticion OBTENER ALGORITMOS");
+                objeto.setDatoSalida(controlador.obtenerAlgoritmos(dtoAlgoritmos, dtoFrase));
+            }
+            
+            if (objeto.getAccion() == AccionesServidor.OBTENER_ALFABETOS){
+                System.out.println("Procesando peticion OBTENER ALFABETOS");
+                objeto.setDatoSalida(controlador.obtenerAlfabetos(dtoAlgoritmos, dtoFrase));
+            }
+            
+            
+            // vuelvo asignar al objeto el resultado de dtoAlgoritmo que dio el controlador
+            //para que ese resultado se pueda devolver en writeObject.
+            objeto.setDtoAlgoritmo(dtoAlgoritmos);
+            
+            flujoSalida.writeObject(objeto);
             
             
         } catch (IOException ex) {
@@ -115,7 +139,10 @@ public class Servidor implements Runnable{
     }
     
     public void cambiarEstadoServer(){
+        System.out.println("Apagando Servidor...");
         estadoServidor = false;
+        instancia = null;
+        System.out.println("Servidor apagado");
         
     }
 
@@ -139,7 +166,6 @@ public class Servidor implements Runnable{
                 conexionEntrada = cliente.getInputStream();
                 flujoEntrada = new ObjectInputStream(conexionEntrada);
 
-                //System.out.println("voy");//-----------------------------------------
                 // atender la peticion...
                 System.out.println("Atendiendo peticion...");
                 
