@@ -180,3 +180,39 @@ ub
 Algoritmo: CodificacionBin
 Modo: Codificación
 00001 10100 
+Fecha: 7/9/2018
+Hora: 5:43
+Frase: hola
+Algoritmo: Trasposicion
+Modo: Codificación
+aloh 
+Algoritmo: CodificacionBin
+Modo: Codificación
+00111 01110 01011 00000 
+Fecha: 7/9/2018
+Hora: 5:44
+Frase: hola perro
+Algoritmo: Trasposicion
+Modo: Codificación
+aloh orrep 
+Algoritmo: CodificacionBin
+Modo: Codificación
+00111 01110 01011 00000 * 01111 00100 10001 10001 01110 
+Fecha: 7/9/2018
+Hora: 5:44
+Frase: hola perro
+Algoritmo: CodigoTelefonico
+Modo: Codificación
+
+Algoritmo: Vigenere
+Modo: Codificación
+
+Algoritmo: Trasposicion
+Modo: Codificación
+aloh orrep 
+Algoritmo: CodificacionBin
+Modo: Codificación
+00111 01110 01011 00000 * 01111 00100 10001 10001 01110 
+Algoritmo: PalabraClave
+Modo: Codificación
+bpo jffyd

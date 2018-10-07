@@ -38,7 +38,7 @@ public class Cliente {
             System.out.println("Estableciendo comunicacion de escritura con el server...");
             conexionSalida = cliente.getOutputStream();
             flujoEscritura = new ObjectOutputStream(conexionSalida);
-            System.out.println("voy2");
+            
             // procesar la gestion a solicitar
             flujoEscritura.writeObject(objeto);
             flujoEscritura.flush();

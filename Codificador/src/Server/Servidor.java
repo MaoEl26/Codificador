@@ -96,21 +96,6 @@ public class Servidor implements Runnable{
     private void procesePeticion() {
         try {
             
-            /*DTOAlgoritmos dtoAlgoritmos = (DTOAlgoritmos) flujoEntrada.readObject();
-            DTOFrase dtoFrase = new DTOFrase("",0,0);
-            
-            System.out.println("Procesando peticion..");
-            Controlador controlador = new Controlador();
-            controlador.procesarPeticion(dtoAlgoritmos, dtoFrase);
-            
-            OBJComunicacion objeto = (OBJComunicacion) flujoEntrada.readObject();
-            // detectar lo que le enviaron...
-            if (objeto.getAccion() == TipoAccion.REGISTRAR_USUARIO){
-                String elLogin=(String) objeto.getDatoEntrada();
-                log.setText(log.getText()+ "\nAtendiendo peticion REGISTRAR USUARIO.."+ elLogin);
-                objeto.setDatoSalida(adm.registrar(elLogin));
-            }*/
-            
             OBJComunicacion objeto = (OBJComunicacion) flujoEntrada.readObject();
             
             DTOAlgoritmos dtoAlgoritmos = objeto.getDtoAlgoritmo();
@@ -137,11 +122,7 @@ public class Servidor implements Runnable{
                 System.out.println("Procesando peticion OBTENER ALFABETOS");
                 objeto.setDatoSalida(controlador.obtenerAlfabetos(dtoAlgoritmos, dtoFrase));
             }
-            //controlador.procesar2(0,2);
-            //System.out.println(dtoAlgoritmos.getListaSalidas());//----------------------------------------------
-            /*for (int i = 0; i < dtoAlgoritmos.getListaSalidas().size(); i++) {//--------------------------------
-			System.out.println(dtoAlgoritmos.getListaSalidas().get(i));//-----------------------------
-		}*/
+            
             
             // vuelvo asignar al objeto el resultado de dtoAlgoritmo que dio el controlador
             //para que ese resultado se pueda devolver en writeObject.
@@ -185,7 +166,6 @@ public class Servidor implements Runnable{
                 conexionEntrada = cliente.getInputStream();
                 flujoEntrada = new ObjectInputStream(conexionEntrada);
 
-                //System.out.println("voy");//-----------------------------------------
                 // atender la peticion...
                 System.out.println("Atendiendo peticion...");
                 

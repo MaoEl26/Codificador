@@ -106,64 +106,6 @@ public final class GUI extends javax.swing.JFrame {
     }
     
     private void ejecutar(){
-        /*int alfabeto;
-        boolean modoCodificacion = true;
-        String frase = entText.getText();
-        String tipoSalida = "",salida="";
-        ArrayList<String> listaAlgoritmos = new ArrayList<>();
-        ArrayList<String> listaSalidas = new ArrayList<>();
-        
-        
-        if(telfCheckBox.isSelected()){
-            listaAlgoritmos.add("CodigoTelefonico");
-        }
-        if(vigeCheckBox.isSelected()){
-            listaAlgoritmos.add("Vigenere");
-        }
-        if(trasCheckBox.isSelected()){
-            listaAlgoritmos.add("Trasposicion");
-            //claveCheckBox.setVisible(false);
-        }
-        if(binCheckBox.isSelected()){
-            listaAlgoritmos.add("CodificacionBin");
-        }
-        if(claveCheckBox.isSelected()){
-            listaAlgoritmos.add("PalabraClave");
-        }
-        if(codiRadioB.isSelected()){
-            modoCodificacion = true;
-        }
-        if(decoRadioB.isSelected()){
-            modoCodificacion = false;
-        }
-        if(txtRadioB.isSelected()){
-            tipoSalida = txtRadioB.getText().toLowerCase();
-        }
-        if(pdfRadioB.isSelected()){
-            tipoSalida = pdfRadioB.getText().toLowerCase();
-        }
-        if(xmlRadioB.isSelected()){
-            tipoSalida = xmlRadioB.getText().toLowerCase();
-        }
-        alfabeto = alfabetoCombo.getSelectedIndex()+1;
-        
-        DTOAlgoritmos dtoAlgoritmos = new DTOAlgoritmos(alfabeto, frase, 
-                listaAlgoritmos, listaSalidas, modoCodificacion, tipoSalida);
-        */
-        //Controlador controlador = new Controlador();
-        //controlador.procesarPeticion(dtoAlgoritmos);
-        
-        /**
-         * Hay que crear la interfaz para recibir una frase y crear el objeto DTOFrase que Andre ocupa
-         * De momento yo mando un new DTOFrase solo para que funciona la comunicacion, luego se reemplaza.
-         * ----------------------------------------------------------------
-         * ----------------------------------------------------------------
-         * ----------------------------------------------------------------
-         * ----------------------------------------------------------------
-         * ----------------------------------------------------------------
-         */
-        
-        /*DTOFrase dtoFrase = new DTOFrase("",0,0);*/
         
         //llamar estos 2 metodos para iniciar las variables
         limpiarVariables();
@@ -174,34 +116,18 @@ public final class GUI extends javax.swing.JFrame {
         Cliente c = new Cliente();
         
         try {
-            System.out.println("voy1");
             objeto = c.conecteServidor(objeto);
             dtoAlgoritmos = objeto.getDtoAlgoritmo();
         } catch (Exception e) {
             System.out.println("Error al recibir respuesta del servidor");
         }
-
         
         for (int i = 0; i < dtoAlgoritmos.getListaSalidas().size(); i++) {
             salida += dtoAlgoritmos.getListaSalidas().get(i)+"\n";
         }
-        
-        //System.out.println("ultima ---- " + salida);
+
         salidaText.setText(salida);
         
-        /*//Controlador controlador = new Controlador();
-        //controlador.procesarPeticion(dtoAlgoritmos);
-        
-        Cliente c = new Cliente();
-        
-        try {
-            DTOAlgoritmos dtoAlgoritmosRespuesta = c.conecteServidor(dtoAlgoritmos);
-            for (int i = 0; i < dtoAlgoritmosRespuesta.getListaSalidas().size(); i++) {
-                salida += dtoAlgoritmosRespuesta.getListaSalidas().get(i)+"\n";
-            }
-        } catch (Exception e) {
-            System.out.println("Error al recibir respuesta del servidor");
-        }*/
     }
     
     public void listaAlfabetos(){
