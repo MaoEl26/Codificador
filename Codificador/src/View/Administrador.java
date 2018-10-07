@@ -13,16 +13,16 @@ import Model.*;
 import Servidor.Servidor;
 import java.util.ArrayList;
 import java.io.*;
-//import java.lang.reflect.Constructor;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
+import java.lang.reflect.Constructor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Administrador extends javax.swing.JFrame {
 
     /**
      * Creates new form Administrador
      */
-    private ArrayList<Class> clases;
+    private Algoritmo newAlgoritmo;
     private final File folder = new File("../Codificador/src/Model");
     
     private void llenadoAlgoritmos(){
@@ -301,22 +301,21 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_disableServerBtnMouseClicked
 
     private void algoritmosComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_algoritmosComboActionPerformed
-        String nombre = "alg"+algoritmosCombo.getSelectedItem();
-        Algoritmo newAlgoritmo; 
+        String nombre = "Model.alg"+algoritmosCombo.getSelectedItem(); 
         Class newClass;
-        /*try {
+        try {
             newClass = Class.forName(nombre);
-            Constructor creador = newClass.getConstructor(new Class(newClass) {Algoritmo.class});
-            newAlgoritmo = creador;
-        estadoAlgoritmoCheck.setSelected(newAlgoritmo.getEstado());
+            Constructor creador = newClass.getConstructor(new Class[] {});
+            newAlgoritmo = (Algoritmo)creador.newInstance();
+            estadoAlgoritmoCheck.setSelected(newAlgoritmo.getEstado());
         } catch (Exception ex) {
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
         
     }//GEN-LAST:event_algoritmosComboActionPerformed
 
     private void estadoAlgoritmoCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoAlgoritmoCheckActionPerformed
-        // TODO add your handling code here:
+        newAlgoritmo.setEstado(estadoAlgoritmoCheck.isSelected());
     }//GEN-LAST:event_estadoAlgoritmoCheckActionPerformed
 
     /**

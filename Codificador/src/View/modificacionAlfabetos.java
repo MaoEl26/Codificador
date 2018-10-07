@@ -216,7 +216,7 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
     }//GEN-LAST:event_indexComboActionPerformed
 
     private void modificarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBtnActionPerformed
-        int indentificador = (int)indexCombo.getSelectedIndex();
+        int indentificador = (int)indexCombo.getSelectedIndex()+1;
         String nombre = nombreText.getText();
         boolean estado;
         ArrayList<String> listaSimbolos = new ArrayList<>();
@@ -233,10 +233,11 @@ public class modificacionAlfabetos extends javax.swing.JFrame {
         }
         System.out.println(listaSimbolos);
         daoAlfabetos.modificarAlfabeto(indentificador, nombre, estado, listaSimbolos);
+        System.out.println(daoAlfabetos.getListaAlfabetos().get(0).getList());
     }//GEN-LAST:event_modificarBtnActionPerformed
 
     private void eliminarBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtn1ActionPerformed
-        int indentificador = (int)indexCombo.getSelectedIndex();
+        int indentificador = (int)indexCombo.getSelectedIndex()+1;
         daoAlfabetos.eliminarAlfabeto(indentificador);
     }//GEN-LAST:event_eliminarBtn1ActionPerformed
 
