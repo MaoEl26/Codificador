@@ -1,6 +1,8 @@
 
 package Model;
 
+import java.util.ArrayList;
+
 /**
 Frase con consecutivos y duplciados permitidos
  */

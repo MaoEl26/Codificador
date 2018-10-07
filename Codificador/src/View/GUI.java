@@ -27,10 +27,11 @@ public final class GUI extends javax.swing.JFrame {
     ArrayList<String> listaAlgoritmos = new ArrayList<>();
     
     int alfabeto;
+    int tipoFrase;
+    int longFrase;
     boolean modoCodificacion = true;
     String frase = "";
     String tipoSalida = "",salida="";
-    ArrayList<String> listaAlgoritmos = new ArrayList<>();
     ArrayList<String> listaSalidas = new ArrayList<>();
     DTOAlgoritmos dtoAlgoritmos;
     DTOFrase dtoFrase;
@@ -39,6 +40,8 @@ public final class GUI extends javax.swing.JFrame {
     //limpia todas las variables a cero
     private void limpiarVariables(){
         alfabeto = 0;
+        tipoFrase = 0;
+        longFrase = 0;
         modoCodificacion = true;
         frase = entText.getText();
         tipoSalida = "";
@@ -47,6 +50,7 @@ public final class GUI extends javax.swing.JFrame {
         listaSalidas = new ArrayList<>();
         dtoAlgoritmos = null;
         dtoFrase = null;
+        longFraseText.setEnabled(false);
     }
     
     //setea todos los valores de la interfaz a las variables
@@ -81,8 +85,12 @@ public final class GUI extends javax.swing.JFrame {
          * ----------------------------------------------------------------
          * ----------------------------------------------------------------
          */
-        
-        dtoFrase = new DTOFrase("",0,0);
+        if(longFraseText.isEnabled()){
+            longFrase = Integer.parseInt(longFraseText.getText());
+        }else{
+            longFrase = 0;
+        }
+        dtoFrase = new DTOFrase(frase,longFrase,tipoFrase);
     }
     
     private void ejecutar(){
@@ -250,14 +258,29 @@ public final class GUI extends javax.swing.JFrame {
         grupoImpresion.add(fraseRadioB);
         fraseRadioB.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
         fraseRadioB.setText("Frase original");
+        fraseRadioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fraseRadioBActionPerformed(evt);
+            }
+        });
 
         grupoImpresion.add(met1RadioB);
         met1RadioB.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
-        met1RadioB.setText("Metodo 1");
+        met1RadioB.setText("Sin Consecutivos y Duplicados");
+        met1RadioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                met1RadioBActionPerformed(evt);
+            }
+        });
 
         grupoImpresion.add(met2RadioB);
         met2RadioB.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
-        met2RadioB.setText("Metodo 2");
+        met2RadioB.setText("Sin Consecutivos");
+        met2RadioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                met2RadioBActionPerformed(evt);
+            }
+        });
 
         alfabetoLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         alfabetoLabel.setForeground(new java.awt.Color(153, 153, 0));
@@ -280,7 +303,12 @@ public final class GUI extends javax.swing.JFrame {
 
         grupoImpresion.add(met3RadioB);
         met3RadioB.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
-        met3RadioB.setText("Metodo 3");
+        met3RadioB.setText("Con consecutivos y Duplicados");
+        met3RadioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                met3RadioBActionPerformed(evt);
+            }
+        });
 
         longFraseText.setFont(new java.awt.Font("Trajan Pro", 2, 12)); // NOI18N
 
@@ -292,6 +320,12 @@ public final class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(cancelButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(acceptButton)
+                .addGap(76, 76, 76))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -320,35 +354,29 @@ public final class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(formatoLabel)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(fraseRadioB)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(met1RadioB)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(met2RadioB)))
-                                    .addGap(10, 10, 10)
-                                    .addComponent(met3RadioB))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(modoLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(codiRadioB)
-                                    .addGap(14, 14, 14)
-                                    .addComponent(decoRadioB)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(guardarAlgoritmos)))))
-                .addContainerGap(30, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(cancelButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(acceptButton)
-                .addGap(76, 76, 76))
+                                .addComponent(guardarAlgoritmos))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(formatoLabel)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(modoLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(codiRadioB)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(decoRadioB))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(fraseRadioB)
+                                            .addComponent(met2RadioB))
+                                        .addGap(30, 30, 30)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(met3RadioB)
+                                            .addComponent(met1RadioB))))
+                                .addGap(0, 0, 0)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,28 +403,27 @@ public final class GUI extends javax.swing.JFrame {
                     .addComponent(alfabetoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(formatoLabel1)
                     .addComponent(longFraseText, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(formatoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(met1RadioB)
+                    .addComponent(fraseRadioB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(met2RadioB)
+                    .addComponent(met3RadioB))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(formatoLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(met1RadioB)
-                            .addComponent(met2RadioB)
-                            .addComponent(fraseRadioB)
-                            .addComponent(met3RadioB))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(modoLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(decoRadioB)
-                                .addComponent(codiRadioB)))
-                        .addContainerGap(63, Short.MAX_VALUE))
+                    .addComponent(modoLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(decoRadioB)
+                        .addComponent(codiRadioB)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(acceptButton)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(acceptButton)
-                            .addComponent(cancelButton))
+                        .addComponent(cancelButton)
                         .addContainerGap())))
         );
 
@@ -419,6 +446,26 @@ public final class GUI extends javax.swing.JFrame {
     private void guardarAlgoritmosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAlgoritmosActionPerformed
         listaAlgoritmos = (ArrayList)fieldAlgoritmos.getSelectedValuesList();
     }//GEN-LAST:event_guardarAlgoritmosActionPerformed
+
+    private void met1RadioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_met1RadioBActionPerformed
+        tipoFrase = 1;
+        longFraseText.setEnabled(true);
+    }//GEN-LAST:event_met1RadioBActionPerformed
+
+    private void met2RadioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_met2RadioBActionPerformed
+        tipoFrase = 2;
+        longFraseText.setEnabled(true);
+    }//GEN-LAST:event_met2RadioBActionPerformed
+
+    private void met3RadioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_met3RadioBActionPerformed
+        tipoFrase = 3;
+        longFraseText.setEnabled(true);
+    }//GEN-LAST:event_met3RadioBActionPerformed
+
+    private void fraseRadioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fraseRadioBActionPerformed
+        tipoFrase = 4;
+        longFraseText.setEnabled(false);
+    }//GEN-LAST:event_fraseRadioBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TituloLabel;
