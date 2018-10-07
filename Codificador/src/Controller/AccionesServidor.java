@@ -16,5 +16,5 @@ package Controller;
  *            luego de participar en una competencia.
 */
 public enum AccionesServidor {
-    REGISTRAR_USUARIO, DESACTIVAR_USUARIO, REVISAR_USUARIO, ENVIAR_ARCHIVO
+    PROCESAR_PETICION_CODIFICAR, OBTENER_ALGORITMOS, OBTENER_ALFABETOS
 }

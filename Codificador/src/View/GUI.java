@@ -7,7 +7,10 @@ package View;
 import Model.*;
 import Controller.DTOAlgoritmos;
 import Controller.DaoAlfabetos;
+import Controller.DTOFrase;
+import Controller.OBJComunicacion;
 import Cliente.Cliente;
+import Controller.AccionesServidor;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -27,13 +30,89 @@ public final class GUI extends javax.swing.JFrame {
     algTrasposicion tras = new algTrasposicion();
     algVigenere vige = new algVigenere();
     
+    int alfabeto;
+    boolean modoCodificacion = true;
+    String frase = "";
+    String tipoSalida = "",salida="";
+    ArrayList<String> listaAlgoritmos = new ArrayList<>();
+    ArrayList<String> listaSalidas = new ArrayList<>();
+    DTOAlgoritmos dtoAlgoritmos;
+    DTOFrase dtoFrase;
+    
+    
+    //limpia todas las variables a cero
+    private void limpiarVariables(){
+        alfabeto = 0;
+        modoCodificacion = true;
+        frase = entText.getText();
+        tipoSalida = "";
+        salida = "";
+        listaAlgoritmos = new ArrayList<>();
+        listaSalidas = new ArrayList<>();
+        dtoAlgoritmos = null;
+        dtoFrase = null;
+    }
+    
+    //setea todos los valores de la interfaz a las variables
+    private void setearVariables(){
+        if(telfCheckBox.isSelected()){
+            listaAlgoritmos.add("CodigoTelefonico");
+        }
+        if(vigeCheckBox.isSelected()){
+            listaAlgoritmos.add("Vigenere");
+        }
+        if(trasCheckBox.isSelected()){
+            listaAlgoritmos.add("Trasposicion");
+            //claveCheckBox.setVisible(false);
+        }
+        if(binCheckBox.isSelected()){
+            listaAlgoritmos.add("CodificacionBin");
+        }
+        if(claveCheckBox.isSelected()){
+            listaAlgoritmos.add("PalabraClave");
+        }
+        if(codiRadioB.isSelected()){
+            modoCodificacion = true;
+        }
+        if(decoRadioB.isSelected()){
+            modoCodificacion = false;
+        }
+        if(txtRadioB.isSelected()){
+            tipoSalida = txtRadioB.getText().toLowerCase();
+        }
+        if(pdfRadioB.isSelected()){
+            tipoSalida = pdfRadioB.getText().toLowerCase();
+        }
+        if(xmlRadioB.isSelected()){
+            tipoSalida = xmlRadioB.getText().toLowerCase();
+        }
+        alfabeto = alfabetoCombo.getSelectedIndex()+1;
+        
+        dtoAlgoritmos = new DTOAlgoritmos(alfabeto, frase, 
+                listaAlgoritmos, listaSalidas, modoCodificacion, tipoSalida);
+        
+        
+        /**
+         * Hay que crear la interfaz para recibir una frase y crear el objeto DTOFrase que Andre ocupa
+         * De momento yo mando un new DTOFrase solo para que funciona la comunicacion, luego se reemplaza.
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         */
+        
+        dtoFrase = new DTOFrase("",0,0);
+    }
+    
     private void ejecutar(){
-        int alfabeto;
+        /*int alfabeto;
         boolean modoCodificacion = true;
         String frase = entText.getText();
         String tipoSalida = "",salida="";
         ArrayList<String> listaAlgoritmos = new ArrayList<>();
         ArrayList<String> listaSalidas = new ArrayList<>();
+        
         
         if(telfCheckBox.isSelected()){
             listaAlgoritmos.add("CodigoTelefonico");
@@ -70,19 +149,38 @@ public final class GUI extends javax.swing.JFrame {
         
         DTOAlgoritmos dtoAlgoritmos = new DTOAlgoritmos(alfabeto, frase, 
                 listaAlgoritmos, listaSalidas, modoCodificacion, tipoSalida);
+        */
         //Controlador controlador = new Controlador();
         //controlador.procesarPeticion(dtoAlgoritmos);
+        
+        /**
+         * Hay que crear la interfaz para recibir una frase y crear el objeto DTOFrase que Andre ocupa
+         * De momento yo mando un new DTOFrase solo para que funciona la comunicacion, luego se reemplaza.
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         * ----------------------------------------------------------------
+         */
+        
+        /*DTOFrase dtoFrase = new DTOFrase("",0,0);*/
+        
+        //llamar estos 2 metodos para iniciar las variables
+        limpiarVariables();
+        setearVariables();
+        
+        OBJComunicacion objeto = new OBJComunicacion(dtoAlgoritmos, dtoFrase, AccionesServidor.PROCESAR_PETICION_CODIFICAR);
         
         Cliente c = new Cliente();
         
         try {
-            dtoAlgoritmos = c.conecteServidor(dtoAlgoritmos);
+            System.out.println("voy1");
+            objeto = c.conecteServidor(objeto);
+            dtoAlgoritmos = objeto.getDtoAlgoritmo();
         } catch (Exception e) {
             System.out.println("Error al recibir respuesta del servidor");
         }
 
-        
-        
         
         for (int i = 0; i < dtoAlgoritmos.getListaSalidas().size(); i++) {
             salida += dtoAlgoritmos.getListaSalidas().get(i)+"\n";

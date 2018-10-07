@@ -84,7 +84,7 @@ public class main {
         }
         //newConsola();
         newAdmin();
-        //newGui();
+        newGui();
     }
 private static void newConsola(){
     Consola consola1 = new Consola();

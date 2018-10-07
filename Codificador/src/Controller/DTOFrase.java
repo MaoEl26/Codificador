@@ -1,6 +1,8 @@
 package Controller;
 
-public class DTOFrase {
+import java.io.Serializable;
+
+public class DTOFrase implements Serializable{
     
     private String frase;
     private int longitudFrase;
