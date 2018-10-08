@@ -25,6 +25,10 @@ public class OBJComunicacion implements Serializable{
         this.Accion = Accion;
     }
 
+    public OBJComunicacion(AccionesServidor Accion) {
+        this.Accion = Accion;
+    }
+    
     public DTOAlgoritmos getDtoAlgoritmo() {
         return dtoAlgoritmo;
     }
