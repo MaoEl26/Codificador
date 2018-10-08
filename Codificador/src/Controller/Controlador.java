@@ -115,7 +115,7 @@ public class Controlador {
         /*Proceso de Codificacion/Decodificacion*/
         ArrayList<String> listaAlgoritmosSolicitados = dtoAlgoritmos.getListaAlgoritmosSolicitados();
         boolean modoCodificacion = dtoAlgoritmos.isModoCodificacion();
-        
+        //algoritmos.get(0).getClass().getSimpleName() para obtener las instancias
         for (int i=0; i<listaAlgoritmosSolicitados.size(); i++){
             
             switch (listaAlgoritmosSolicitados.get(i)){

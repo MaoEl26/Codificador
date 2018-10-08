@@ -42,6 +42,10 @@ public class Administrador extends javax.swing.JFrame {
         return algoritmos;
     }
     
+    public ArrayList<String> getTipoSalidas(){
+        return salidas;
+    }
+    
     public Administrador() {
         initComponents();
         llenadoAlgoritmos();
@@ -62,7 +66,7 @@ public class Administrador extends javax.swing.JFrame {
         serverEnableBtn = new javax.swing.JButton();
         disableServerBtn = new javax.swing.JButton();
         estadoAlgoritmoCheck = new javax.swing.JCheckBox();
-        GuardarBtn = new javax.swing.JButton();
+        algoritmoNuevoBtn = new javax.swing.JButton();
         alfaLabel = new javax.swing.JLabel();
         algServer = new javax.swing.JLabel();
         serverLog = new javax.swing.JLabel();
@@ -133,13 +137,13 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        GuardarBtn.setBackground(new java.awt.Color(51, 204, 255));
-        GuardarBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
-        GuardarBtn.setForeground(new java.awt.Color(153, 153, 0));
-        GuardarBtn.setText("Guardar Habitilidatos");
-        GuardarBtn.addActionListener(new java.awt.event.ActionListener() {
+        algoritmoNuevoBtn.setBackground(new java.awt.Color(51, 204, 255));
+        algoritmoNuevoBtn.setFont(new java.awt.Font("Trajan Pro", 2, 18)); // NOI18N
+        algoritmoNuevoBtn.setForeground(new java.awt.Color(153, 153, 0));
+        algoritmoNuevoBtn.setText("Cargar Nuevo Algoritmo");
+        algoritmoNuevoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarBtnActionPerformed(evt);
+                algoritmoNuevoBtnActionPerformed(evt);
             }
         });
 
@@ -224,19 +228,6 @@ public class Administrador extends javax.swing.JFrame {
                     .addComponent(serverLog))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(algoritmosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(estadoAlgoritmoCheck)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(serverEnableBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(disableServerBtn)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(67, 67, 67)
@@ -249,20 +240,32 @@ public class Administrador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(algServer1)
+                .addGap(18, 18, 18)
+                .addComponent(txtRadioB)
+                .addGap(26, 26, 26)
+                .addComponent(pdfRadioB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(xmlRadioB)
+                .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(GuardarBtn)
-                        .addGap(65, 65, 65))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(algServer1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtRadioB)
-                        .addGap(26, 26, 26)
-                        .addComponent(pdfRadioB)
+                        .addComponent(serverEnableBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(xmlRadioB)
-                        .addGap(28, 28, 28))))
+                        .addComponent(disableServerBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(algoritmosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(estadoAlgoritmoCheck))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(algoritmoNuevoBtn)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,8 +285,8 @@ public class Administrador extends javax.swing.JFrame {
                     .addComponent(algoritmosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(estadoAlgoritmoCheck))
                 .addGap(18, 18, 18)
-                .addComponent(GuardarBtn)
-                .addGap(58, 58, 58)
+                .addComponent(algoritmoNuevoBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRadioB)
                     .addComponent(pdfRadioB)
@@ -299,7 +302,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(logLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(abrirLogsBtn)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -317,9 +320,9 @@ public class Administrador extends javax.swing.JFrame {
         Servidor.getInstance().cambiarEstadoServer();
     }//GEN-LAST:event_disableServerBtnActionPerformed
 
-    private void GuardarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarBtnActionPerformed
-        System.out.println(salidas);
-    }//GEN-LAST:event_GuardarBtnActionPerformed
+    private void algoritmoNuevoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_algoritmoNuevoBtnActionPerformed
+
+    }//GEN-LAST:event_algoritmoNuevoBtnActionPerformed
 
     private void abrirLogsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirLogsBtnActionPerformed
         Runtime r = Runtime.getRuntime();
@@ -406,12 +409,12 @@ public class Administrador extends javax.swing.JFrame {
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton GuardarBtn;
     private javax.swing.JButton abrirLogsBtn;
     private javax.swing.JButton addBtn;
     private javax.swing.JLabel alfaLabel;
     private javax.swing.JLabel algServer;
     private javax.swing.JLabel algServer1;
+    private javax.swing.JButton algoritmoNuevoBtn;
     private javax.swing.JComboBox<String> algoritmosCombo;
     private javax.swing.JButton disableServerBtn;
     private javax.swing.JButton editAlfaBtn;

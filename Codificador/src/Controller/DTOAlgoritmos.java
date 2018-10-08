@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Algoritmo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -8,13 +9,15 @@ public class DTOAlgoritmos implements Serializable{
     
     private int alfabetoActual;
     private String fraseActual;
-    private ArrayList<String> listaAlgoritmosSolicitados;
+    private ArrayList<Algoritmo> listaAlgoritmosSolicitados; 
     private ArrayList<String> listaSalidas;
     private boolean modoCodificacion;
-    private String tipoSalida;
+    private ArrayList<String> tipoSalida;
  
     /*Constructor del DTO con todos sus valores*/
-    public DTOAlgoritmos(int alfabetoActual, String fraseActual, ArrayList<String> listaAlgoritmosSolicitados, ArrayList<String> listaSalidas, boolean modoCodificacion, String tipoSalida) {
+    public DTOAlgoritmos(int alfabetoActual, String fraseActual, 
+            ArrayList<Algoritmo> listaAlgoritmosSolicitados, ArrayList<String> listaSalidas, 
+            boolean modoCodificacion, ArrayList<String> tipoSalida) {
         this.alfabetoActual = alfabetoActual;
         this.fraseActual = fraseActual;
         this.listaAlgoritmosSolicitados = listaAlgoritmosSolicitados;

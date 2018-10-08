@@ -62,15 +62,7 @@ public final class GUI extends javax.swing.JFrame {
             modoCodificacion = false;
         }
         tipoSalida = "txt"; //Temporal
-        /*if(fraseRadioB.isSelected()){
-            tipoSalida = fraseRadioB.getText().toLowerCase();
-        }
-        if(met1RadioB.isSelected()){
-            tipoSalida = met1RadioB.getText().toLowerCase();
-        }
-        if(met2RadioB.isSelected()){
-            tipoSalida = met2RadioB.getText().toLowerCase();
-        }
+        /*
         Agregar metodo para usar las salidas enviadas por el administrador
         */
         alfabeto = alfabetoCombo.getSelectedIndex()+1;
@@ -274,6 +266,11 @@ public final class GUI extends javax.swing.JFrame {
         alfabetoLabel.setText("Alfabeto:");
 
         alfabetoCombo.setBackground(new java.awt.Color(51, 204, 255));
+        alfabetoCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alfabetoComboActionPerformed(evt);
+            }
+        });
 
         fieldAlgoritmos.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
         jScrollPane2.setViewportView(fieldAlgoritmos);
@@ -345,24 +342,22 @@ public final class GUI extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(guardarAlgoritmos))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(formatoLabel)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(modoLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(codiRadioB)
-                                        .addGap(14, 14, 14)
-                                        .addComponent(decoRadioB))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(fraseRadioB)
-                                            .addComponent(met2RadioB))
-                                        .addGap(30, 30, 30)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(met3RadioB)
-                                            .addComponent(met1RadioB))))
-                                .addGap(0, 0, 0)))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(formatoLabel)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(modoLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(codiRadioB)
+                                    .addGap(14, 14, 14)
+                                    .addComponent(decoRadioB))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(fraseRadioB)
+                                        .addComponent(met2RadioB))
+                                    .addGap(30, 30, 30)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(met3RadioB)
+                                        .addComponent(met1RadioB)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -397,9 +392,9 @@ public final class GUI extends javax.swing.JFrame {
                     .addComponent(met1RadioB)
                     .addComponent(fraseRadioB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(met2RadioB)
-                    .addComponent(met3RadioB))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(met2RadioB, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(met3RadioB, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(modoLabel, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -453,6 +448,10 @@ public final class GUI extends javax.swing.JFrame {
         tipoFrase = 4;
         longFraseText.setEnabled(false);
     }//GEN-LAST:event_fraseRadioBActionPerformed
+
+    private void alfabetoComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alfabetoComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alfabetoComboActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TituloLabel;
