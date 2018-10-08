@@ -10,8 +10,10 @@ import Controller.Controlador;
 import Controller.DTOAlgoritmos;
 import Controller.DTOFrase;
 import Controller.OBJComunicacion;
+import Model.Algoritmo;
 import java.net.*;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -111,22 +113,27 @@ public class Servidor implements Runnable{
             if (objeto.getAccion() == AccionesServidor.PROCESAR_PETICION_CODIFICAR){
                 System.out.println("Procesando peticion PROCESAR PETICION CODIFICAR");
                 controlador.procesarPeticion(dtoAlgoritmos, dtoFrase);
+                // vuelvo asignar al objeto el resultado de dtoAlgoritmo que dio el controlador
+                //para que ese resultado se pueda devolver en writeObject.
+                objeto.setDtoAlgoritmo(dtoAlgoritmos);
             }
             
             if (objeto.getAccion() == AccionesServidor.OBTENER_ALGORITMOS){
                 System.out.println("Procesando peticion OBTENER ALGORITMOS");
-                objeto.setDatoSalida(controlador.obtenerAlgoritmos(dtoAlgoritmos, dtoFrase));
+                objeto.setDatoSalida(controlador.obtenerAlgoritmos());
+                System.out.println("bien");
+                ArrayList<Algoritmo> array = (ArrayList<Algoritmo>)objeto.getDatoSalida();
+                for(Algoritmo ar : array){
+                    System.out.println(ar.getClass().getName());
+                }
             }
             
-            if (objeto.getAccion() == AccionesServidor.OBTENER_ALFABETOS){
-                System.out.println("Procesando peticion OBTENER ALFABETOS");
-                objeto.setDatoSalida(controlador.obtenerAlfabetos(dtoAlgoritmos, dtoFrase));
+            if (objeto.getAccion() == AccionesServidor.OBTENER_TIPO_SALIDA){
+                System.out.println("Procesando peticion OBTENER TIPO SALIDA");
+                objeto.setDatoSalida(controlador.obtenerTipoSalida());
             }
             
             
-            // vuelvo asignar al objeto el resultado de dtoAlgoritmo que dio el controlador
-            //para que ese resultado se pueda devolver en writeObject.
-            objeto.setDtoAlgoritmo(dtoAlgoritmos);
             
             flujoSalida.writeObject(objeto);
             

@@ -1,5 +1,6 @@
 package Controller;
 
+import View.Administrador;
 import Model.Alfabeto;
 import Model.Algoritmo;
 import Model.algCodificaciónBinaria;
@@ -20,6 +21,7 @@ public class Controlador {
     
     private Alfabeto alfabetoActual; //Variable que almacenara el alfabeto actual con el que se esta trabajando
     private ArrayList<Alfabeto> listaAlfabetos; //Lista de los alfabetos que hay en memoria
+    private Administrador admin;
 
     public Controlador() {
     }
@@ -65,26 +67,19 @@ public class Controlador {
         }
     }
     
-    public ArrayList obtenerAlgoritmos(DTOAlgoritmos dtoAlgoritmos, DTOFrase dtoFrase){
-        /**
-         * AGREGAR CÓDIGO PARA OBTENER ALGORITMOS
-         * ----------------------------------------------------------------
-         * ----------------------------------------------------------------
-         * ----------------------------------------------------------------
-         * ----------------------------------------------------------------
-         */
-        return new ArrayList();
+    public ArrayList obtenerAlgoritmos(){
+        admin = new Administrador();
+        ArrayList<Algoritmo> array = admin.getAlgoritmos();
+//        for(Algoritmo ar : array){
+//            System.out.println(ar.getClass().getName());
+//        }
+        return array;
     }
     
-    public ArrayList obtenerAlfabetos(DTOAlgoritmos dtoAlgoritmos, DTOFrase dtoFrase){
-        /**
-         * AGREGAR CÓDIGO PARA OBTENER ALFABETOS
-         * ----------------------------------------------------------------
-         * ----------------------------------------------------------------
-         * ----------------------------------------------------------------
-         * ----------------------------------------------------------------
-         */
-        return new ArrayList();
+    public ArrayList obtenerTipoSalida(){
+        admin = new Administrador();
+        ArrayList<String> array = admin.getTipoSalidas();
+        return array;
     }
     
             
@@ -101,7 +96,7 @@ public class Controlador {
         }
         
         /*Proceso de obtencion de la frase*/
-        String frase;
+        /*String frase;
         switch (dtoFrase.getTipoFrase()){    
             case 4:
                 dtoAlgoritmos.setFraseActual(dtoFrase.getFrase());
@@ -110,7 +105,7 @@ public class Controlador {
                 FraseFactoryMethod fabrica = (FraseFactoryMethod) new FraseFactory();
                 Frase fraseTemp = fabrica.createFrase(dtoFrase.getTipoFrase(), alfabetoActual, dtoFrase.getLongitudFrase());
                 frase = fraseTemp.generarFrase();        
-        }
+        }*/
         /*Proceso de Codificacion/Decodificacion*/
         ArrayList<Algoritmo> listaAlgoritmosSolicitados = dtoAlgoritmos.getListaAlgoritmosSolicitados();
         boolean modoCodificacion = dtoAlgoritmos.isModoCodificacion();

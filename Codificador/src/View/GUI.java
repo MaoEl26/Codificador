@@ -11,6 +11,7 @@ import Controller.DTOFrase;
 import Controller.OBJComunicacion;
 import Cliente.Cliente;
 import Controller.AccionesServidor;
+import Controller.Controlador;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -47,8 +48,8 @@ public final class GUI extends javax.swing.JFrame {
         frase = entText.getText();
         tipoSalida = new ArrayList <>();
         salida = "";
-        listaAlgoritmos = new ArrayList<>();
-        listaSalidas = new ArrayList<>();
+//        listaAlgoritmos = new ArrayList<>();
+//        listaSalidas = new ArrayList<>();
         dtoAlgoritmos = null;
         dtoFrase = null;
         longFraseText.setEnabled(false);
@@ -113,6 +114,26 @@ public final class GUI extends javax.swing.JFrame {
         }
     }
     
+    private void obtenerAlgoritmosHabilitados(){
+        
+//        limpiarVariables();
+//        setearVariables();
+//        
+        OBJComunicacion objeto = new OBJComunicacion( 
+                AccionesServidor.OBTENER_ALGORITMOS);
+        
+        Cliente c = new Cliente();
+        
+        try {
+            objeto = c.conecteServidor(objeto);
+            listaAlgoritmos = (ArrayList<Algoritmo>) objeto.getDatoSalida();
+        } catch (Exception e) {
+            System.out.println("Error al recibir respuesta del servidor");
+        }
+//        for (Algoritmo ar : listaAlgoritmos) System.out.println(ar.getClass().getName());
+        
+    }
+    
     public void inicioDao(DaoAlfabetos daoAlfabetos){
         this.daoAlfabetos = daoAlfabetos;
     }
@@ -168,6 +189,7 @@ public final class GUI extends javax.swing.JFrame {
         met3RadioB = new javax.swing.JRadioButton();
         longFraseText = new javax.swing.JTextField();
         formatoLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(175, 127, 164));
@@ -296,6 +318,13 @@ public final class GUI extends javax.swing.JFrame {
         formatoLabel1.setForeground(new java.awt.Color(153, 153, 0));
         formatoLabel1.setText("Longitud Frase:");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -336,8 +365,13 @@ public final class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(guardarAlgoritmos))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(guardarAlgoritmos))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(50, 50, 50)
+                                        .addComponent(jButton1))))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(formatoLabel)
                                 .addGroup(layout.createSequentialGroup()
@@ -370,11 +404,15 @@ public final class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(algoritmoLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(guardarAlgoritmos)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(algoritmoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(guardarAlgoritmos)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alfabetoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -445,6 +483,15 @@ public final class GUI extends javax.swing.JFrame {
         longFraseText.setEnabled(false);
     }//GEN-LAST:event_fraseRadioBActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //obtenerAlgoritmosHabilitados();
+        Controlador controlador = new Controlador();
+        listaAlgoritmos = controlador.obtenerAlgoritmos();
+        tipoSalida = controlador.obtenerTipoSalida();
+        ejecutar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TituloLabel;
     private javax.swing.JButton acceptButton;
@@ -463,6 +510,7 @@ public final class GUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup grupoImpresion;
     private javax.swing.ButtonGroup grupoModo;
     private javax.swing.JButton guardarAlgoritmos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

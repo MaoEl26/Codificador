@@ -16,5 +16,5 @@ package Controller;
  *            luego de participar en una competencia.
 */
 public enum AccionesServidor {
-    PROCESAR_PETICION_CODIFICAR, OBTENER_ALGORITMOS, OBTENER_ALFABETOS
+    PROCESAR_PETICION_CODIFICAR, OBTENER_ALGORITMOS, OBTENER_TIPO_SALIDA
 }
