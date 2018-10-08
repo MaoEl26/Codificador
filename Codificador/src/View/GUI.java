@@ -90,18 +90,18 @@ public final class GUI extends javax.swing.JFrame {
         limpiarVariables();
         setearVariables();
         
-        //OBJComunicacion objeto = new OBJComunicacion(dtoAlgoritmos, dtoFrase, 
-        //        AccionesServidor.PROCESAR_PETICION_CODIFICAR);
+        OBJComunicacion objeto = new OBJComunicacion(dtoAlgoritmos, dtoFrase, 
+                AccionesServidor.PROCESAR_PETICION_CODIFICAR);
         
-        //Cliente c = new Cliente();
+        Cliente c = new Cliente();
         Controlador controlador = new Controlador();
         controlador.procesarPeticion(dtoAlgoritmos, dtoFrase);
-        /*try {
+        try {
             objeto = c.conecteServidor(objeto);
             dtoAlgoritmos = objeto.getDtoAlgoritmo();
         } catch (Exception e) {
             System.out.println("Error al recibir respuesta del servidor");
-        }*/
+        }
         
         for (int i = 0; i < dtoAlgoritmos.getListaSalidas().size(); i++) {
             salida += dtoAlgoritmos.getListaSalidas().get(i)+"\n";
