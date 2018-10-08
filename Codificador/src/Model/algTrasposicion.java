@@ -23,7 +23,7 @@ public class algTrasposicion extends Algoritmo{
                     +" ";
         }
         salidas.add(textoSalida);
-        
+        dtoAlgortimo.setListaSalidas(salidas);
     }
 
     @Override

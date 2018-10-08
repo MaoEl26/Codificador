@@ -65,6 +65,7 @@ public class algVigenere extends Algoritmo{
             
         }
         salidas.add(textoSalida);
+        dtoAlgortimo.setListaSalidas(salidas);
     }
     
     public int getindicev (Character letra , Alfabeto alfabeto, int key)
