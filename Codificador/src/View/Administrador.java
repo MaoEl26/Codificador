@@ -16,6 +16,7 @@ import java.io.*;
 import java.lang.reflect.Constructor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 
 public class Administrador extends javax.swing.JFrame {
 
@@ -25,14 +26,25 @@ public class Administrador extends javax.swing.JFrame {
     private Algoritmo newAlgoritmo;
     private final File folder = new File("../Codificador/src/Model");
     ArrayList<Algoritmo> algoritmos = new ArrayList<>();
+    ArrayList<Algoritmo> algoritmosUso = new ArrayList<>();
     ArrayList<String> salidas = new ArrayList<>();
+    
+    private void almacenaAlgoritmosActivos(){
+        boolean estado = newAlgoritmo.getEstado();
+        estadoAlgoritmoCheck.setSelected(estado);
+        if(estado){
+            algoritmos.add(newAlgoritmo);
+        }
+    }
     
     private void llenadoAlgoritmos(){
         for(File algoritmo : folder.listFiles()){
             if(algoritmo.isFile()){
                 if(algoritmo.getName().startsWith("alg")){
                     int largo = algoritmo.getName().length();
-                    algoritmosCombo.addItem(algoritmo.getName().substring(3, largo-5));
+                    String nombre = algoritmo.getName().substring(3, largo-5);
+                    algoritmosCombo.addItem(nombre);
+                    genAlgoritmos(nombre);
                 }
             }
         }
@@ -44,6 +56,25 @@ public class Administrador extends javax.swing.JFrame {
     
     public ArrayList<String> getTipoSalidas(){
         return salidas;
+    }
+    
+    public void genAlgoritmos(String in){
+        String nombre = "Model.alg"+in;
+        cargarArchivo(nombre);
+    }
+      
+    public void cargarArchivo(String nombre){
+        Class newClass;
+        try {
+            newClass = Class.forName(nombre);
+            Constructor creador = newClass.getConstructor(new Class[] {});
+            newAlgoritmo = (Algoritmo)creador.newInstance();
+            algoritmosUso.add(newAlgoritmo);
+            almacenaAlgoritmosActivos();
+            newAlgoritmo = null;
+        } catch (Exception ex) {
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public Administrador() {
@@ -322,6 +353,15 @@ public class Administrador extends javax.swing.JFrame {
 
     private void algoritmoNuevoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_algoritmoNuevoBtnActionPerformed
 
+        JFileChooser fc = new JFileChooser();
+        int returnVal = fc.showSaveDialog(this);
+        String url = "/C";
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            
+        } else {
+            System.out.println("cancel");
+        }
     }//GEN-LAST:event_algoritmoNuevoBtnActionPerformed
 
     private void abrirLogsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirLogsBtnActionPerformed
@@ -355,30 +395,20 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_disableServerBtnMouseClicked
 
     private void algoritmosComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_algoritmosComboActionPerformed
-        String nombre = "Model.alg"+algoritmosCombo.getSelectedItem(); 
-        Class newClass;
-        try {
-            newClass = Class.forName(nombre);
-            Constructor creador = newClass.getConstructor(new Class[] {});
-            newAlgoritmo = (Algoritmo)creador.newInstance();
-            boolean estado = newAlgoritmo.getEstado();
-            estadoAlgoritmoCheck.setSelected(estado);
-            if(estado){
-                algoritmos.add(newAlgoritmo);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+        if(algoritmosCombo.getItemCount()>1){
+            estadoAlgoritmoCheck.setSelected(algoritmosUso.get(algoritmosCombo.
+                getSelectedIndex()).getEstado());
         }
-        
     }//GEN-LAST:event_algoritmosComboActionPerformed
 
     private void estadoAlgoritmoCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoAlgoritmoCheckActionPerformed
+        newAlgoritmo = algoritmosUso.get(algoritmosCombo.getSelectedIndex());
         newAlgoritmo.setEstado(estadoAlgoritmoCheck.isSelected());
         if (newAlgoritmo.getEstado()){
             algoritmos.add(newAlgoritmo);
         }else{
             if(algoritmos.size()>=1){
-                algoritmos.remove(algoritmos.indexOf(newAlgoritmo));
+                algoritmos.remove(newAlgoritmo);
             }
         }
     }//GEN-LAST:event_estadoAlgoritmoCheckActionPerformed

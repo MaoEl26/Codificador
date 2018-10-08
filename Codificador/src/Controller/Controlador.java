@@ -2,17 +2,12 @@ package Controller;
 
 import Model.Alfabeto;
 import Model.Algoritmo;
-import Model.algCodificaciónBinaria;
-import Model.algVigenere;
-import Model.algTrasposicion;
-import Model.algCodigoTelefonico;
 import Model.EscritorPDF;
 import Model.EscritorTxt;
 import Model.EscritorXML;
 import Model.Frase;
 import Model.FraseFactory;
 import Model.FraseFactoryMethod;
-import Model.algPalabraClave;
 import java.util.ArrayList;
 
 
