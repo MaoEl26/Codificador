@@ -10,10 +10,8 @@ import Controller.Controlador;
 import Controller.DTOAlgoritmos;
 import Controller.DTOFrase;
 import Controller.OBJComunicacion;
-import Model.Algoritmo;
 import java.net.*;
 import java.io.*;
-import java.util.ArrayList;
 
 /**
  *
@@ -121,11 +119,11 @@ public class Servidor implements Runnable{
             if (objeto.getAccion() == AccionesServidor.OBTENER_ALGORITMOS){
                 System.out.println("Procesando peticion OBTENER ALGORITMOS");
                 objeto.setDatoSalida(controlador.obtenerAlgoritmos());
-                System.out.println("bien");
-                ArrayList<Algoritmo> array = (ArrayList<Algoritmo>)objeto.getDatoSalida();
-                for(Algoritmo ar : array){
-                    System.out.println(ar.getClass().getName());
-                }
+//                System.out.println("bien");
+//                ArrayList<Algoritmo> array = (ArrayList<Algoritmo>)objeto.getDatoSalida();
+//                for(Algoritmo ar : array){
+//                    System.out.println(ar.getClass().getName());
+//                }
             }
             
             if (objeto.getAccion() == AccionesServidor.OBTENER_TIPO_SALIDA){

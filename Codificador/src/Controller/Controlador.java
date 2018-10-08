@@ -96,7 +96,7 @@ public class Controlador {
         }
         
         /*Proceso de obtencion de la frase*/
-        /*String frase;
+        String frase;
         switch (dtoFrase.getTipoFrase()){    
             case 4:
                 dtoAlgoritmos.setFraseActual(dtoFrase.getFrase());
@@ -105,7 +105,7 @@ public class Controlador {
                 FraseFactoryMethod fabrica = (FraseFactoryMethod) new FraseFactory();
                 Frase fraseTemp = fabrica.createFrase(dtoFrase.getTipoFrase(), alfabetoActual, dtoFrase.getLongitudFrase());
                 frase = fraseTemp.generarFrase();        
-        }*/
+        }
         /*Proceso de Codificacion/Decodificacion*/
         ArrayList<Algoritmo> listaAlgoritmosSolicitados = dtoAlgoritmos.getListaAlgoritmosSolicitados();
         boolean modoCodificacion = dtoAlgoritmos.isModoCodificacion();
