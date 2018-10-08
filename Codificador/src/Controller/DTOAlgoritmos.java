@@ -44,11 +44,11 @@ public class DTOAlgoritmos implements Serializable{
         this.fraseActual = fraseActual;
     }
 
-    public ArrayList<String> getListaAlgoritmosSolicitados() {
+    public ArrayList<Algoritmo> getListaAlgoritmosSolicitados() {
         return listaAlgoritmosSolicitados;
     }
 
-    public void setListaAlgoritmosSolicitados(ArrayList<String> listaAlgoritmosSolicitados) {
+    public void setListaAlgoritmosSolicitados(ArrayList<Algoritmo> listaAlgoritmosSolicitados) {
         this.listaAlgoritmosSolicitados = listaAlgoritmosSolicitados;
     }
 
@@ -68,13 +68,11 @@ public class DTOAlgoritmos implements Serializable{
         this.modoCodificacion = modoCodificacion;
     }
     
-    public String getTipoSalida() {
+    public ArrayList<String> getTipoSalida() {
         return tipoSalida;
     }
 
-    public void setTipoSalida(String tipoSalida) {
+    public void setTipoSalida(ArrayList<String> tipoSalida) {
         this.tipoSalida = tipoSalida;
     }
-    
-
 }

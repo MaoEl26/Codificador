@@ -43,26 +43,26 @@ public class Controlador {
     /*Funcion que escribe en el formato determinado*/
     private void escribir(DTOAlgoritmos dtoAlgoritmos){
         
-        String formato = dtoAlgoritmos.getTipoSalida();
-        
+        ArrayList<String> formato = dtoAlgoritmos.getTipoSalida();
+        for (int i = 0; i < formato.size(); i++) {
+            
         /*Switch que maneja cada tipo de salida segun se especifique*/
-        switch (formato){
-            
-            case ("txt"):
-                EscritorTxt salidaTxt = new EscritorTxt();
-                salidaTxt.escribirSalida(dtoAlgoritmos);
-                break;
-            case ("pdf"):
-                EscritorPDF salidaPDF = new EscritorPDF();
-                salidaPDF.escribirSalida(dtoAlgoritmos);
-                break;
-            case ("xml"):
-                EscritorXML salidaXML = new EscritorXML();
-                salidaXML.escribirSalida(dtoAlgoritmos);
-                break;
-            
+            switch (formato.get(i)){
+                case ("txt"):
+                    EscritorTxt salidaTxt = new EscritorTxt();
+                    salidaTxt.escribirSalida(dtoAlgoritmos);
+                    break;
+                case ("pdf"):
+                    EscritorPDF salidaPDF = new EscritorPDF();
+                    salidaPDF.escribirSalida(dtoAlgoritmos);
+                    break;
+                case ("xml"):
+                    EscritorXML salidaXML = new EscritorXML();
+                    salidaXML.escribirSalida(dtoAlgoritmos);
+                    break;
+
+            }
         }
-        
     }
     
     public ArrayList obtenerAlgoritmos(DTOAlgoritmos dtoAlgoritmos, DTOFrase dtoFrase){
@@ -113,12 +113,12 @@ public class Controlador {
         }*/
 
         /*Proceso de Codificacion/Decodificacion*/
-        ArrayList<String> listaAlgoritmosSolicitados = dtoAlgoritmos.getListaAlgoritmosSolicitados();
+        ArrayList<Algoritmo> listaAlgoritmosSolicitados = dtoAlgoritmos.getListaAlgoritmosSolicitados();
         boolean modoCodificacion = dtoAlgoritmos.isModoCodificacion();
         //algoritmos.get(0).getClass().getSimpleName() para obtener las instancias
         for (int i=0; i<listaAlgoritmosSolicitados.size(); i++){
             
-            switch (listaAlgoritmosSolicitados.get(i)){
+            /*switch (listaAlgoritmosSolicitados.get(i)){
                 
                 case "Vigenere":
                     Algoritmo peticionV = new algVigenere();
@@ -163,7 +163,7 @@ public class Controlador {
                         peticionB.decodificar(dtoAlgoritmos, alfabetoActual);
                     }
                     break;
-            }
+            }*/
         }
         
         
