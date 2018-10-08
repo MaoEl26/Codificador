@@ -136,8 +136,23 @@ public final class GUI extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error al recibir respuesta del servidor");
         }
-        //for (Algoritmo ar : listaAlgoritmos) System.out.println(ar.getClass().getName());
+        for (Algoritmo ar : listaAlgoritmos) System.out.println(ar.getClass().getName());
         
+    }
+    
+    private void obtenerTipoSalida(){
+        OBJComunicacion objeto = new OBJComunicacion( 
+                AccionesServidor.OBTENER_TIPO_SALIDA);
+        
+        Cliente c = new Cliente();
+        
+        try {
+            objeto = c.conecteServidor(objeto);
+            tipoSalida = (ArrayList<String>) objeto.getDatoSalida();
+        } catch (Exception e) {
+            System.out.println("Error al recibir respuesta del servidor");
+        }
+        for (String ar : tipoSalida) System.out.println(ar);
     }
     
     public void inicioDao(DaoAlfabetos daoAlfabetos){
@@ -492,10 +507,11 @@ public final class GUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //obtenerAlgoritmosHabilitados();
+        obtenerTipoSalida();
         //Controlador controlador = new Controlador();
         //listaAlgoritmos = controlador.obtenerAlgoritmos();
         //tipoSalida = controlador.obtenerTipoSalida();
-        ejecutar();
+        //ejecutar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

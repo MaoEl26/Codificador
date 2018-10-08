@@ -65,9 +65,9 @@ public class Controlador {
     public ArrayList obtenerAlgoritmos(){
         admin = new Administrador();
         ArrayList<Algoritmo> array = admin.getAlgoritmos();
-        for(Algoritmo ar : array){
-            System.out.println(ar.getClass().getName());
-        }
+//        for(Algoritmo ar : array){
+//            System.out.println(ar.getClass().getName());
+//        }
         return array;
     }
     
