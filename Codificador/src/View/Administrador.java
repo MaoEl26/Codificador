@@ -29,9 +29,9 @@ public class Administrador extends javax.swing.JFrame {
      */
     private Algoritmo newAlgoritmo;
     private final File folder = new File("../Codificador/src/Model");
-    ArrayList<Algoritmo> algoritmos = new ArrayList<>();
-    ArrayList<Algoritmo> algoritmosUso = new ArrayList<>();
-    ArrayList<String> salidas = new ArrayList<>();
+    public ArrayList<Algoritmo> algoritmos = new ArrayList<>();
+    private ArrayList<Algoritmo> algoritmosUso = new ArrayList<>();
+    public static ArrayList<String> salidas = new ArrayList<>();
     
     private void almacenaAlgoritmosActivos(){
         boolean estado = newAlgoritmo.getEstado();

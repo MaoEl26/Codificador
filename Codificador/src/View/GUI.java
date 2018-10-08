@@ -14,6 +14,7 @@ import Controller.AccionesServidor;
 import Controller.Controlador;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import static View.Administrador.*;
 
 /**
  *
@@ -26,6 +27,7 @@ public final class GUI extends javax.swing.JFrame {
      */
     DaoAlfabetos daoAlfabetos;
     ArrayList<Algoritmo> listaAlgoritmos = new ArrayList<>();
+    Administrador admin = new Administrador();
     
     int alfabeto;
     int tipoFrase;
@@ -67,12 +69,15 @@ public final class GUI extends javax.swing.JFrame {
         Agregar metodo para usar las salidas enviadas por el administrador
         */
         alfabeto = alfabetoCombo.getSelectedIndex()+1;
+        listaAlgoritmos = admin.getAlgoritmos();
+        tipoSalida = admin.getTipoSalidas();
         
         dtoAlgoritmos = new DTOAlgoritmos(alfabeto, frase, 
                 listaAlgoritmos, listaSalidas, modoCodificacion, tipoSalida);
 
         if(longFraseText.isEnabled()){
-            longFrase = Integer.parseInt(longFraseText.getText());
+            //longFrase = Integer.parseInt(longFraseText.getText());
+            longFrase = 0;
         }else{
             longFrase = 0;
         }
@@ -130,7 +135,7 @@ public final class GUI extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error al recibir respuesta del servidor");
         }
-        for (Algoritmo ar : listaAlgoritmos) System.out.println(ar.getClass().getName());
+        //for (Algoritmo ar : listaAlgoritmos) System.out.println(ar.getClass().getName());
         
     }
     
@@ -485,11 +490,11 @@ public final class GUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        obtenerAlgoritmosHabilitados();
+        //obtenerAlgoritmosHabilitados();
         //Controlador controlador = new Controlador();
         //listaAlgoritmos = controlador.obtenerAlgoritmos();
         //tipoSalida = controlador.obtenerTipoSalida();
-        //ejecutar();
+        ejecutar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

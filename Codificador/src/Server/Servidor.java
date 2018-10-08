@@ -21,7 +21,7 @@ public class Servidor implements Runnable{
     
     ServerSocket servidor;
     Socket cliente;
-    int PUERTO = 9090;
+    int PUERTO = 9091;
     private static Servidor instancia;
     
     boolean estadoServidor = true;
@@ -95,9 +95,9 @@ public class Servidor implements Runnable{
     
     private void procesePeticion() {
         try {
-            
+            System.out.println("voy1");
             OBJComunicacion objeto = (OBJComunicacion) flujoEntrada.readObject();
-            
+            System.out.println("voy2");
             DTOAlgoritmos dtoAlgoritmos = objeto.getDtoAlgoritmo();
             DTOFrase dtoFrase = objeto.getDtoFrase();
             Controlador controlador = new Controlador();

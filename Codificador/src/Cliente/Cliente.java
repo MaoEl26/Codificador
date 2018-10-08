@@ -17,7 +17,7 @@ import java.io.*;
 public class Cliente {
     
     private   String HOST =  "localhost";
-    private    int PUERTO = 9090;
+    private    int PUERTO = 9091;
 
     private InputStream conexionEntrada;
     private ObjectInputStream flujoLectura;
