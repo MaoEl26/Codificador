@@ -14,8 +14,12 @@ import Servidor.Servidor;
 import java.util.ArrayList;
 import java.io.*;
 import java.lang.reflect.Constructor;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.shape.Path;
 import javax.swing.JFileChooser;
 
 public class Administrador extends javax.swing.JFrame {
@@ -355,10 +359,19 @@ public class Administrador extends javax.swing.JFrame {
 
         JFileChooser fc = new JFileChooser();
         int returnVal = fc.showSaveDialog(this);
-        String url = "/C";
+        String url = "E:/Documentos/TEC/Diseño/Actividades/Act04/Codificador/Codificador/src/Model/";
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
-            
+            try {
+                Files.move(Paths.get(file.getAbsolutePath()), Paths.get(url+file.getName()), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException ex) {
+                Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int largo = file.getName().length();
+            String nombre = file.getName().substring(3, largo-5);
+            System.out.println(nombre);
+            cargarArchivo("Model.alg"+nombre);
+            algoritmosCombo.addItem(nombre);
         } else {
             System.out.println("cancel");
         }

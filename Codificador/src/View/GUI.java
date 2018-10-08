@@ -130,7 +130,7 @@ public final class GUI extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error al recibir respuesta del servidor");
         }
-//        for (Algoritmo ar : listaAlgoritmos) System.out.println(ar.getClass().getName());
+        for (Algoritmo ar : listaAlgoritmos) System.out.println(ar.getClass().getName());
         
     }
     
@@ -485,11 +485,11 @@ public final class GUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-//        obtenerAlgoritmosHabilitados();
-        Controlador controlador = new Controlador();
-        listaAlgoritmos = controlador.obtenerAlgoritmos();
-        tipoSalida = controlador.obtenerTipoSalida();
-        ejecutar();
+        obtenerAlgoritmosHabilitados();
+        //Controlador controlador = new Controlador();
+        //listaAlgoritmos = controlador.obtenerAlgoritmos();
+        //tipoSalida = controlador.obtenerTipoSalida();
+        //ejecutar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
