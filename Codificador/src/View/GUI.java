@@ -24,14 +24,15 @@ public final class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     DaoAlfabetos daoAlfabetos;
-    ArrayList<String> listaAlgoritmos = new ArrayList<>();
+    ArrayList<Algoritmo> listaAlgoritmos = new ArrayList<>();
     
     int alfabeto;
     int tipoFrase;
     int longFrase;
     boolean modoCodificacion = true;
     String frase = "";
-    String tipoSalida = "",salida="";
+    ArrayList<String> tipoSalida = null;
+    String salida="";
     ArrayList<String> listaSalidas = new ArrayList<>();
     DTOAlgoritmos dtoAlgoritmos;
     DTOFrase dtoFrase;
@@ -44,7 +45,7 @@ public final class GUI extends javax.swing.JFrame {
         longFrase = 0;
         modoCodificacion = true;
         frase = entText.getText();
-        tipoSalida = "";
+        tipoSalida = new ArrayList <>();
         salida = "";
         listaAlgoritmos = new ArrayList<>();
         listaSalidas = new ArrayList<>();
@@ -61,7 +62,6 @@ public final class GUI extends javax.swing.JFrame {
         if(decoRadioB.isSelected()){
             modoCodificacion = false;
         }
-        tipoSalida = "txt"; //Temporal
         /*
         Agregar metodo para usar las salidas enviadas por el administrador
         */
@@ -84,7 +84,8 @@ public final class GUI extends javax.swing.JFrame {
         limpiarVariables();
         setearVariables();
         
-        OBJComunicacion objeto = new OBJComunicacion(dtoAlgoritmos, dtoFrase, AccionesServidor.PROCESAR_PETICION_CODIFICAR);
+        OBJComunicacion objeto = new OBJComunicacion(dtoAlgoritmos, dtoFrase, 
+                AccionesServidor.PROCESAR_PETICION_CODIFICAR);
         
         Cliente c = new Cliente();
         
@@ -266,11 +267,6 @@ public final class GUI extends javax.swing.JFrame {
         alfabetoLabel.setText("Alfabeto:");
 
         alfabetoCombo.setBackground(new java.awt.Color(51, 204, 255));
-        alfabetoCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alfabetoComboActionPerformed(evt);
-            }
-        });
 
         fieldAlgoritmos.setFont(new java.awt.Font("Trajan Pro", 3, 12)); // NOI18N
         jScrollPane2.setViewportView(fieldAlgoritmos);
@@ -448,10 +444,6 @@ public final class GUI extends javax.swing.JFrame {
         tipoFrase = 4;
         longFraseText.setEnabled(false);
     }//GEN-LAST:event_fraseRadioBActionPerformed
-
-    private void alfabetoComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alfabetoComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_alfabetoComboActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TituloLabel;

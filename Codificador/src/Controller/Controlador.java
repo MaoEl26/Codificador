@@ -97,12 +97,12 @@ public class Controlador {
         boolean validacionAlfabeto = alfabetoActual.validarAlfabeto(alfabetoActual, dtoAlgoritmos.getFraseActual());
         if (!validacionAlfabeto){
             /*Frase invalida*/
+            
         }
         
         /*Proceso de obtencion de la frase*/
-        /*String frase;
-        switch (dtoFrase.getTipoFrase()){
-            
+        String frase;
+        switch (dtoFrase.getTipoFrase()){    
             case 4:
                 dtoAlgoritmos.setFraseActual(dtoFrase.getFrase());
                 break;
@@ -110,63 +110,21 @@ public class Controlador {
                 FraseFactoryMethod fabrica = (FraseFactoryMethod) new FraseFactory();
                 Frase fraseTemp = fabrica.createFrase(dtoFrase.getTipoFrase(), alfabetoActual, dtoFrase.getLongitudFrase());
                 frase = fraseTemp.generarFrase();        
-        }*/
-
+        }
         /*Proceso de Codificacion/Decodificacion*/
         ArrayList<Algoritmo> listaAlgoritmosSolicitados = dtoAlgoritmos.getListaAlgoritmosSolicitados();
         boolean modoCodificacion = dtoAlgoritmos.isModoCodificacion();
         //algoritmos.get(0).getClass().getSimpleName() para obtener las instancias
         for (int i=0; i<listaAlgoritmosSolicitados.size(); i++){
             
-            /*switch (listaAlgoritmosSolicitados.get(i)){
-                
-                case "Vigenere":
-                    Algoritmo peticionV = new algVigenere();
-                    if (modoCodificacion){
-                        peticionV.codificar(dtoAlgoritmos, alfabetoActual);
-                    }
-                    else{
-                        peticionV.decodificar(dtoAlgoritmos, alfabetoActual);
-                    }
-                    break;
-                case "Trasposicion":
-                    Algoritmo peticionT = new algTrasposicion();
-                    if (modoCodificacion){
-                        peticionT.codificar(dtoAlgoritmos, alfabetoActual);
-                    }
-                    else{
-                        peticionT.decodificar(dtoAlgoritmos, alfabetoActual);
-                    }
-                    break;
-                case "CodigoTelefonico":
-                    Algoritmo peticionC = new algCodigoTelefonico();
-                    if (modoCodificacion){
-                        peticionC.codificar(dtoAlgoritmos, alfabetoActual);
-                    }
-                    else{
-                        peticionC.decodificar(dtoAlgoritmos, alfabetoActual);
-                    }
-                    break; 
-                case "PalabraClave":
-                    Algoritmo peticionP = new algPalabraClave();
-                    if (modoCodificacion){
-                        peticionP.codificar(dtoAlgoritmos, alfabetoActual);
-                    }else{
-                        peticionP.decodificar(dtoAlgoritmos, alfabetoActual);
-                    }
-                    break;
-                case "CodificacionBin":
-                    Algoritmo peticionB = new algCodificaciónBinaria();
-                    if(modoCodificacion){
-                        peticionB.codificar(dtoAlgoritmos, alfabetoActual);
-                    }else{
-                        peticionB.decodificar(dtoAlgoritmos, alfabetoActual);
-                    }
-                    break;
-            }*/
-        }
-        
-        
+            Algoritmo peticion = listaAlgoritmosSolicitados.get(i);
+            if (modoCodificacion){
+                peticion.codificar(dtoAlgoritmos, alfabetoActual);
+            }
+            else{
+                peticion.decodificar(dtoAlgoritmos, alfabetoActual);
+            }
+        }  
         escribir(dtoAlgoritmos);
     }
 
