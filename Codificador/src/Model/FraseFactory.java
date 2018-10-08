@@ -1,7 +1,7 @@
 package Model;
 
 
-public class FraseFactory {
+public class FraseFactory implements FraseFactoryMethod{
     
     public Frase createFrase(int tipo, Alfabeto alfabeto, int longitud){
         switch (tipo) {
