@@ -85,14 +85,14 @@ public class main {
         }
         //newConsola();
         newAdmin();
-        newGui();
+        //newGui();
     }
 private static void newConsola(){
     Consola consola1 = new Consola();
     consola1.empezarPrograma();
 }    
 
-private static void newGui(){
+public static void newGui(){
             gui = new GUI();
             gui.inicioDao(daoAlfabetos);
             gui.start();

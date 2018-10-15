@@ -33,7 +33,7 @@ public class EscritorPDF implements IEscritor{
         String ruta = "../Codificador/Logs/"+modo+".pdf";
         File file = new File(ruta);
         try{
-            fileOut = new FileOutputStream(file, true);
+            fileOut = new FileOutputStream(file, false);
         }catch(IOException e){
             System.out.println("(No se encontró el fichero para generar el pdf)" 
                         + e);
