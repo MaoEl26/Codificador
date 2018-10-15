@@ -5,7 +5,7 @@
  */
 
 package test;
-import Servidor.Servidor;
+import Servidor.Server;
 import View.*;
 /**
  *
