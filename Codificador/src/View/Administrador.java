@@ -399,6 +399,7 @@ public class Administrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Servidor.getInstance().iniciarServidor(); //iniciar server sin usar hilos y no sirve, se congela
         Servidor.getInstance().iniciar();           //iniciar server usando hilos
+        main.newGui();
         //System.out.println("paso de iniciar");
     }//GEN-LAST:event_serverEnableBtnActionPerformed
 

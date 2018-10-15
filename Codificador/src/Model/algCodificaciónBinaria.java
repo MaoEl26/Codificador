@@ -167,7 +167,7 @@ public class algCodificaciónBinaria extends Algoritmo{
             }
         }
         salidas.add(textoSalida);
-        
+        dtoAlgortimo.setListaSalidas(salidas);
     }
 
     @Override

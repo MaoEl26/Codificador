@@ -75,6 +75,7 @@ public class algPalabraClave extends Algoritmo{
         }
     }
         salidas.add(textoSalida);
+        dtoAlgortimo.setListaSalidas(salidas);
         
     }
     

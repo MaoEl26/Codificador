@@ -237,6 +237,7 @@ public class algCodigoTelefonico extends Algoritmo{
             } 
         }
         salidas.add(textoSalida);
+        dtoAlgortimo.setListaSalidas(salidas);
     }
     
     public int getindex (Character letra, Alfabeto alfabeto)
