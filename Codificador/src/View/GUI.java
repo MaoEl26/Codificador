@@ -146,8 +146,6 @@ public final class GUI extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error al recibir respuesta del servidor");
         }
-        for (Algoritmo ar : listaAlgoritmos) System.out.println(ar.getClass().getName());
-        
     }
     
     private void obtenerTipoSalida(){
