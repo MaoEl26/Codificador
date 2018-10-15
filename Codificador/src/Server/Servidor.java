@@ -95,9 +95,7 @@ public class Servidor implements Runnable{
     
     private void procesePeticion() {
         try {
-            System.out.println("voy1");
             OBJComunicacion objeto = (OBJComunicacion) flujoEntrada.readObject();
-            System.out.println("voy2");
             DTOAlgoritmos dtoAlgoritmos = objeto.getDtoAlgoritmo();
             DTOFrase dtoFrase = objeto.getDtoFrase();
             Controlador controlador = new Controlador();
