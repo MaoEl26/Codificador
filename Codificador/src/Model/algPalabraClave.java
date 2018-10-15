@@ -46,8 +46,9 @@ public class algPalabraClave extends Algoritmo{
                    
                 }
                 
-               if (textoEntrada.charAt(i) == ' ')
+               if (String.valueOf(textoEntrada.charAt(i)).equals(String.valueOf(' ')))
                 {
+                    System.out.println("---------------------------espacio-------------------------------------");
                     textoSalida += ' ';
                     i++;
                     j = 0;
@@ -55,14 +56,14 @@ public class algPalabraClave extends Algoritmo{
                  
                 margen = getindice(textoEntrada.charAt(i), alfabeto) + getindice(PalabraClave.charAt(j),alfabeto);
                 
-                if (margen > 26)
+                if (margen > alfabeto.getList().size() - 2)
                 {
                     textoSalida += getlet(margen - 26, alfabeto);
                     j = j + 1;
                     
                 }
                 
-                if (margen < 26)
+                if (margen < alfabeto.getList().size() - 2)
                 {
                     textoSalida += getlet(margen, alfabeto);
                     j = j + 1;
@@ -86,7 +87,7 @@ public class algPalabraClave extends Algoritmo{
         for(int x = 0; x < alfabeto.getList().size(); x++) {
             
        // System.out.println(al.get(x));
-            if (String.valueOf(letra) == alfabeto.getList().get(x))
+            if (String.valueOf(letra).equals(alfabeto.getList().get(x)))
             {
                 valor = x;
                 System.out.println("Se obtuvo el indice: " + valor + " de la letra ->" + alfabeto.getList().get(x));
@@ -98,18 +99,18 @@ public class algPalabraClave extends Algoritmo{
         return valor;
     }
     
-    public Character getlet (int num, Alfabeto alfabeto)
+    public String getlet (int num, Alfabeto alfabeto)
     {
         
         
-        Character valor = null; 
+        String valor = ""; 
         
         for(int x=0; x < alfabeto.getList().size(); x++) {
             
              
              if (x == num)
              {
-                 valor = alfabeto.getList().get(x).charAt(0);
+                 valor = alfabeto.getList().get(x);
                  System.out.println("Se obtuvo la letra: " + valor + " con el indice ->" + num);
              }
         }
@@ -132,6 +133,9 @@ public class algPalabraClave extends Algoritmo{
         {
         
         for (int i = 0; i < textoEntrada.length(); i++) {
+             
+                margen = 0;
+                boolean bandera = true;
             
             
                 if (j >= PalabraClave.length())
@@ -140,7 +144,7 @@ public class algPalabraClave extends Algoritmo{
                    
                 }
                 
-               if (textoEntrada.charAt(i) == ' ')
+               if (String.valueOf(textoEntrada.charAt(i)).equals(String.valueOf(' ')))
                 {
                     textoSalida += ' ';
                     i++;
@@ -148,18 +152,27 @@ public class algPalabraClave extends Algoritmo{
                 }
                  
                 margen = getindice(textoEntrada.charAt(i), alfabeto) - getindice(PalabraClave.charAt(j), alfabeto);
+                System.out.println("Margen antes: " + margen);
                 
-                if (margen < 0)
+                if (margen < 0 && bandera)
                 {
-                    textoSalida += getlet(margen + 26, alfabeto);
+                    margen = margen + alfabeto.getList().size() - 2;
+                    System.out.println("Margen despues: " + margen);
+                   
+                    textoSalida += getlet(margen, alfabeto);
+                    System.out.println("----------------------------------------------------------------------------");
                     j = j + 1;
+                    bandera = !bandera;
                     
                 }
                 
-                if (margen > 0)
+                if (margen >= 0 && bandera)
                 {
                     textoSalida += getlet(margen, alfabeto);
                     j = j + 1;
+                    System.out.println("----------------------------------------------------------------------------");
+                    bandera = !bandera;
+                    
                     
                 }
                

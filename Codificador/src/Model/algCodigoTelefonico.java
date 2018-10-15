@@ -26,8 +26,16 @@ public class algCodigoTelefonico extends Algoritmo{
         for (int i = 0; i < textoEntrada.length(); i++) {
             //textoSalida+= new StringBuilder(ArraytextoCambio[i]).reverse().toString()+" ";
             System.out.println("Trabajando con la letra: " + textoEntrada.charAt(i));
-            
-             if (textoEntrada.charAt(i) == ' ')
+            for (int j = 0; j < alfabeto.getList().size(); j++)
+            {
+                if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(j)))
+                {
+                    System.out.println(" Si coincidieron! ");
+                }
+                System.out.println("Imprimiendo el actual alfabeto: " + alfabeto.getList().get(j) +" en la posición: " + j);
+            }
+          
+            if (String.valueOf(textoEntrada.charAt(i)).equals(' '))
              {
                  textoSalida += "*";
              }
@@ -245,12 +253,12 @@ public class algCodigoTelefonico extends Algoritmo{
         int x = 0;
         
          for(int i = 0; i < alfabeto.getList().size(); i++) {
-             if (alfabeto.getList().get(i) == String.valueOf(letra))
+             if (alfabeto.getList().get(i).equals(String.valueOf(letra)))
              {
                  x = i;
              }
          }
-        return x;
+        return x + 1;
     }
     
    

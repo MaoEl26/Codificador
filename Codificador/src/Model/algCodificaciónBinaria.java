@@ -36,132 +36,132 @@ public class algCodificaciónBinaria extends Algoritmo{
                 textoSalida+= "*" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(1))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(0)))
             {
                 textoSalida+= "00000" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(2))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(1)))
             {
                 textoSalida+= "00001" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(3))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(2)))
             {
                 textoSalida+= "00010" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(4))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(3)))
             {
                 textoSalida+= "00011" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(5))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(4)))
             {
                 textoSalida+= "00100" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(6))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(5)))
             {
                 textoSalida+= "00101" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(7))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(6)))
             {
                 textoSalida+= "00110" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(8))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(7)))
             {
                 textoSalida+= "00111" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(9))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(8)))
             {
                 textoSalida+= "01000" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(10))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(9)))
             {
                 textoSalida+= "01001" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(11))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(10)))
             {
                 textoSalida+= "01010" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(12))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(11)))
             {
                 textoSalida+= "01011" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(13))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(12)))
             {
                 textoSalida+= "01100" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(14))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(13)))
             {
                 textoSalida+= "01101" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(15))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(14)))
             {
                 textoSalida+= "01110" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(16))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(15)))
             {
                 textoSalida+= "01111" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(17))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(16)))
             {
                 textoSalida+= "10000" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(18))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(17)))
             {
                 textoSalida+= "10001" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(19))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(18)))
             {
                 textoSalida+= "10010" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(20))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(19)))
             {
                 textoSalida+= "10011" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(21))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(20)))
             {
                 textoSalida+= "10100" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(22))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(21)))
             {
                 textoSalida+= "10101" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(23))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(22)))
             {
                 textoSalida+= "10110" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(24))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(23)))
             {
                 textoSalida+= "10111" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(25))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(24)))
             {
                 textoSalida+= "11000" + " ";
             }
             
-            if (String.valueOf(textoEntrada.charAt(i)) == alfabeto.getList().get(26))
+            if (String.valueOf(textoEntrada.charAt(i)).equals(alfabeto.getList().get(25)))
             {
                 textoSalida+= "11001" + " ";
             }
@@ -178,134 +178,134 @@ public class algCodificaciónBinaria extends Algoritmo{
         
         for (int i = 0; i < ArraytextoCambio.length; i++) {
            
-           if (ArraytextoCambio[i] == "00000")
+           if (ArraytextoCambio[i].equals("00000"))
+           {
+               textoSalida += alfabeto.getList().get(0);
+           }
+           
+           if (ArraytextoCambio[i].equals("00001"))
            {
                textoSalida += alfabeto.getList().get(1);
            }
            
-           if (ArraytextoCambio[i] == "00001")
+           if (ArraytextoCambio[i].equals("00010"))
            {
                textoSalida += alfabeto.getList().get(2);
            }
            
-           if (ArraytextoCambio[i] == "00010")
+           if (ArraytextoCambio[i].equals("00011"))
            {
                textoSalida += alfabeto.getList().get(3);
            }
            
-           if (ArraytextoCambio[i] == "00011")
+           if (ArraytextoCambio[i].equals("00100"))
            {
                textoSalida += alfabeto.getList().get(4);
            }
            
-           if (ArraytextoCambio[i] == "00100")
+           if (ArraytextoCambio[i].equals("00101"))
            {
                textoSalida += alfabeto.getList().get(5);
            }
            
-           if (ArraytextoCambio[i] == "00101")
+           if (ArraytextoCambio[i].equals("00110"))
            {
                textoSalida += alfabeto.getList().get(6);
            }
            
-           if (ArraytextoCambio[i] == "00110")
+           if (ArraytextoCambio[i].equals("00111"))
            {
                textoSalida += alfabeto.getList().get(7);
            }
            
-           if (ArraytextoCambio[i] == "00111")
+           if (ArraytextoCambio[i].equals("01000"))
            {
                textoSalida += alfabeto.getList().get(8);
            }
            
-           if (ArraytextoCambio[i] == "01000")
+           if (ArraytextoCambio[i].equals("01001"))
            {
                textoSalida += alfabeto.getList().get(9);
            }
            
-           if (ArraytextoCambio[i] == "01001")
+           if (ArraytextoCambio[i].equals("01010"))
            {
                textoSalida += alfabeto.getList().get(10);
            }
            
-           if (ArraytextoCambio[i] == "01010")
+           if (ArraytextoCambio[i].equals("01011"))
            {
                textoSalida += alfabeto.getList().get(11);
            }
            
-           if (ArraytextoCambio[i] == "01011")
+           if (ArraytextoCambio[i].equals("01100"))
            {
                textoSalida += alfabeto.getList().get(12);
            }
            
-           if (ArraytextoCambio[i] == "01100")
+           if (ArraytextoCambio[i].equals("01101"))
            {
                textoSalida += alfabeto.getList().get(13);
            }
            
-           if (ArraytextoCambio[i] == "01101")
+           if (ArraytextoCambio[i].equals("01110"))
            {
                textoSalida += alfabeto.getList().get(14);
            }
            
-           if (ArraytextoCambio[i] == "01110")
+           if (ArraytextoCambio[i].equals("01111"))
            {
                textoSalida += alfabeto.getList().get(15);
            }
            
-           if (ArraytextoCambio[i] == "01111")
+           if (ArraytextoCambio[i].equals("10000"))
            {
                textoSalida += alfabeto.getList().get(16);
            }
            
-           if (ArraytextoCambio[i] == "10000")
+           if (ArraytextoCambio[i].equals("10001"))
            {
                textoSalida += alfabeto.getList().get(17);
            }
            
-           if (ArraytextoCambio[i] == "10001")
+           if (ArraytextoCambio[i].equals("10010"))
            {
                textoSalida += alfabeto.getList().get(18);
            }
            
-           if (ArraytextoCambio[i] == "10010")
+           if (ArraytextoCambio[i].equals("10011"))
            {
                textoSalida += alfabeto.getList().get(19);
            }
            
-           if (ArraytextoCambio[i] == "10011")
+           if (ArraytextoCambio[i].equals("10100"))
            {
                textoSalida += alfabeto.getList().get(20);
            }
            
-           if (ArraytextoCambio[i] == "10100")
+           if (ArraytextoCambio[i].equals("10101"))
            {
                textoSalida += alfabeto.getList().get(21);
            }
            
-           if (ArraytextoCambio[i] == "10101")
+           if (ArraytextoCambio[i].equals("10110"))
            {
                textoSalida += alfabeto.getList().get(22);
            }
            
-           if (ArraytextoCambio[i] == "10110")
+           if (ArraytextoCambio[i].equals("10111"))
            {
                textoSalida += alfabeto.getList().get(23);
            }
            
-           if (ArraytextoCambio[i] == "10111")
+           if (ArraytextoCambio[i].equals("11000"))
            {
                textoSalida += alfabeto.getList().get(24);
            }
            
-           if (ArraytextoCambio[i] == "11000")
+           if (ArraytextoCambio[i].equals("11001"))
            {
                textoSalida += alfabeto.getList().get(25);
-           }
-           
-           if (ArraytextoCambio[i] == "11001")
-           {
-               textoSalida += alfabeto.getList().get(26);
            }
         }
         salidas.add(textoSalida);        
